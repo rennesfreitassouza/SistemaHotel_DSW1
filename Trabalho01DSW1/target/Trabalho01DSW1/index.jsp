@@ -8,7 +8,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Sistema para criação de promoções de quarto de hotel em sites de reservas</title>
 	<script>
-		function mudarCor() {
+		function BoasVindas() {
 			alert("Bem vindo!");
     	}
 	</script>
@@ -23,7 +23,7 @@
 	    <a href="login_hoteis_reservas.jsp" title="área de acesso ao sistema de hotéis e sistema de reservas">Área para login de hotéis e sistema de reservas</a><br/>
 	    <a href="nao_cadastrados.jsp" title="área para não cadastrados">Área para não cadastrados</a><br/> 
 		
-		<button onclick="mudarCor()">Clique aqui</button><br/><%--Linha de boas vindas--%>
+		<button onclick="BoasVindas()">Clique aqui</button><br/><%--Linha de boas vindas0.2--%>
 	    <strong> <%= new Date() %></strong>
     </fmt:bundle>
 </body>
