@@ -23,7 +23,7 @@
 	    <a href="login_hoteis_reservas.jsp" title="área de acesso ao sistema de hotéis e sistema de reservas">Área para login de hotéis e sistema de reservas</a><br/>
 	    <a href="nao_cadastrados.jsp" title="área para não cadastrados">Área para não cadastrados</a><br/> 
 		
-		<button onclick="mudarCor()">Clique aqui</button><br/><%--Linha de boas vindas--%>
+		<button onclick="mudarCor()">Clique aqui</button><br/><%--Linha de boas vindas0.1--%>
 	    <strong> <%= new Date() %></strong>
     </fmt:bundle>
 </body>
