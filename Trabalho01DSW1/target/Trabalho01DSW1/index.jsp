@@ -1,6 +1,8 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8" %>
 <%@ page import="java.util.Date" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ page isELIgnored="false"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 
@@ -15,16 +17,41 @@
 </head>
 
 <body>
+	<%
+		String contextPath = request.getContextPath().replace("/", "");
+	%>
     <fmt:bundle basename="acessos">
     
 	    <strong>Acesso ao sistema:</strong><br/>
 	    
 	    <a href="login_administrador.jsp" title="área de acesso ao administrador">Área para login de administrador</a><br/> 
 	    <a href="login_hoteis_reservas.jsp" title="área de acesso ao sistema de hotéis e sistema de reservas">Área para login de hotéis e sistema de reservas</a><br/>
-	    <a href="nao_cadastrados.jsp" title="área para não cadastrados">Área para não cadastrados</a><br/> 
-		
+	    <a href="listaHoteis" title="área para não cadastrados">Área para não cadastrados</a><br/> 
 		<button onclick="BoasVindas()">Clique aqui</button><br/><%--Linha de boas vindas0.3_Eclipse--%>
 	    <strong> <%= new Date() %></strong>
     </fmt:bundle>
+    
+    <div align="center">
+		<table border="1">
+			<caption>Lista de Hoteis (Não lista na página inicial =)</caption>
+			<tr>
+				<th>e-mail</th>
+				<th>Senha</th>
+				<th>CNPJ</th>
+				<th>Nome do hotel</th>
+				<th>Cidade</th>
+			</tr>
+			<c:forEach var="hotel" items="${requestScope.listaHoteis}">
+				<tr>
+					<td>${hotel.e_mail}</td>
+					<td>${hotel.senha}</td>
+					<td>${hotel.CNPJ}</td>
+					<td>${hotel.nomeHotel}</td>
+					<td>${hotel.cidade}</td>
+				</tr>
+			</c:forEach>
+		</table>
+		<h5>Para listagem, acesse a "Área para não cadastrados"</h5>
+	</div>
 </body>
 </html>

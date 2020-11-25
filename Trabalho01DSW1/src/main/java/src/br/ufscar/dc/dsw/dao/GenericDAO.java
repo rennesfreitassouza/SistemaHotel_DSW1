@@ -31,7 +31,7 @@ abstract public class GenericDAO {
     	
     	/* Conexão banco de dados MySQL */
     	
-    	String url = "jdbc:mysql://localhost:3306/Trabalho01DSW1";
+    	String url = "jdbc:mysql://localhost:3306/Hoteis";
     	
     	return DriverManager.getConnection(url, "user", "Us3rl0c4lh0st10@");
     }
