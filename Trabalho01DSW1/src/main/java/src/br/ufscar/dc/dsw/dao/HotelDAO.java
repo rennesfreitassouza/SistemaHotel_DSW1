@@ -11,10 +11,14 @@ import src.br.ufscar.dc.dsw.domain.*;
 
 public class HotelDAO extends GenericDAO{
 
-	public List<Hotel> getAll(){
+	public List<Hotel> getAll(boolean listarPorcidade){
 		List<Hotel> listaHoteis = new ArrayList<>();
 		
-		String sql = "SELECT * from Hotel order by nomeHotel";
+		String sql = new String();
+		if (listarPorcidade == false)
+			sql = "SELECT * from Hotel order by nomeHotel";
+		else
+			sql = "SELECT * from Hotel order by cidade";
 		try {
             Connection conn = this.getConnection();
             Statement statement = conn.createStatement();
@@ -29,7 +33,7 @@ public class HotelDAO extends GenericDAO{
                 Hotel hotel = new Hotel(e_mail, senha, CNPJ, nomeHotel, cidade);
                 listaHoteis.add(hotel);
             }
-
+            
             resultSet.close();
             statement.close();
             conn.close();

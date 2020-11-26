@@ -34,17 +34,31 @@ public class HotelController extends HttpServlet{
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException {
 		try {
-			listaHoteis(request, response);
+			//Object verifica = request.getAttribute("oi");
+			String verifica = request.getParameter("AreaParaNaoCadastrados");
+			if (verifica.equals("listaTodosHoteis"))
+				listaTodosHoteis(request, response);
+			else
+				if(verifica.equals("listaHoteisPorCidade"))
+					listaHoteisPorCidade(request, response);
         } catch (RuntimeException | IOException | ServletException e) {
             throw new ServletException(e);
         }
     }
 	
-    private void listaHoteis(HttpServletRequest request, HttpServletResponse response)
+    private void listaTodosHoteis(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        List<Hotel> listaHoteis = dao.getAll();
+        List<Hotel> listaHoteis = dao.getAll(false);
         request.setAttribute("listaHoteis", listaHoteis);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("lista.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("listaTodosHoteis.jsp");
+        dispatcher.forward(request, response);
+    }
+
+    private void listaHoteisPorCidade(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        List<Hotel> listaHoteis = dao.getAll(true);
+        request.setAttribute("listaHoteis", listaHoteis);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("listaTodosHoteis.jsp");
         dispatcher.forward(request, response);
     }
 }

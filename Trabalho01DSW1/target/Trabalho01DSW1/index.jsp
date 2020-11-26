@@ -23,17 +23,30 @@
     <fmt:bundle basename="acessos">
     
 	    <strong>Acesso ao sistema:</strong><br/>
+
+
+	    <form name="fomularioTipoDeListagem" action="listaHoteis" method="POST">
+			<fieldset>
+				<legend>Área para não cadastrados</legend>
+				<input type="radio" name ="AreaParaNaoCadastrados" title="área para não cadastrados" value="listaTodosHoteis"/>
+				<label for="listaTodosHoteis">Listar todos os hotéis ordenados por nome</label><br>
+				<input type="radio" name ="AreaParaNaoCadastrados" title="área para não cadastrados" value="listaHoteisPorCidade"/>
+				<label for="listaHoteisPorCidade">Listar todos os hotéis ordenados por cidade</label><br>
+				<input type="submit" value="Listar"/>
+			</fieldset>
+		</form>
+	
+	    <br><a href="login_administrador.jsp" title="área de acesso ao administrador">Área para login de administrador</a><br/> 
 	    
-	    <a href="login_administrador.jsp" title="área de acesso ao administrador">Área para login de administrador</a><br/> 
-	    <a href="login_hoteis_reservas.jsp" title="área de acesso ao sistema de hotéis e sistema de reservas">Área para login de hotéis e sistema de reservas</a><br/>
-	    <a href="listaHoteis" title="área para não cadastrados">Área para não cadastrados</a><br/> 
-		<button onclick="BoasVindas()">Clique aqui</button><br/><%--Linha de boas vindas0.3_Eclipse--%>
+	    <br><a href="login_hoteis_reservas.jsp" title="área de acesso ao sistema de hotéis e sistema de reservas">Área para login de hotéis e sistema de reservas</a><br/>
+
+		<br><button onclick="BoasVindas()">Alerta: Boas vindas</button><br/>
 	    <strong> <%= new Date() %></strong>
     </fmt:bundle>
     
     <div align="center">
 		<table border="1">
-			<caption>Lista de Hoteis (Não lista na página inicial =)</caption>
+			<caption>Lista de Hotéis (Não lista na página inicial =)</caption>
 			<tr>
 				<th>e-mail</th>
 				<th>Senha</th>
