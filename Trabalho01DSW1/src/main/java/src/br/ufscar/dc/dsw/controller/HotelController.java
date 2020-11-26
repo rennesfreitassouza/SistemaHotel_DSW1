@@ -34,7 +34,6 @@ public class HotelController extends HttpServlet{
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException {
 		try {
-			//Object verifica = request.getAttribute("oi");
 			String verifica = request.getParameter("AreaParaNaoCadastrados");
 			if (verifica.equals("listaTodosHoteis"))
 				listaTodosHoteis(request, response);
