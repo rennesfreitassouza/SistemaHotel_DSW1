@@ -9,6 +9,8 @@ import java.util.List;
 
 import src.br.ufscar.dc.dsw.domain.*;
 
+//Essa classe acessa o banco de dados.
+//Método getAll retorna uma lista com todos os dados dos hotéis do banco de dados Hoteis.
 public class HotelDAO extends GenericDAO{
 
 	public List<Hotel> getAll(boolean listarPorcidade){

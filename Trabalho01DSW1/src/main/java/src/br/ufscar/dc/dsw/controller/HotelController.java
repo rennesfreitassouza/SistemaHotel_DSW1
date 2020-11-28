@@ -10,18 +10,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import src.br.ufscar.dc.dsw.dao.*;
-import src.br.ufscar.dc.dsw.domain.*;
+import src.br.ufscar.dc.dsw.domain.Hotel;
+import src.br.ufscar.dc.dsw.domain.Cidade;
+import src.br.ufscar.dc.dsw.dao.HotelDAO;
+import src.br.ufscar.dc.dsw.dao.CidadeDAO;
 
-@WebServlet(urlPatterns = "/listaHoteis/*")
+@WebServlet(urlPatterns = "/listaHoteis")
 public class HotelController extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	
-	private HotelDAO dao;
+	private HotelDAO daoHotel;
+	private CidadeDAO daoCidade;
 	
 	@Override
 	public void init() {
-		dao = new HotelDAO();
+		this.daoHotel = new HotelDAO();
+		this.daoCidade = new CidadeDAO();
 	}
 	
 	@Override
@@ -41,13 +45,13 @@ public class HotelController extends HttpServlet{
 				if(verifica.equals("listaHoteisPorCidade"))
 					listaHoteisPorCidade(request, response);
         } catch (RuntimeException | IOException | ServletException e) {
-            throw new ServletException(e);
+        	throw new ServletException(e);
         }
     }
 	
     private void listaTodosHoteis(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        List<Hotel> listaHoteis = dao.getAll(false);
+        List<Hotel> listaHoteis = daoHotel.getAll(false);
         request.setAttribute("listaHoteis", listaHoteis);
         RequestDispatcher dispatcher = request.getRequestDispatcher("listaTodosHoteis.jsp");
         dispatcher.forward(request, response);
@@ -55,9 +59,9 @@ public class HotelController extends HttpServlet{
 
     private void listaHoteisPorCidade(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        List<Hotel> listaHoteis = dao.getAll(true);
-        request.setAttribute("listaHoteis", listaHoteis);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("listaTodosHoteis.jsp");
+        List<Cidade> listaCidades = daoCidade.getAll();
+        request.setAttribute("listaCidades", listaCidades);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("listaTodosHoteisPorCidade.jsp");
         dispatcher.forward(request, response);
     }
 }

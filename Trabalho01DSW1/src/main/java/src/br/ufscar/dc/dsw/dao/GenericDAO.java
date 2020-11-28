@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+//Essa classe acessa o banco de dados Hoteis.
 abstract public class GenericDAO {
     public GenericDAO() {
         try {
@@ -26,7 +27,7 @@ abstract public class GenericDAO {
     	/* Conexão banco de dados Derby */
     	
     	/* 
-    	 * String url = "jdbc:derby://localhost:1527/Livraria";
+    	 * String url = "jdbc:derby://localhost:1527/Hoteis";
     	 */
     	
     	/* Conexão banco de dados MySQL */

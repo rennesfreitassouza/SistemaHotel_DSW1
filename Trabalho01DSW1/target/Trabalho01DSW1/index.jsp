@@ -30,7 +30,7 @@
 				<legend>Área para não cadastrados</legend>
 				<input type="radio" name ="AreaParaNaoCadastrados" title="área para não cadastrados" value="listaTodosHoteis"/>
 				<label for="listaTodosHoteis">Listar todos os hotéis ordenados por nome</label><br>
-				<input type="radio" name ="AreaParaNaoCadastrados" title="área para não cadastrados" value="listaHoteisPorCidade"/>
+				<input type="radio" name ="AreaParaNaoCadastrados" title="área para não cadastrados" value="listaHoteisPorCidade" />
 				<label for="listaHoteisPorCidade">Listar todos os hotéis ordenados por cidade</label><br>
 				<input type="submit" value="Listar"/>
 			</fieldset>
