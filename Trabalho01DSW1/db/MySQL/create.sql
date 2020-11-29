@@ -30,14 +30,14 @@ insert into Hotel(cnpj,
 	nome, 
 	cidade, 
 	email, 
-	senha) values ('71.150.470/0001-40', 'Hotel Bela Vista', 'São Carlos', 'hotel2@hotel.com', 'hotel2');
+	senha) values ('71.150.470/0001-40', 'Hotel Bela Vista', 'Ibaté', 'hotel2@hotel.com', 'hotel2');
 
 insert into Hotel(cnpj, 
 	nome, 
 	cidade, 
 	email, 
 	senha) 
-	values ('32.106.536/0001-82', 'Hotel Bienvenido', 'São Carlos',  'hotel3@hotel.com', 'hotel3');
+	values ('32.106.536/0001-82', 'Hotel Bienvenido', 'Água Vermelha',  'hotel3@hotel.com', 'hotel3');
 
 
 insert into SiteReserva(url, nome, telefone, email, senha) values ('www.sitereservabrasil.com', 'Reserva Brasil', '(16)1234-5678', 'site1@siteres.com', 'site1');

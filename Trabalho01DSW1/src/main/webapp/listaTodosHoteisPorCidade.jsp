@@ -1,61 +1,64 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page isELIgnored="false"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
 <!DOCTYPE html>
 <html>
 <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script>
             $(function () {
-                $("#listaHoteisPorCidade").autocomplete({
+                $("#listaCidade").autocomplete({
                     select: function (event, ui) {
                         alert("Selecionado: " + ui.item.value);
                     },
-                    source: "HotelPorCidadeController", // HotelPorCidadeController È um controller da classe HotelPorCidadeController  
-                    minLength: 2
+                    source: "ListagemDeCidadesController", //ListagemDeCidadesController √© um controller da classe HotelPorCidadeController  
+                    minLength: 1
                 });
             });
 	</script>
+	<script src="js/ajaxListagemDeHoteisPorCidade.js"></script>
     
-	<title>Lista de hotÈis do banco de dados HotÈis de acordo com a cidade</title>
+	<title>Lista de hot√©is do banco de dados Hot√©is de acordo com a cidade</title>
 </head>
 <body>
+	
+	<jsp:useBean id='bean' class='src.br.ufscar.dc.dsw.bean.ListagemPorCidadeBean' />
 		
 	<div align="center">
-		<h1>Sistema para criaÁ„o de promoÁıes de quarto de hotel em sites de reservas</h1>
+		<h1>Sistema para cria√ß√£o de promo√ß√µes de quarto de hotel em sites de reservas</h1>
 		<h2>
-			<a href="login_administrador.jsp">¡rea para login de administrador</a>
-			<a href="login_hoteis_reservas.jsp" title="·rea de acesso ao sistema de hotÈis e sistema de reservas">¡rea para login de hotÈis e sistema de reservas</a><br/>
+			<a href="login_administrador.jsp">√Årea para login de administrador</a>
+			<a href="login_hoteis_reservas.jsp" title="√°rea de acesso ao sistema de hot√©is e sistema de reservas">√Årea para login de hot√©is e sistema de reservas</a><br/>
 		</h2>
 	</div>
-	
-	<div class="ui-widget">
-		<label for="listaHoteisPorCidade">Nome</label>
-		<input id="listaHoteisPorCidade" name="listaHoteisPorCidade" placeholder="Pelo menos 2 caracteres" />
-	</div>
-	<br/>
-	
-	<div align="center">
-		<table border="1">
-			<caption>Lista de HotÈis</caption>
-			<tr>
-				<th>e-mail</th>
-				<th>Senha</th>
-				<th>CNPJ</th>
-				<th>Nome do hotel</th>
-				<th>Cidade</th>
-			</tr>
-			<c:forEach var="hotel" items="${requestScope.listaHoteis}">
+	<form name='form'>
+		<div id="cidades">
+			<label for="listaCidade">Nome</label>
+			<input id="listaCidade" name="listaCidade" placeholder="Pelo menos 2 caracteres" onkeyUp="getCidadesAjax()"/>
+			
+			<table border="1" style="width: 400px; border: 1px solid black">
 				<tr>
-					<td>${hotel.e_mail}</td>
-					<td>${hotel.senha}</td>
-					<td>${hotel.CNPJ}</td>
-					<td>${hotel.nomeHotel}</td>
-					<td>${hotel.cidade}</td>
+					<th style="width: 10%; text-align: center"></th>
+					<th>Nome do hotel</th>
 				</tr>
-			</c:forEach>
-		</table>
-	</div>
+					<c:forEach var="listaHoteisPorCidade" items="${bean.cidades}">
+						<tr>
+							<td style="text-align: center"><input
+								type="radio" id="${listaHoteisPorCidade.getNomeCidade()}"
+								name="selCidade" value="${listaHoteisPorCidade.getNomeCidade()}"
+								onclick="alert('Cidade: ${listaHoteisPorCidade.getNomeCidade()}')">
+							</td>
+							<td>${listaHoteisPorCidade.getNomeHotelDaCidade()}</td>
+						</tr>
+					</c:forEach>
+			</table>
+		</div>
+	</form>
+	<br/>
 </body>
 </html>

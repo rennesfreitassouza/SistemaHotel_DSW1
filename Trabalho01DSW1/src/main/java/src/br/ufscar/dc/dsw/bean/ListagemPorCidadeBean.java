@@ -1,11 +1,12 @@
 package src.br.ufscar.dc.dsw.bean;
 
-
 import java.util.List;
 
-import src.br.ufscar.dc.dsw.dao.CidadeDAO;
-import src.br.ufscar.dc.dsw.domain.Cidade;
 
+import src.br.ufscar.dc.dsw.dao.CidadeDAO;
+import src.br.ufscar.dc.dsw.dao.HotelDAO;
+import src.br.ufscar.dc.dsw.domain.Cidade;
+import src.br.ufscar.dc.dsw.domain.Hotel;
 
 public class ListagemPorCidadeBean {
 
@@ -14,15 +15,16 @@ public class ListagemPorCidadeBean {
 		return dao.getAll();
 	}
 	
-//	public List<Cidade> getCidades(String nome) {
-//		CidadeDAO dao = new CidadeDAO();
-//		List<Cidade> lista;
-//		if (nome.length() > 0) {
-//			lista = dao.getByNome(nome);
-//		} else {
-//			lista = dao.getAll();
-//		}
-//		return lista;
-//	}
+	public List<Hotel> getHotelPorCidade(String nome) {
+		HotelDAO dao = new HotelDAO();
+		List<Hotel> listaDeHoteisPorCidade;
+		if (nome.length() > 0) {
+			listaDeHoteisPorCidade = dao.getByNomeCidade(nome);
+		} else {
+			listaDeHoteisPorCidade = dao.getAll();
+		}
+		
+		return listaDeHoteisPorCidade;
+	}
 }
 

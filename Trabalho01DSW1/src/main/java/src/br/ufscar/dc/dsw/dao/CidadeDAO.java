@@ -26,6 +26,9 @@ public class CidadeDAO extends GenericDAO{
             while (resultSet.next()) {
             	String nomeCidade = resultSet.getString("cidade");
                 Cidade cidade = new Cidade(nomeCidade);
+                
+                cidade.setnomeHotelDaCidade(resultSet.getString("nome"));
+                
                 listaCidades.add(cidade);
             }
             
