@@ -13,26 +13,23 @@ import src.br.ufscar.dc.dsw.domain.*;
 //Método getAll retorna uma lista com todos os dados dos hotéis do banco de dados Hoteis.
 public class HotelDAO extends GenericDAO{
 
-	public List<Hotel> getAll(boolean listarPorcidade){
+	public List<Hotel> getAll(){
 		List<Hotel> listaHoteis = new ArrayList<>();
 		
-		String sql = new String();
-		if (listarPorcidade == false)
-			sql = "SELECT * from Hotel order by nomeHotel";
-		else
-			sql = "SELECT * from Hotel order by cidade";
+		String sql = "SELECT * FROM Hotel order by nome";
+		
 		try {
             Connection conn = this.getConnection();
             Statement statement = conn.createStatement();
 
             ResultSet resultSet = statement.executeQuery(sql);
             while (resultSet.next()) {
-            	String e_mail = resultSet.getString("e_mail");
-            	String senha = resultSet.getString("senha");
-            	String CNPJ = resultSet.getString("CNPJ");
-            	String nomeHotel = resultSet.getString("nomeHotel");
+            	String cnpj = resultSet.getString("cnpj");
+            	String nome = resultSet.getString("nome");
             	String cidade = resultSet.getString("cidade");
-                Hotel hotel = new Hotel(e_mail, senha, CNPJ, nomeHotel, cidade);
+            	String email = resultSet.getString("email");
+            	String senha = resultSet.getNString("senha");
+                Hotel hotel = new Hotel(email, senha, cnpj, nome, cidade);
                 listaHoteis.add(hotel);
             }
             

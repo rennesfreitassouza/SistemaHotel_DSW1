@@ -51,7 +51,7 @@ public class HotelController extends HttpServlet{
 	
     private void listaTodosHoteis(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        List<Hotel> listaHoteis = daoHotel.getAll(false);
+        List<Hotel> listaHoteis = daoHotel.getAll(); //listaHoteis recebe a lista de hotéis ordenados pelo nome. 
         request.setAttribute("listaHoteis", listaHoteis);
         RequestDispatcher dispatcher = request.getRequestDispatcher("listaTodosHoteis.jsp");
         dispatcher.forward(request, response);

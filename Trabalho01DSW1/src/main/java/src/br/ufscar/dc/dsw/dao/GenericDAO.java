@@ -27,12 +27,12 @@ abstract public class GenericDAO {
     	/* Conexão banco de dados Derby */
     	
     	/* 
-    	 * String url = "jdbc:derby://localhost:1527/Hoteis";
+    	 * String url = "jdbc:derby://localhost:1527/Sistema";
     	 */
     	
     	/* Conexão banco de dados MySQL */
     	
-    	String url = "jdbc:mysql://localhost:3306/Hoteis";
+    	String url = "jdbc:mysql://localhost:3306/Sistema"; //Sistema é o nome do BD.
     	
     	return DriverManager.getConnection(url, "user", "Us3rl0c4lh0st10@");
     }
