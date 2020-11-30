@@ -4,14 +4,16 @@ import java.util.List;
 
 
 
+import src.br.ufscar.dc.dsw.dao.CidadeDAO;
 import src.br.ufscar.dc.dsw.dao.HotelDAO;
 
+import src.br.ufscar.dc.dsw.domain.Cidade;
 import src.br.ufscar.dc.dsw.domain.Hotel;
 
 public class ListagemPorCidadeBean {
 
-	public List<Hotel> getHotelPorCidade() {
-		HotelDAO dao = new HotelDAO();
+	public List<Cidade> getHotelPorCidade() {
+		CidadeDAO dao = new CidadeDAO();
 		return dao.getAll();
 	}
 	

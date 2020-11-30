@@ -1,7 +1,7 @@
 package src.br.ufscar.dc.dsw.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
+
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -10,11 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
-import src.br.ufscar.dc.dsw.bean.ListagemPorCidadeBean;
 import src.br.ufscar.dc.dsw.domain.Hotel;
+import src.br.ufscar.dc.dsw.bean.ListagemPorCidadeBean;
+
 
 @WebServlet(urlPatterns = {"/ListagemDeHoteisPorCidadeController"})
 public class ListagemDeHoteisPorCidadeController extends HttpServlet{
@@ -23,19 +22,20 @@ public class ListagemDeHoteisPorCidadeController extends HttpServlet{
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        response.setContentType("application/json");
-        response.setCharacterEncoding("UTF-8");
-
-        String nome = request.getParameter("term");
-
-        Gson gsonBuilder = new GsonBuilder().create();
-        List<String> hoteisPorCidade = new ArrayList<>();
-        for (Hotel hotel : new ListagemPorCidadeBean().getHotelPorCidade(nome)) {
-        	hoteisPorCidade.add(hotel.getNomeHotel());
+        response.setContentType("text/html;charset=UTF-8");
+        String nomeCidade = request.getParameter("cidade");
+        String buffer = "<tr>"
+        		+ "			<td>Hotel</td>"
+        		+ "			<td><select id='hotel' name='hotel' onchange='apresenta()'>";
+        buffer = buffer + "<option value=''>Selecione o hotel</option>";
+        List<Hotel> hoteisEncontrados = new ListagemPorCidadeBean().getHotelPorCidade(nomeCidade);
+        for (Hotel hotelEncontrado : hoteisEncontrados) {
+            buffer = buffer + "<option value='" + hotelEncontrado.getNomeHotel() + "'>" + hotelEncontrado.getNomeHotel() + "</option>";
         }
-
-        System.out.println(gsonBuilder.toJson(hoteisPorCidade));
-        response.getWriter().write(gsonBuilder.toJson(hoteisPorCidade));
+        buffer = buffer + "</select></td>";
+        
+        System.out.println(buffer);
+        response.getWriter().println(buffer);
     }
 
     @Override
