@@ -1,14 +1,13 @@
 var xmlHttp;
 
 function apresenta() {
-    var cidade = document.getElementById("cidade");
-    var selCidade = cidade.options[cidade.selectedIndex].value; 
+    var selCidade = hotel.options[hotel.selectedIndex].value; 
     alert("Selecionado! ");
 }
 
-function getCidadesAjax() {
-	var cidade = document.getElementById("listaCidade");
-	var nome = cidade.value;
+function getHotelPorCidade() {
+	var hotel = document.getElementById("listaHoteisPorCidade");
+	var nome = hotel.value;
 
 	if (typeof XMLHttpRequest !== "undefined") {
 		xmlHttp = new XMLHttpRequest();
@@ -21,7 +20,7 @@ function getCidadesAjax() {
 		return;
 	}
 
-	var url = "listagemDeHoteisPorCidade"; // Não está chamando a classe
+	var url = "/ListagemDeHoteisPorCidadeController"; /
 	url += "?term=" + nome;
 	xmlHttp.onreadystatechange = atualizaTabela;
 	xmlHttp.open("GET", url, true);
@@ -32,7 +31,7 @@ function getCidadesAjax() {
 function atualizaTabela() {
 	if (xmlHttp.readyState === 4 || xmlHttp.readyState === "complete") {
 
-		var cidades = JSON.parse(xmlHttp.responseText);
+		var hoteis = JSON.parse(xmlHttp.responseText);
 
 		// CRIA UMA TABELA DINAMICA
 
@@ -60,24 +59,22 @@ function atualizaTabela() {
 
 		// CRIA DEMAIS LINHAS COM OS VALORES
 
-		for (var i = 0; i < cidades.length; i++) {
+		for (var i = 0; i < hoteis.length; i++) {
 
 			// CRIA NOVA LINHA
 			tr = table.insertRow(-1);
 
-			var tmp = cidades[i];
-			var indice = tmp.indexOf("/");
-			var cidade = tmp.slice(0, indice);
-			var estado = tmp.slice(indice + 1);
+			var tmp = hoteis[i];
+			var hotel = tmp;
 
 			// CRIA COLUNA 1 NA LINHA
 
 			var col1 = tr.insertCell(-1);
 			var radio = document.createElement('input');
 			radio.type = 'radio';
-			radio.id = cidade + "/" + estado;
-			radio.name = 'selCidade';
-			radio.value = cidade + "/" + estado;
+			radio.id = hotel;
+			radio.name = 'selHotel';
+			radio.value = hotel;
 			radio.onclick = apresenta.bind(radio.value);
 			
 			col1.appendChild(radio);
@@ -87,23 +84,23 @@ function atualizaTabela() {
 			// CRIA COLUNA 2 NA LINHA
 
 			var col2 = tr.insertCell(-1);
-			col2.innerHTML = cidade;
+			col2.innerHTML = hotel;
 
 			// CRIA COLUNA 3 NA LINHA
 
-			var col3 = tr.insertCell(-1);
-			// col3.style = "text-align:center"; analogo ao comando abaixo
-			col3.style.textAlign = "center";
-			col3.innerHTML = estado;
+//			var col3 = tr.insertCell(-1);
+//			// col3.style = "text-align:center"; analogo ao comando abaixo
+//			col3.style.textAlign = "center";
+//			col3.innerHTML = estado;
 		}
 
-		var divContainer = document.getElementById("cidades");
+		var divContainer = document.getElementById("hoteis");
 		divContainer.innerHTML = "";
 
-		// CRIA UM PARAGRAFO (TAG P) COM A QUANTIDADE DE CIDADES
+		// CRIA UM PARAGRAFO (TAG P) COM A QUANTIDADE DE hoteis
 
 		var p = document.createElement('p');
-		p.innerHTML = 'Quantidade: ' + cidades.length;
+		p.innerHTML = 'Quantidade: ' + hoteis.length;
 
 		// ADICIONA O PARAGRAFO AO CONTAINER.
 		divContainer.appendChild(p);

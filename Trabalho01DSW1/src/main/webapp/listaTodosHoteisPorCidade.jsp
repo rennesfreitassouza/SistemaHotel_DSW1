@@ -10,18 +10,7 @@
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <script>
-            $(function () {
-                $("#listaCidade").autocomplete({
-                    select: function (event, ui) {
-                        alert("Selecionado: " + ui.item.value);
-                    },
-                    source: "ListagemDeCidadesController", //ListagemDeCidadesController é um controller da classe HotelPorCidadeController  
-                    minLength: 1
-                });
-            });
-	</script>
-	<script src="js/ajaxListagemDeHoteisPorCidade.js"></script>
+	<script src="js/ajaxTipoListagem.js"></script>
     
 	<title>Lista de hotéis do banco de dados Hotéis de acordo com a cidade</title>
 </head>
@@ -37,23 +26,23 @@
 		</h2>
 	</div>
 	<form name='form'>
-		<div id="cidades">
-			<label for="listaCidade">Nome</label>
-			<input id="listaCidade" name="listaCidade" placeholder="Pelo menos 2 caracteres" onkeyUp="getCidadesAjax()"/>
-			
+	
+		<label for="listaHoteisPorCidade">Insira o nome da cidade:</label>
+		<input id="listaHoteisPorCidade" name="listaHoteisPorCidade" placeholder="Pelo menos 2 caracteres" onkeyUp="getHotelPorCidade()"/>
+		<div id="hoteis">	
 			<table border="1" style="width: 400px; border: 1px solid black">
 				<tr>
 					<th style="width: 10%; text-align: center"></th>
 					<th>Nome do hotel</th>
 				</tr>
-					<c:forEach var="listaHoteisPorCidade" items="${bean.cidades}">
+					<c:forEach var="listaHoteisPorCidade" items="${bean.getHotelPorCidade()}">
 						<tr>
 							<td style="text-align: center"><input
-								type="radio" id="${listaHoteisPorCidade.getNomeCidade()}"
-								name="selCidade" value="${listaHoteisPorCidade.getNomeCidade()}"
-								onclick="alert('Cidade: ${listaHoteisPorCidade.getNomeCidade()}')">
+								type="radio" id="${listaHoteisPorCidade.getNomeHotel()}"
+								name="selCidade" value="${listaHoteisPorCidade.getNomeHotel()}"
+								onclick="alert('Hotel: ${listaHoteisPorCidade.getNomeHotel()}')">
 							</td>
-							<td>${listaHoteisPorCidade.getNomeHotelDaCidade()}</td>
+							<td>${listaHoteisPorCidade.getNomeHotel()}</td>
 						</tr>
 					</c:forEach>
 			</table>

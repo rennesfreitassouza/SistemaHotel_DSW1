@@ -46,7 +46,7 @@ public class HotelDAO extends GenericDAO{
 	public List<Hotel> getByNomeCidade(String nomeCidade){
 		
 		List<Hotel> listaHoteis = new ArrayList<>();
-		String sql = "SELECT * from Hotel WHERE cidade = " + nomeCidade; //melhorar
+		String sql = "SELECT * from Hotel WHERE cidade = \"" + nomeCidade + "\""; //melhorar
 		
 		try {
             Connection conn = this.getConnection();
