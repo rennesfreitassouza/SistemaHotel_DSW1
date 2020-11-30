@@ -29,7 +29,7 @@
 		                    <td>Cidades com hotéis:</td>
 		                    <td>
 		                        <select id = 'cidade' name='cidade' onchange='cidadeSelecionada(this.value)'>
-		                            <option value='--'>--</option>
+		                            <option value='--'>Selecione a cidade</option>
 		                            <c:forEach items='${bean.getHotelPorCidade()}' var='cidade'>
 		                                <option value='${cidade.getNomeCidade()}'>${cidade.getNomeCidade()}</option>
 		                            </c:forEach>

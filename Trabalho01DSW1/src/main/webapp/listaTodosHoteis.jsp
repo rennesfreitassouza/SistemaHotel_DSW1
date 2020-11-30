@@ -42,23 +42,6 @@
 				</tr>
 			</c:forEach>
 		</table>
-		<form name ='form'>
-			<table>
-                <tr id='cidades'>    
-                    <td>
-                        Listar por cidade
-                    </td>
-                    <td>
-                        <select id='cidade' name='cidade' onchange='cidadeSelecionada(this.value)'>
-	                        <option value='--'>--</option>
-	                            <c:forEach items='${cidade}' var='cidade'>
-	                                <option value='${bean.cidade}'>${bean.getAll}</option>
-	                            </c:forEach>
-                        </select>
-                    </td> 
-                </tr>
-            </table>
-		</form>
 	</div>
 </body>
 </html>
