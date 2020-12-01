@@ -39,11 +39,10 @@ public class ListagemHoteisNaoCadastradosController extends HttpServlet{
             throws ServletException {
 		try {
 			String verifica = request.getParameter("AreaParaNaoCadastrados");
-			if (verifica != null && verifica.equals("listaTodosHoteis"))
-				listaTodosHoteis(request, response);
+			if (verifica != null && verifica.equals("listaHoteisPorCidade"))
+				listaHoteisPorCidade(request, response);
 			else
-				if(verifica.equals("listaHoteisPorCidade"))
-					listaHoteisPorCidade(request, response);
+				listaTodosHoteis(request, response);
         } catch (RuntimeException | IOException | ServletException e) {
         	throw new ServletException(e);
         }
