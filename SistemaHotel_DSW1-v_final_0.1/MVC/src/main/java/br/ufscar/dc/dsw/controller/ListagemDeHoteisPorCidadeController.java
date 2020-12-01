@@ -30,7 +30,7 @@ public class ListagemDeHoteisPorCidadeController extends HttpServlet{
         buffer = buffer + "<option value='--'><fmt:message key=\"select_hotel\"/></option>";
         List<Hotel> hoteisEncontrados = new ListagemPorCidadeBean().getHotelPorCidade(nomeCidade);
         for (Hotel hotelEncontrado : hoteisEncontrados) {
-            buffer = buffer + "<option value='" + hotelEncontrado.getNomeHotel() + "'>" + hotelEncontrado.getNomeHotel() + "</option>";
+            buffer = buffer + "<option value='" + hotelEncontrado.getNome() + "'>" + hotelEncontrado.getNome() + "</option>";
         }
         buffer = buffer + "		</select>"
         				+ " </td>";
