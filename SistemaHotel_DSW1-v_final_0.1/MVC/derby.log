@@ -1,0 +1,19 @@
+----------------------------------------------------------------
+Thu Nov 26 14:35:43 BRT 2020:
+ Inicializando o Derby versão The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instância a816c00e-0176-05a0-0aa4-000006ab87c8
+no diretório de banco de dados /home/luis/Downloads/DSW1-master/Modulo05/Livraria-v2/Sistemaa 
+
+java.vendor=Private Build
+java.runtime.version=1.8.0_275-8u275-b01-0ubuntu1~20.04-b01
+user.dir=/home/luis/Downloads/DSW1-master/Modulo05/Livraria-v2
+os.name=Linux
+os.arch=amd64
+os.version=5.4.0-54-generic
+derby.system.home=null
+Carregador de classe do banco de dados iniciado - derby.database.classpath=''
+----------------------------------------------------------------
+Thu Nov 26 14:36:41 BRT 2020: Shutting down Derby engine
+----------------------------------------------------------------
+Thu Nov 26 14:36:41 BRT 2020:
+Encerrando a instância a816c00e-0176-05a0-0aa4-000006ab87c8
+----------------------------------------------------------------
