@@ -1,6 +1,5 @@
 package br.ufscar.dc.dsw.controller;
 
-
 import java.io.IOException;
 import java.util.List;
 
@@ -40,7 +39,7 @@ public class ListagemHoteisNaoCadastradosController extends HttpServlet{
             throws ServletException {
 		try {
 			String verifica = request.getParameter("AreaParaNaoCadastrados");
-			if (verifica.equals("listaTodosHoteis"))
+			if (verifica != null && verifica.equals("listaTodosHoteis"))
 				listaTodosHoteis(request, response);
 			else
 				if(verifica.equals("listaHoteisPorCidade"))
