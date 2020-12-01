@@ -78,8 +78,4 @@ public class Hotel {
     public void setSenha(String senha) {
         this.senha = senha;
     }
-    
-    public String getNomeHotel() {
-		return this.nome;
-	}
 }
