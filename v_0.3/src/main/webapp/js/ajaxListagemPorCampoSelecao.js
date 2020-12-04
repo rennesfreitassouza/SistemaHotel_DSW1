@@ -50,7 +50,7 @@ function atualizaEmail(str) {
     }
 
     var url = "MostraDadosHotelSelecionadoController";
-    url += "?hotel=" + str + "&emailsel=true&cnpjsel=false";
+    url += "?hotel=" + str + "&emailsel=true";
     xmlHttp.onreadystatechange = function() {
         if (this.readyState == 4 || xmlHttp.readyState === "complete") {
             document.getElementById("email").innerHTML = this.responseText;
@@ -73,7 +73,7 @@ function atualizaCnpj(str) {
     }
 
     var url = "MostraDadosHotelSelecionadoController";
-    url += "?hotel=" + str + "&emailsel=false&cnpjsel=true";
+    url += "?hotel=" + str + "&cnpjsel=true";
     xmlHttp.onreadystatechange = function() {
         if (this.readyState == 4 || xmlHttp.readyState === "complete") {
             document.getElementById("cnpj").innerHTML = this.responseText;
