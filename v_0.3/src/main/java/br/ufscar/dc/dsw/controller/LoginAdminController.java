@@ -67,8 +67,12 @@ public class LoginAdminController extends HttpServlet {
 								request.getSession().setAttribute("usuarioLogado", usuarioAdmin);
 								response.sendRedirect("admin/");
 							}
-							else
+							else{
 								erros.add("Senha inválida!");
+								request.setAttribute("mensagens", erros);
+            					RequestDispatcher rd = request.getRequestDispatcher("/login.jsp");
+            					rd.forward(request, response);
+							}
 							return;
 						}
 					}
@@ -84,6 +88,9 @@ public class LoginAdminController extends HttpServlet {
 								else{
 									//System.out.println("senha diferente");
 									erros.add("Senha inválida!");
+									request.setAttribute("mensagens", erros);
+            						RequestDispatcher rd = request.getRequestDispatcher("/login.jsp");
+            						rd.forward(request, response);
 									System.out.println(erros.getErros().get(0));
 								}
 								return;
@@ -97,8 +104,12 @@ public class LoginAdminController extends HttpServlet {
 									request.getSession().setAttribute("usuarioLogado", usuarioSiteReserva);
 									response.sendRedirect("sitereservauser/");
 								}
-								else
+								else{
 									erros.add("Senha inválida!");
+									request.setAttribute("mensagens", erros);
+            						RequestDispatcher rd = request.getRequestDispatcher("/login.jsp");
+            						rd.forward(request, response);
+								}
 								return;
 							}
 						}
