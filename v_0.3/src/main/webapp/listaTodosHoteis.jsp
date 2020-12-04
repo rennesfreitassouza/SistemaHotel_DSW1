@@ -9,25 +9,16 @@
 	<title>
 		<fmt:message key="listaTodosHoteisTitle"/>
 	</title>
+	<link rel="stylesheet" type="text/css" href="styles.css">
 	<script src="js/ajaxTipoListagem.js"></script>
 </head>
 <body>
-	<%
-		String contextPath = request.getContextPath().replace("/", "");
-	%>
 	
 	<jsp:useBean id="bean" class="br.ufscar.dc.dsw.bean.ListagemPorCidadeBean"/>
 	
 	<strong><fmt:message key="system_access"/></strong><br>
 	<a href="login.jsp" title="Fazer login"><fmt:message key="entrar"/></a><br><br>
-	<form method="post" action="index.jsp">
-    	<tr>
-        	<td colspan="2">
-        		<fmt:message key="voltar" var="voltarMessage"/> 
-                <input type="submit" name="voltar" value="${voltarMessage}"/>
-            </td>
-        </tr>
-    </form>
+	
 
 	<div align="center">
 		<table border="1">
@@ -47,6 +38,16 @@
 				</tr>
 			</c:forEach>
 		</table>
+		<form method="post" action="index.jsp">
+	    	<table>
+		    	<tr>
+		        	<td colspan="2">
+		        		<fmt:message key="voltar" var="voltarMessage"/> 
+		                <input class="pagInicial" type="submit" name="voltar" value="${voltarMessage}"/>
+		            </td>
+		        </tr>
+	        </table>
+    	</form>
 	</div>
 </body>
 </fmt:bundle>
