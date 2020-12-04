@@ -7,6 +7,7 @@
     <fmt:bundle basename="messages">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="styles.css">
         <title>
             <fmt:message key="loginTitle"/>
         </title>
@@ -23,33 +24,41 @@
                     </ul>
                 </div>
             </c:if>
-            <form method="post" action="login_admin.jsp">
-                <table>
-                    <tr>
-                        <th><fmt:message key="entrar"/>: </th>
-                        <td><input type="text" name="login"
-                                   value="${param.login}"/></td>
-                    </tr>
-                    <tr>
-                        <th><fmt:message key="senha"/>: </th>
-                        <td><input type="password" name="senha" /></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2"> 
-                            <fmt:message key="entrar" var="entrarMessage"/>
-                            <input type="submit" name="bOK" value="${entrarMessage}"/>
-                        </td>
-                    </tr>
+            <div class="area">
+	            <form method="post" action="login_admin.jsp">
+	                <table>
+	                    <tr>
+	                        <th><fmt:message key="entrar"/>: </th>
+	                        <td><input type="text" name="login"
+	                                   value="${param.login}"/></td>
+	                    </tr>
+	                    <tr>
+	                        <th><fmt:message key="senha"/>: </th>
+	                        <td><input type="password" name="senha" /></td>
+	                    </tr>
+	                    <tr>
+	                        <td colspan="2"> 
+	                            <fmt:message key="entrar" var="entrarMessage"/>
+	                            <input type="submit" name="bOK" value="${entrarMessage}"/>
+	                        </td>
+	                    </tr>
+	                </table>
+	            </form>
+	            
+	            <form method="post" action="index.jsp">
+            	<table>
+	            	<tr>
+	                	<td colspan="2">
+	                        <fmt:message key="voltar" var="voltarMessage"/>
+	                        <input class="pagInicial" type="submit" name="voltar" value="${voltarMessage}"/>
+	                    </td>
+	                </tr>
                 </table>
+                
             </form>
-            <form method="post" action="index.jsp">
-            	<tr>
-                	<td colspan="2">
-                        <fmt:message key="voltar" var="voltarMessage"/>
-                        <input type="submit" name="voltar" value="${voltarMessage}"/>
-                    </td>
-                </tr>
-            </form>
+            </div>
+            
+            
     </body>
     </fmt:bundle>
 </html>
