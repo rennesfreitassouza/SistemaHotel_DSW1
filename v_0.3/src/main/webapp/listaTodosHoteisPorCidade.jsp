@@ -29,32 +29,40 @@
 	        </tr>
 	    </form>
 			
-			<form name='form'>
-					<table border="1" style="width: 400px; border: 1px solid black">
-		                <tr>
-		                    <td><fmt:message key="cidades_com_hoteis"/>:</td>
-		                    <td>
-		                        <select id = 'cidade' name='cidade' onchange='cidadeSelecionada(this.value)'>
-		                            <option value="--"><fmt:message key="select_city"/></option>
-		                            <c:forEach items='${bean.getHotelPorCidade()}' var='cidade'>
-		                                <option value='${cidade.getNomeCidade()}'>${cidade.getNomeCidade()}</option>
-		                            </c:forEach>
-		                        </select>
-		                    </td>
-		                </tr>
-		                
-		                <tr id='hoteis'>    
-                    		<td>
-                    			<fmt:message key="hoteis_da_cidade"/>:
-                    		</td>
-                    		<td>
-                        		<select id='hotel' name='hotel' onchange='apresenta()'>
-                        			<option value="--"><fmt:message key="select_hotel"/></option>
-                        		</select>
-                    		</td>   
-                		</tr>
-					</table>
-			</form> <br/>
-		</body>
-	</fmt:bundle>
+		<form name='form'>
+				<table border="1" style="width: 400px; border: 1px solid black">
+	                <tr>
+	                    <td><fmt:message key="cidades_com_hoteis"/>:</td>
+	                    <td>
+	                        <select id = 'cidade' name='cidade' onchange='cidadeSelecionada(this.value)'>
+	                            <option value="--"><fmt:message key="select_city"/></option>
+	                            <c:forEach items='${bean.getHotelPorCidade()}' var='cidade'>
+	                                <option value='${cidade.getNomeCidade()}'>${cidade.getNomeCidade()}</option>
+	                            </c:forEach>
+	                        </select>
+	                    </td>
+	                </tr>
+	                
+	                <tr id='hoteis'>    
+                		<td>
+                			<fmt:message key="hoteis_da_cidade"/>:
+                		</td>
+                		<td>
+                    		<select id='hotel' name='hotel' onchange='apresenta()' >
+                    			<option value="--"><fmt:message key="select_hotel"/></option>
+                    		</select>
+                		</td>   
+            		</tr>
+            		<tr>
+            			<td><fmt:message key="email"/></td>
+            			<td id="email">--</td>
+            		</tr>
+            		<tr>
+            			<td><fmt:message key="cnpj"/></td>
+            			<td id="cnpj">--</td>
+            		</tr>
+				</table>
+		</form> <br/>
+	</body>
+</fmt:bundle>
 </html>
