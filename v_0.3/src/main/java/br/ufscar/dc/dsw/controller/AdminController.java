@@ -27,20 +27,35 @@ public class AdminController extends HttpServlet {
     	
     	Admin usuario = (Admin) request.getSession().getAttribute("usuarioLogado");
     	Erro erros = new Erro();
-    	String[] dominio = usuario.getLogin().split("@"); //para definir o papel do usuario pelo dominio do email
-
-    	if (usuario == null)
-    		response.sendRedirect(request.getContextPath());
-    	else if (dominio[1].equals("admin.com")) {
-    		RequestDispatcher dispatcher = request.getRequestDispatcher("/logado/admin/login_admin.jsp");
-            dispatcher.forward(request, response);
-    	}
-    	else {
+    	
+    	int index =  -1;
+    	if (usuario != null)
+    		index = usuario.getLogin().indexOf('@');
+    	else{
     		erros.add("Acesso não autorizado!");
     		erros.add("Apenas Papel [ADMIN] tem acesso a essa página");
-    		request.setAttribute("mensagens", erros);
-    		RequestDispatcher rd = request.getRequestDispatcher("/noAuth.jsp");
-    		rd.forward(request, response);
+	    	request.setAttribute("mensagens", erros);
+	    	RequestDispatcher rd = request.getRequestDispatcher("/noAuth.jsp");
+	    	rd.forward(request, response);
+    	}
+	   	if (index == -1)
+       		erros.add("Login inválido!");
+       	else {
+	    	String[] dominio = usuario.getLogin().split("@"); //para definir o papel do usuario pelo dominio do email
+
+	    	if (usuario == null)
+	    		response.sendRedirect(request.getContextPath());
+	    	else if (dominio[1].equals("admin.com")) {
+	    		RequestDispatcher dispatcher = request.getRequestDispatcher("/logado/admin/login_admin.jsp");
+	            dispatcher.forward(request, response);
+	    	}
+	    	else {
+	    		erros.add("Acesso não autorizado!");
+	    		erros.add("Apenas Papel [ADMIN] tem acesso a essa página");
+	    		request.setAttribute("mensagens", erros);
+	    		RequestDispatcher rd = request.getRequestDispatcher("/noAuth.jsp");
+	    		rd.forward(request, response);
+	    	}
     	}
     }
 }
