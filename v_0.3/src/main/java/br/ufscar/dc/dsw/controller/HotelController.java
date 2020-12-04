@@ -62,49 +62,64 @@ public class HotelController extends HttpServlet {
 
     	Hotel usuario = (Hotel) request.getSession().getAttribute("usuarioLogado");
     	Erro erros = new Erro();
-    	String[] dominio = usuario.getEmail().split("@");  //para definir o papel do usuario pelo dominio email
-    	//System.out.println(usuario.getAll);
-    	
-    	if (usuario == null) {
-    		response.sendRedirect(request.getContextPath());
-    		return;
-    	} else if (!dominio[1].equals("hotel.com")) {
-    		erros.add("Acesso não autorizado!");
-    		erros.add("Apenas Papel [HOTEL] tem acesso a essa página");
-    		request.setAttribute("mensagens", erros);
-    		RequestDispatcher rd = request.getRequestDispatcher("/noAuth.jsp");
-    		rd.forward(request, response);
-    		return;
-    	}    	
-    	
-        String action = request.getPathInfo();
-        if (action == null) {
-            action = "";
-        }
 
-        try {
-            switch (action) {
-                case "/cadastro":
-                    apresentaFormCadastro(request, response);
-                    break;
-                case "/insercao":
-                    insere(request, response);
-                    break;
-                case "/remocao":
-                    remove(request, response);
-                    break;
-                case "/edicao":
-                    apresentaFormEdicao(request, response);
-                    break;
-                case "/atualizacao":
-                    atualize(request, response);
-                    break;
-                default:
-                    lista(request, response);
-                    break;
+        int index = -1;
+        if (usuario != null)
+            index = usuario.getEmail().indexOf('@');
+        else{
+            erros.add("Acesso não autorizado!");
+            erros.add("Apenas Papel [HOTEL] tem acesso a essa página");
+            request.setAttribute("mensagens", erros);
+            RequestDispatcher rd = request.getRequestDispatcher("/noAuth.jsp");
+            rd.forward(request, response);
+        }
+        if (index == -1)
+            erros.add("Login inválido!");
+        else{
+        	String[] dominio = usuario.getEmail().split("@");  //para definir o papel do usuario pelo dominio email
+        	//System.out.println(usuario.getAll);
+        	
+        	if (usuario == null) {
+        		response.sendRedirect(request.getContextPath());
+        		return;
+        	} else if (!dominio[1].equals("hotel.com")) {
+        		erros.add("Acesso não autorizado!");
+        		erros.add("Apenas Papel [HOTEL] tem acesso a essa página");
+        		request.setAttribute("mensagens", erros);
+        		RequestDispatcher rd = request.getRequestDispatcher("/noAuth.jsp");
+        		rd.forward(request, response);
+        		return;
+        	}    	
+        	
+            String action = request.getPathInfo();
+            if (action == null) {
+                action = "";
             }
-        } catch (RuntimeException | IOException | ServletException e) {
-            throw new ServletException(e);
+
+            try {
+                switch (action) {
+                    case "/cadastro":
+                        apresentaFormCadastro(request, response);
+                        break;
+                    case "/insercao":
+                        insere(request, response);
+                        break;
+                    case "/remocao":
+                        remove(request, response);
+                        break;
+                    case "/edicao":
+                        apresentaFormEdicao(request, response);
+                        break;
+                    case "/atualizacao":
+                        atualize(request, response);
+                        break;
+                    default:
+                        lista(request, response);
+                        break;
+                }
+            } catch (RuntimeException | IOException | ServletException e) {
+                throw new ServletException(e);
+            }
         }
     }
     
