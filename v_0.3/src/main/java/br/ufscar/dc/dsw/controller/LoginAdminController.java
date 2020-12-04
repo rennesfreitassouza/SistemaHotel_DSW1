@@ -66,7 +66,7 @@ public class LoginAdminController extends HttpServlet {
 							if (usuarioAdmin.getSenha().equals(senha)) {
 								request.getSession().setAttribute("usuarioLogado", usuarioAdmin);
 
-									response.sendRedirect("admin/");
+								response.sendRedirect("admin/");
 
 								}
 							} else {
@@ -80,7 +80,7 @@ public class LoginAdminController extends HttpServlet {
 							if (usuarioHotel.getSenha().equals(senha)) {
 								request.getSession().setAttribute("usuarioLogado", usuarioHotel);
 
-									response.sendRedirect("hoteluser/");
+								response.sendRedirect("hoteluser/");
 
 								}
 							} else {
@@ -94,7 +94,7 @@ public class LoginAdminController extends HttpServlet {
 							if (usuarioSiteReserva.getSenha().equals(senha)) {
 								request.getSession().setAttribute("usuarioLogado", usuarioSiteReserva);
 
-									response.sendRedirect("sitereservauser/");
+								response.sendRedirect("sitereservauser/");
 
 								}
 							} else {
