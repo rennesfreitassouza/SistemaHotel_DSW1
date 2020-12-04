@@ -191,4 +191,32 @@ public class HotelDAO extends GenericDAO {
         }
 		return listaHoteis;
 	}
+
+    public Hotel getByNome(String nomeHotel) {
+        Hotel hotel = null;
+
+        String sql = "SELECT * from Hotel WHERE nome = ?";
+
+        try {
+            Connection conn = this.getConnection();
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setString(1, nomeHotel);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                Long id = resultSet.getLong("id");
+                String cnpj = resultSet.getString("cnpj");
+                String email = resultSet.getString("email");
+                String cidade = resultSet.getString("cidade");
+                String senha = resultSet.getString("senha");
+                hotel = new Hotel(id, cnpj, nomeHotel, cidade, email, senha);
+            }
+
+            resultSet.close();
+            statement.close();
+            conn.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return hotel;
+    }
 }
