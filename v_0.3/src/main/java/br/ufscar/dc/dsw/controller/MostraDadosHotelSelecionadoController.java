@@ -28,6 +28,7 @@ public class MostraDadosHotelSelecionadoController extends HttpServlet {
         //System.out.println(email_sel);
         String cnpj_sel = request.getParameter("cnpjsel");
         //System.out.println(cnpj_sel);
+        
         Hotel hotel_selecionado = new HotelDAO().getByNome(hotel_sel);
         String buffer = "teste";
         String email = hotel_selecionado.getEmail();
@@ -36,9 +37,9 @@ public class MostraDadosHotelSelecionadoController extends HttpServlet {
         //System.out.println(buffer);
         //System.out.println(email);
         //System.out.println(cnpj);
-        if (email_sel.toLowerCase().equals("true"))
+        if (email_sel != null && email_sel.toLowerCase().equals("true"))
             buffer = email;
-        if (cnpj_sel.toLowerCase().equals("true"))
+        if (cnpj_sel != null && cnpj_sel.toLowerCase().equals("true"))
             buffer = cnpj;
         response.getWriter().println(buffer);
     }
