@@ -25,7 +25,6 @@
 		</div>
 		<div class="area">
 		    <form name="fomularioTipoDeListagem" action="listaHoteis" method="POST">
-	<!-- 			<fieldset> -->
 					<strong><legend><fmt:message key="non_registered"/></legend></strong>
 					<input type="radio" name ="AreaParaNaoCadastrados" title="área para não cadastrados" value="listaTodosHoteis" checked/>
 					<label for="listaTodosHoteis"><fmt:message key="list_by_name"/></label><br>
@@ -33,7 +32,6 @@
 					<label for="listaHoteisPorCidade"><fmt:message key="list_by_city"/></label><br>
 					<fmt:message key="list" var="listMessage"/>
 					<input type="submit" value="${listMessage}" />
-	<!-- 			</fieldset> -->
 			</form>
 		</div>
     
