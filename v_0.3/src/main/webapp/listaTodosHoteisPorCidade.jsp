@@ -61,6 +61,18 @@
             			<td><fmt:message key="cnpj"/></td>
             			<td id="cnpj">--</td>
             		</tr>
+            		<tr>
+            			<td><fmt:message key="promo_inicio"/></td>
+            			<td id="promoinicio">--</td>
+            		</tr>
+            		<tr>
+            			<td><fmt:message key="promo_fim"/></td>
+            			<td id="promofim">--</td>
+            		</tr>
+            		<tr>
+            			<td><fmt:message key="site_reserva"/></td>
+            			<td id="promosite">--</td>
+            		</tr>
 				</table>
 		</form> <br/>
 	</body>
