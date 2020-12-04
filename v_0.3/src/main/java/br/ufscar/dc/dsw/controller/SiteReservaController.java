@@ -37,31 +37,46 @@ public class SiteReservaController extends HttpServlet {
     	
     	SiteReserva usuario = (SiteReserva) request.getSession().getAttribute("usuarioLogado");
     	Erro erros = new Erro();
-    	String[] dominio = usuario.getEmail().split("@"); //para definir o papel do usuario pelo dominio do email
-    	
-    	if (usuario == null) {
-    		response.sendRedirect(request.getContextPath());
-    		return;
-    	} else if (!dominio[1].equals("siteres.com")) {
+
+    	int index = -1;
+    	if (usuario != null)
+    		index = usuario.getEmail().indexOf('@');
+    	else{
     		erros.add("Acesso não autorizado!");
     		erros.add("Apenas Papel [SiteReserva] tem acesso a essa página");
-    		request.setAttribute("mensagens", erros);
-    		RequestDispatcher rd = request.getRequestDispatcher("/noAuth.jsp");
-    		rd.forward(request, response);
-    		return;
+	    	request.setAttribute("mensagens", erros);
+	    	RequestDispatcher rd = request.getRequestDispatcher("/noAuth.jsp");
+	    	rd.forward(request, response);
     	}
-    	
-    	String action = request.getPathInfo();
-        if (action == null) {
-            action = "";
-        }
+	   	if (index == -1)
+       		erros.add("Login inválido!");
+       	else{
+	    	String[] dominio = usuario.getEmail().split("@"); //para definir o papel do usuario pelo dominio do email
+	    	
+	    	if (usuario == null) {
+	    		response.sendRedirect(request.getContextPath());
+	    		return;
+	    	} else if (!dominio[1].equals("siteres.com")) {
+	    		erros.add("Acesso não autorizado!");
+	    		erros.add("Apenas Papel [SiteReserva] tem acesso a essa página");
+	    		request.setAttribute("mensagens", erros);
+	    		RequestDispatcher rd = request.getRequestDispatcher("/noAuth.jsp");
+	    		rd.forward(request, response);
+	    		return;
+	    	}
+	    	
+	    	String action = request.getPathInfo();
+	        if (action == null) {
+	            action = "";
+	        }
 
-        try {
-            lista(request, response);
-                    
-        } catch (RuntimeException | IOException | ServletException e) {
-            throw new ServletException(e);
-        }
+	        try {
+	            lista(request, response);
+	                    
+	        } catch (RuntimeException | IOException | ServletException e) {
+	            throw new ServletException(e);
+	        }
+	    }
     }
     private void lista(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	SiteReserva usuario = (SiteReserva) request.getSession().getAttribute("usuarioLogado");
