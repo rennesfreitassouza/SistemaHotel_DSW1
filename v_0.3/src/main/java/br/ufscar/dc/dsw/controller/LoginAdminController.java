@@ -54,55 +54,58 @@ public class LoginAdminController extends HttpServlet {
 				
 				SiteReservaDAO daoSiteReserva = new SiteReservaDAO();
 				SiteReserva usuarioSiteReserva = daoSiteReserva.getbyLogin(login);
-	           
-				String[] dominio = login.split("@"); //separando o email de login em um array com as palavras antes e depois do "@"
+	           	
+	           	int index = login.indexOf('@');
+	           	if (index == -1)
+	           		erros.add("Login inválido!");
+	           	else{
+	           		String[] dominio = login.split("@"); //separando o email de login em um array com as palavras antes e depois do "@"
 				
-				if (dominio[1].equals("admin.com")) {	
-					if (usuarioAdmin != null) {
-						if (usuarioAdmin.getSenha().equals(senha)) {
-							request.getSession().setAttribute("usuarioLogado", usuarioAdmin);
+					if (dominio[1].equals("admin.com")) {
+						if (usuarioAdmin != null) {
+							if (usuarioAdmin.getSenha().equals(senha)) {
+								request.getSession().setAttribute("usuarioLogado", usuarioAdmin);
 
-								response.sendRedirect("admin/");
+									response.sendRedirect("admin/");
 
+								}
+							} else {
+								erros.add("Senha inválida!");
 							}
 							return;
-						} else {
-							erros.add("Senha inválida!");
-						}
-				}
-				
-				else if (dominio[1].equals("hotel.com")) {	
-					if (usuarioHotel!= null) {
-						if (usuarioHotel.getSenha().equals(senha)) {
-							request.getSession().setAttribute("usuarioLogado", usuarioHotel);
-
-								response.sendRedirect("hoteluser/");
-
-							}
-							return;
-						} else {
-							erros.add("Senha inválida!");
-						}
-				}
-				
-				else if (dominio[1].equals("siteres.com")) {	
-					if (usuarioSiteReserva != null) {
-						if (usuarioSiteReserva.getSenha().equals(senha)) {
-							request.getSession().setAttribute("usuarioLogado", usuarioSiteReserva);
-
-								response.sendRedirect("sitereservauser/");
-
-							}
-							return;
-						} else {
-							erros.add("Senha inválida!");
-						}
-					} else {
-						erros.add("Usuário não encontrado!");
 					}
-				
+					
+					else if (dominio[1].equals("hotel.com")) {
+						if (usuarioHotel!= null) {
+							if (usuarioHotel.getSenha().equals(senha)) {
+								request.getSession().setAttribute("usuarioLogado", usuarioHotel);
+
+									response.sendRedirect("hoteluser/");
+
+								}
+							} else {
+								erros.add("Senha inválida!");
+							}
+							return;
+					}
+					
+					else if (dominio[1].equals("siteres.com")) {
+						if (usuarioSiteReserva != null) {
+							if (usuarioSiteReserva.getSenha().equals(senha)) {
+								request.getSession().setAttribute("usuarioLogado", usuarioSiteReserva);
+
+									response.sendRedirect("sitereservauser/");
+
+								}
+							} else {
+								erros.add("Senha inválida!");
+							}
+							return;
+						} else {
+							erros.add("Usuário não encontrado!");
+						}
 				}
-				
+	        }
 		}
 		request.getSession().invalidate();
 
