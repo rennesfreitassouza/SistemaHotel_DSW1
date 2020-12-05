@@ -44,19 +44,20 @@
 	                    </tr>
 	                </table>
 	            </form>
-	            
-	            <form method="post" action="index.jsp">
-            	<table>
-	            	<tr>
-	                	<td colspan="2">
-	                        <fmt:message key="voltar" var="voltarMessage"/>
-	                        <input class="pagInicial" type="submit" name="voltar" value="${voltarMessage}"/>
-	                    </td>
-	                </tr>
-                </table>
-                
-            </form>
-            </div>
+	            </div>
+	            <div class="area" align="center">
+		            <form method="post" action="index.jsp">
+	            	<table>
+		            	<tr>
+		                	<td colspan="2">
+		                        <fmt:message key="voltar" var="voltarMessage"/>
+		                        <input class="pagInicial" type="submit" name="voltar" value="${voltarMessage}"/>
+		                    </td>
+		                </tr>
+	                </table>
+	                
+	            	</form>
+            	</div>
             
             
     </body>
