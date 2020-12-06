@@ -47,21 +47,29 @@ public class HotelController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	Erro erros = new Erro();
+    	Hotel usuario = null;
+    	try {
+    		usuario = (Hotel) request.getSession().getAttribute("usuarioLogado");
+    	}
+    	catch(ClassCastException e) {
+    		erros.add("Acesso não autorizado!");
+    		erros.add("Apenas Papel [HOTEL] tem acesso a essa página");
+	    	request.setAttribute("mensagens", erros);
+	    	RequestDispatcher rd = request.getRequestDispatcher("/noAuth.jsp");
+	    	rd.forward(request, response);
+    	}
+	try {
+		String verifica = request.getParameter("AreaParaNaoCadastrados");
 
-		try {
-			String verifica = request.getParameter("AreaParaNaoCadastrados");
-
-			if (verifica.equals("listaTodosHoteis"))
-				listaTodosHoteis(request, response);
-			else
-				if(verifica.equals("listaHoteisPorCidade"))
-					listaHoteisPorCidade(request, response);
+		if (verifica.equals("listaTodosHoteis"))
+			listaTodosHoteis(request, response);
+		else
+			if(verifica.equals("listaHoteisPorCidade"))
+				listaHoteisPorCidade(request, response);
         } catch (RuntimeException | IOException | ServletException e) {
         	//throw new ServletException(e);
         }
-
-    	Hotel usuario = (Hotel) request.getSession().getAttribute("usuarioLogado");
-    	Erro erros = new Erro();
 
         int index = -1;
         if (usuario != null)
