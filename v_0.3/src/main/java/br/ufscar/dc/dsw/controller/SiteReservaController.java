@@ -43,6 +43,7 @@ public class SiteReservaController extends HttpServlet {
     	catch(ClassCastException e) {
     		erros.add("Acesso não autorizado!");
     		erros.add("Apenas Papel [SiteReserva] tem acesso a essa página");
+    		System.out.println(erros.getErros()); //printa erros no terminal
 	    	request.setAttribute("mensagens", erros);
 	    	RequestDispatcher rd = request.getRequestDispatcher("/noAuth.jsp");
 	    	rd.forward(request, response);
@@ -54,12 +55,15 @@ public class SiteReservaController extends HttpServlet {
     	else{
     		erros.add("Acesso não autorizado!");
     		erros.add("Apenas Papel [SiteReserva] tem acesso a essa página");
+    		System.out.println(erros.getErros()); //printa erros no terminal
 	    	request.setAttribute("mensagens", erros);
 	    	RequestDispatcher rd = request.getRequestDispatcher("/noAuth.jsp");
 	    	rd.forward(request, response);
     	}
-	   	if (index == -1)
+	   	if (index == -1) {
        		erros.add("Login inválido!");
+	   		System.out.println(erros.getErros()); //printa erros no terminal
+	   	}
        	else{
 	    	String[] dominio = usuario.getEmail().split("@"); //para definir o papel do usuario pelo dominio do email
 	    	
@@ -70,6 +74,7 @@ public class SiteReservaController extends HttpServlet {
 	    		erros.add("Acesso não autorizado!");
 	    		erros.add("Apenas Papel [SiteReserva] tem acesso a essa página");
 	    		request.setAttribute("mensagens", erros);
+	    		System.out.println(erros.getErros()); //printa erros no terminal
 	    		RequestDispatcher rd = request.getRequestDispatcher("/noAuth.jsp");
 	    		rd.forward(request, response);
 	    		return;

@@ -35,6 +35,7 @@ public class AdminController extends HttpServlet {
     		erros.add("Apenas Papel [ADMIN] tem acesso a essa página");
 	    	request.setAttribute("mensagens", erros);
 	    	RequestDispatcher rd = request.getRequestDispatcher("/noAuth.jsp");
+	    	System.out.println(erros); //printa erros no terminal
 	    	rd.forward(request, response);
     	}
     	
@@ -46,10 +47,13 @@ public class AdminController extends HttpServlet {
     		erros.add("Apenas Papel [ADMIN] tem acesso a essa página");
 	    	request.setAttribute("mensagens", erros);
 	    	RequestDispatcher rd = request.getRequestDispatcher("/noAuth.jsp");
+	    	System.out.println(erros.getErros()); //printa erros no terminal
 	    	rd.forward(request, response);
     	}
-	   	if (index == -1)
+	   	if (index == -1) {
        		erros.add("Login inválido!");
+	   		System.out.println(erros.getErros()); //printa erros no terminal
+	   		}
        	else {
 	    	String[] dominio = usuario.getLogin().split("@"); //para definir o papel do usuario pelo dominio do email
 
@@ -63,6 +67,7 @@ public class AdminController extends HttpServlet {
 	    		erros.add("Acesso não autorizado!");
 	    		erros.add("Apenas Papel [ADMIN] tem acesso a essa página");
 	    		request.setAttribute("mensagens", erros);
+	    		System.out.println(erros.getErros()); //printa erros no terminal
 	    		RequestDispatcher rd = request.getRequestDispatcher("/noAuth.jsp");
 	    		rd.forward(request, response);
 	    	}

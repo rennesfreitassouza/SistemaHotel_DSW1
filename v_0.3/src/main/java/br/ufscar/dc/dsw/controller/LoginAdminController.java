@@ -120,6 +120,7 @@ public class LoginAdminController extends HttpServlet {
 	        }
 		}
 		request.getSession().invalidate();
+		System.out.println(erros.getErros()); //printa erros no terminal
 
 		request.setAttribute("mensagens", erros);
 

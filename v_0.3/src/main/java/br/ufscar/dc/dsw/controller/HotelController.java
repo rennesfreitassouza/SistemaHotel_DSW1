@@ -57,6 +57,7 @@ public class HotelController extends HttpServlet {
     		erros.add("Apenas Papel [HOTEL] tem acesso a essa página");
 	    	request.setAttribute("mensagens", erros);
 	    	RequestDispatcher rd = request.getRequestDispatcher("/noAuth.jsp");
+	    	System.out.println(erros.getErros()); //printa erros no terminal
 	    	rd.forward(request, response);
     	}
 	try {
@@ -78,6 +79,7 @@ public class HotelController extends HttpServlet {
             erros.add("Acesso não autorizado!");
             erros.add("Apenas Papel [HOTEL] tem acesso a essa página");
             request.setAttribute("mensagens", erros);
+            System.out.println(erros.getErros()); //printa erros no terminal
             RequestDispatcher rd = request.getRequestDispatcher("/noAuth.jsp");
             rd.forward(request, response);
         }
@@ -94,6 +96,7 @@ public class HotelController extends HttpServlet {
         		erros.add("Acesso não autorizado!");
         		erros.add("Apenas Papel [HOTEL] tem acesso a essa página");
         		request.setAttribute("mensagens", erros);
+        		System.out.println(erros.getErros()); //printa erros no terminal
         		RequestDispatcher rd = request.getRequestDispatcher("/noAuth.jsp");
         		rd.forward(request, response);
         		return;
@@ -207,6 +210,7 @@ public class HotelController extends HttpServlet {
         else {
         	erros.add("Já existe outra promoção nesta data");
         	request.setAttribute("mensagens", erros);
+        	System.out.println(erros.getErros()); //printa erros no terminal
         	request.setAttribute("sites", getSites());
             RequestDispatcher dispatcher = request.getRequestDispatcher("/logado/hotel/promohotel/formulario.jsp");
             dispatcher.forward(request, response);
@@ -227,17 +231,9 @@ public class HotelController extends HttpServlet {
         String iniciopromo = request.getParameter("iniciopromo");
         String fimpromo = request.getParameter("fimpromo");
 
-        /*Long hotelID = Long.parseLong(request.getParameter("hotel"));
-        Hotel hotel = new HotelDAO().get(hotelID);*/
-        //Hotel hotel = (Hotel) request.getSession().getAttribute("usuarioLogado");
         Long SitereservaID = Long.parseLong(request.getParameter("sitereserva"));
         SiteReserva sitereserva = new SiteReservaDAO().get(SitereservaID);
-        /*System.out.println(preco);
-        System.out.println(iniciopromo);
-        System.out.println(fimpromo);
-        System.out.println(hotel);
-        System.out.println(SitereservaID);
-        System.out.println(sitereserva);*/
+
         boolean isDate = true;
         
         for(int i = 0; i < listaPromoHotel.size(); i++) { //verifica se  outra promocao na mesma data
@@ -252,6 +248,7 @@ public class HotelController extends HttpServlet {
     	}
         else {
         	erros.add("Já existe outra promoção nesta data");
+        	System.out.println(erros.getErros()); //printa erros no terminal
         	request.setAttribute("mensagens", erros);
             
             PromoHotel promohotel = dao.get(id);
