@@ -35,8 +35,18 @@ public class SiteReservaController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	
-    	SiteReserva usuario = (SiteReserva) request.getSession().getAttribute("usuarioLogado");
     	Erro erros = new Erro();
+    	SiteReserva usuario = null;
+    	try {
+    		usuario = (SiteReserva) request.getSession().getAttribute("usuarioLogado");
+    	}
+    	catch(ClassCastException e) {
+    		erros.add("Acesso não autorizado!");
+    		erros.add("Apenas Papel [SiteReserva] tem acesso a essa página");
+	    	request.setAttribute("mensagens", erros);
+	    	RequestDispatcher rd = request.getRequestDispatcher("/noAuth.jsp");
+	    	rd.forward(request, response);
+    	}
 
     	int index = -1;
     	if (usuario != null)
