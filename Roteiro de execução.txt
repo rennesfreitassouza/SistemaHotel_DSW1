@@ -1,0 +1,2 @@
+Roteiro de execução (SGBD utilizado, nome do banco de dados, scripts sql para executar, quais usuários foram populados?, que papéis?, etc)
+
