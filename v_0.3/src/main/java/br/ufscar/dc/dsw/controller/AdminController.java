@@ -25,8 +25,18 @@ public class AdminController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	
-    	Admin usuario = (Admin) request.getSession().getAttribute("usuarioLogado");
     	Erro erros = new Erro();
+    	Admin usuario = null;
+    	try {
+    		usuario = (Admin) request.getSession().getAttribute("usuarioLogado");
+    	}
+    	catch(ClassCastException e) {
+    		erros.add("Acesso não autorizado!");
+    		erros.add("Apenas Papel [ADMIN] tem acesso a essa página");
+	    	request.setAttribute("mensagens", erros);
+	    	RequestDispatcher rd = request.getRequestDispatcher("/noAuth.jsp");
+	    	rd.forward(request, response);
+    	}
     	
     	int index =  -1;
     	if (usuario != null)
