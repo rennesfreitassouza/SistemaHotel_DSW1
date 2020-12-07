@@ -7,7 +7,6 @@
 - Comandos SQL para executar antes de fazer o deploy:
 
 CREATE USER 'user'@'localhost' IDENTIFIED BY 'Us3rl0c4lh0st10@';
-USE mysql;
 GRANT ALL PRIVILEGES ON * . * TO 'user'@'localhost';
 FLUSH PRIVILEGES;
 
