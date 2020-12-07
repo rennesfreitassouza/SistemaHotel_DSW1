@@ -1,24 +1,50 @@
 - Roteiro de execução -
 
-- SGBD utilizado: MySQL version 8;
+- SGBD utilizado: MySQL version 8
 
-- Nome do banco de dados: Sistema;
+- Nome do banco de dados: Sistema
 
 - Comandos SQL para executar antes de fazer o deploy:
 
-CREATE USER 'user'@'localhost' IDENTIFIED BY 'Us3rl0c4lh0st10@';
-GRANT ALL PRIVILEGES ON * . * TO 'user'@'localhost';
-FLUSH PRIVILEGES;
+  CREATE DATABASE Sistema;
+  CREATE USER 'user'@'localhost' IDENTIFIED BY 'Us3rl0c4lh0st10@';
+  GRANT ALL PRIVILEGES ON *.* TO 'user'@'localhost';
+  FLUSH PRIVILEGES;
+  source db/MySQL/create.sql;
 
-source db/MySQL/create.sql (script: https://github.com/rennesfreitassouza/SistemaHotel_DSW1/blob/main/v_0.3/db/MySQL/create.sql)
+- Usuários:
+	  login: daniel@admin.com
+	  senha: daniel
+	  papel: Admin
 
-- Usuários que foram populados por meio da execução do script apresentado acima:
-hotel (referente a inserção de valores na tabela Hotel);
-siteres (referente a inserção de valores na tabela SiteReserva);
-admin (referente a inserção de valores na tabela Admin);
-[a tabela PromoHotel, referente as promoções de um site de reservas, também está sendo populada];
+	  login: luis@amdin.com
+	  senha: luis
+	  papel: Admin
 
-- Papéis definidos:
-Administrador (também chamado de admin, identificado na página de Autenticação de Usuário por meio da cadeia de caracteres após o caractere "@" inserida no nome do usuário);
-Hotel (chamado de hotel, identificado na página de Autenticação de Usuário, por meio da cadeia de caracteres após o caractere "@");
-Site de reservas (chamado de siteres, identificado na página de Autenticação de Usuário, por meio da cadeia de caracteres após o caractere "@");
+	  login: rennes@admin.com
+	  senha: rennes
+	  papel: Admin
+
+	  login: hotel1@hotel.com
+	  senha: hotel1
+	  papel: Hotel
+
+	  login: hotel2@hotel.com
+	  senha: hotel2
+	  papel: Hotel
+
+	  login: hotel3@hotel.com
+	  senha: hotel3
+	  papel: Hotel
+
+	  login: site1@siteres.com
+	  senha: site1
+	  papel: Site de Reserva
+
+	  login: site2@siteres.com
+	  senha: site2
+	  papel: Site de Reserva
+
+	  login: site3@siteres.com
+	  senha: site3
+	  papel: Site de Reserva
