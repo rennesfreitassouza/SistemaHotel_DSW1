@@ -12,39 +12,50 @@
   FLUSH PRIVILEGES;
   source db/MySQL/create.sql;
 
-- Usuários:
+- Usuários populados:
 	  login: daniel@admin.com
 	  senha: daniel
 	  papel: Admin
-
+	  [Usuário inserido por meio da inserção dos dados na tabela Admin]
+	
 	  login: luis@admin.com
 	  senha: luis
 	  papel: Admin
-
+	  [Usuário inserido por meio da inserção dos dados na tabela Admin]
+	  
 	  login: rennes@admin.com
 	  senha: rennes
 	  papel: Admin
-
+	  [Usuário inserido por meio da inserção dos dados na tabela Admin]
+	  
 	  login: hotel1@hotel.com
 	  senha: hotel1
 	  papel: Hotel
-
+	  [Usuário inserido por meio da inserção dos dados na tabela Hotel]
+	  
 	  login: hotel2@hotel.com
 	  senha: hotel2
 	  papel: Hotel
-
+	  [Usuário inserido por meio da inserção dos dados na tabela Hotel]
+	  
 	  login: hotel3@hotel.com
 	  senha: hotel3
 	  papel: Hotel
-
+	  [Usuário inserido por meio da inserção dos dados na tabela Hotel]
+	  
 	  login: site1@siteres.com
 	  senha: site1
 	  papel: Site de Reserva
-
+	  [Usuário inserido por meio da inserção dos dados na tabela SiteReserva]
+	  
 	  login: site2@siteres.com
 	  senha: site2
 	  papel: Site de Reserva
-
+	  [Usuário inserido por meio da inserção dos dados na tabela SiteReserva]
+	  
 	  login: site3@siteres.com
 	  senha: site3
 	  papel: Site de Reserva
+	  [Usuário inserido por meio da inserção dos dados na tabela SiteReserva]
+	  
+[a tabela PromoHotel, referente as promoções de um site de reservas, também está sendo populada].
