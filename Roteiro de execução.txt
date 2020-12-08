@@ -17,7 +17,7 @@
 	  senha: daniel
 	  papel: Admin
 
-	  login: luis@amdin.com
+	  login: luis@admin.com
 	  senha: luis
 	  papel: Admin
 
