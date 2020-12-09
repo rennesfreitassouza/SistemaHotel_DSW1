@@ -27,8 +27,8 @@ create table PromoHotel(
   fimpromo date not null,
   Hotel_id bigint not null,
   Sitereserva_id bigint not null,
-  constraint Hotel_FK foreign key (hotel_id) references Hotel(id),
-  constraint SiteReserva_FK foreign key (Sitereserva_id) references SiteReserva(id),
+  constraint Hotel_FK foreign key (hotel_id) references Hotel(id) on delete cascade,
+  constraint SiteReserva_FK foreign key (Sitereserva_id) references SiteReserva(id) on delete cascade,
   constraint PromoHotel_PK primary key (id)
 );
 
