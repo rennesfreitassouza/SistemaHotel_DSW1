@@ -38,8 +38,8 @@ create table PromoHotel(
 	fimpromo date not null,
 	Hotel_id bigint not null,
 	Sitereserva_id bigint not null,
-	foreign key (Hotel_id) references Hotel(id),
-	foreign key (Sitereserva_id) references SiteReserva(id),
+	foreign key (Hotel_id) references Hotel(id) on delete cascade,
+	foreign key (Sitereserva_id) references SiteReserva(id) on delete cascade,
 	primary key (id)
 );
 
