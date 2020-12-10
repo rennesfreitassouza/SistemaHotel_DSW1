@@ -59,3 +59,11 @@
 	  [Usuário inserido por meio da inserção dos dados na tabela SiteReserva]
 	  
 [a tabela PromoHotel, referente as promoções de um site de reservas, também está sendo populada].
+
+- IDE utilizada pela equipe: Eclipse IDE 2020;
+
+- Versão do OpenJDK utilizada durante o desenvolvimento: OpenJDK 8;
+
+- Versão do Apache Maven utilizada para compilar o projeto: 3.6;
+
+- Servidor web Java utilizado para testar o sistema: Apache Tomcat 9.0;
