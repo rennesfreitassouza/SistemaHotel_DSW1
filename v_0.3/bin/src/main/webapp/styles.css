@@ -1,0 +1,33 @@
+@charset "UTF-8";
+
+.area {
+	width: 500px;
+  	margin: auto;
+	border-style: outset;
+}
+
+input[class~=pagInicial]{
+	text-align:center;
+	width: 490px;
+  	margin: 0 auto;
+	cursor: pointer;
+}
+
+input[type=submit]{
+  border: none;
+  color: gray;
+  padding: 8px 16px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+h1{
+	text-align:center;
+}
+
+
+
+footer{
+	text-align:center;
+}
