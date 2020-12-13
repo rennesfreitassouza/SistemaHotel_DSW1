@@ -2,9 +2,13 @@ package br.ufscar.dc.dsw.domain;
 
 
 
+import java.util.List;
+import java.util.Set; //Classe do java que permite não repetição.
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,20 +19,13 @@ import javax.persistence.Table;
 
 //Classe mapeada para a tabela:
 //create table Hotel(
-//		id bigint not null auto_increment,
-//		cnpj varchar(18) not null,
-//		nome varchar(250) not null,
-//		cidade varchar(250) not null,
-//		email varchar(200) not null,
-//		senha varchar(20) not null,
-//		primary key (id)
+
 //	);
 
 @Entity
 @Table(name = "Hotel")
 public class Hotel {
 	
-	@OneToMany(mappedBy = "hotel") //a string é mapeada para o atributo hotel.
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
@@ -39,14 +36,18 @@ public class Hotel {
 	@Column(nullable = false, unique = false, length = 250)
     private String nome;
     
-	@Column(nullable = false, unique = false, length = 250)
-	private String cidade;
+	//Uma cidade pode conter vários hotéis, e um hotel pode estar em várias cidades.
+	@ManyToMany(targetEntity=Cidade.class, mappedBy = "hotelDaCidade") //a string é mapeada para o atributo chamado hotelDaCidade da classe Cidade.
+	private Set<Cidade> cidades;
 	
 	@Column(nullable = false, unique = false, length = 200)
     private String email;
 	
 	@Column(nullable = false, unique = false, length = 20)
     private String senha;
+	
+	@OneToMany(mappedBy = "hotel") //a string é mapeada para o atributo chamado hotel da classe PromoHotel.
+	private List<PromoHotel> promocoesDoHotel;
 
     public Hotel(Long id) {
         this.id = id;
@@ -57,16 +58,16 @@ public class Hotel {
         this.cnpj = cnpj;
     }
 
-	public Hotel(String cnpj, String nome, String cidade, String email, String senha) {
+	public Hotel(String cnpj, String nome, Set<Cidade> cidades, String email, String senha) {
 		this.cnpj = cnpj;
 	    this.nome = nome;
-	    this.cidade = cidade;
+	    this.cidades = cidades;
 	    this.email = email;
 	    this.senha = senha;
 	}
 	
-	public Hotel(Long id, String cnpj, String nome, String cidade, String email, String senha) {
-	    this(cnpj, nome, cidade, email, senha);
+	public Hotel(Long id, String cnpj, String nome, Set<Cidade> cidades, String email, String senha) {
+	    this(cnpj, nome, cidades, email, senha);
 	    this.id = id;
 	}
 	
@@ -94,12 +95,12 @@ public class Hotel {
         this.nome = nome;
     }
     
-    public String getCidade() {
-        return cidade;
+    public Set<Cidade> getCidades() {
+        return cidades;
     }
 
-    public void setCidade(String cidade) {
-        this.cidade = cidade;
+    public void setCidades(Set<Cidade> cidades) {
+        this.cidades = cidades;
     }
     
     public String getEmail() {
@@ -116,5 +117,13 @@ public class Hotel {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public List<PromoHotel> getPromocoesDoHotel() {
+        return promocoesDoHotel;
+    }
+
+    public void setPromocoesDoHotel(List<PromoHotel> promocoesDoHotel) {
+        this.promocoesDoHotel = promocoesDoHotel;
     }
 }

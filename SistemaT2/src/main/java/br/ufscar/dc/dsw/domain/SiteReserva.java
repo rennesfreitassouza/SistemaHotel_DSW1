@@ -1,31 +1,29 @@
 package br.ufscar.dc.dsw.domain;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 //import javax.persistence.ManyToMany;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 //import javax.persistence.Inheritance;
 //import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
 
 //create table SiteReserva(
-//		id bigint not null auto_increment,
-//		url varchar(250) not null,
-//		nome varchar(250) not null,
-//		telefone varchar(14),
-//		email varchar(200) not null,
-//		senha varchar(20) not null,
-//		primary key (id)
+
 //	);
 
 @Entity
 @Table(name = "SiteReserva")
 public class SiteReserva {
 
-	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	
 	@Column(nullable= false, unique = false, length = 250)
@@ -42,6 +40,9 @@ public class SiteReserva {
 	
 	@Column(nullable= false, unique = false, length = 20)
     private String senha;
+	
+	@OneToMany(mappedBy = "sitereserva") //a string é mapeada para o atributo sitereserva da classe PromoHotel.
+	private List<PromoHotel> promocoesDoSiteReserva;
 
     public SiteReserva(Long id) {
         this.id = id;
@@ -112,4 +113,12 @@ public class SiteReserva {
 	public void setSenha(String senha) {
 	    this.senha = senha;
 	}
+	
+    public List<PromoHotel> getPromocoesDoHotel() {
+        return promocoesDoSiteReserva;
+    }
+
+    public void setPromocoesDoHotel(List<PromoHotel> promocoesDoSiteReserva) {
+        this.promocoesDoSiteReserva = promocoesDoSiteReserva;
+    }     
 }
