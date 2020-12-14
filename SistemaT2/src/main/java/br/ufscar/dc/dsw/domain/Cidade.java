@@ -8,7 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 //import javax.persistence.Inheritance;
 //import javax.persistence.InheritanceType;
@@ -23,6 +22,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "Cidade")
 public class Cidade {
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
@@ -33,6 +33,9 @@ public class Cidade {
 	@ManyToMany	(targetEntity=Hotel.class)//Uma cidade pode conter vários hotéis, e um hotel pode estar em várias cidades.
 	private Set<Hotel> hotelDaCidade;
 
+	public Cidade() {
+	}
+	
 	
 	public Cidade(String nomeCidade, Set<Hotel> hotelDaCidade) {
 		this.nomeCidade = nomeCidade;

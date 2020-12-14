@@ -44,12 +44,14 @@ public class SiteReserva {
 	@OneToMany(mappedBy = "sitereserva") //a string é mapeada para o atributo sitereserva da classe PromoHotel.
 	private List<PromoHotel> promocoesDoSiteReserva;
 
+	public SiteReserva() {
+    }
+	
     public SiteReserva(Long id) {
         this.id = id;
     }
 	
-    public SiteReserva(Long id, String url) {
-    	this(id);
+    public SiteReserva(String url) {
         this.url = url;
     }
     

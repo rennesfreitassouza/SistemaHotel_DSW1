@@ -16,6 +16,6 @@ public interface IHotelDAO extends CrudRepository<Hotel, Long>{
 	
 	Hotel save (Hotel hotel); // faz as operações de save e update.
 	
-	void deletById(Long id);
+	void deleteById(Long id);
 
 }

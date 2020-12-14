@@ -10,9 +10,9 @@ import br.ufscar.dc.dsw.domain.Cidade;
 
 @SuppressWarnings("unchecked")
 public interface ICidadeDAO extends CrudRepository<Cidade, Long>{
-	List<Cidade> findByCidade(Hotel hotel); // Devolve todas a cidades de um hotel específico.(?)
+	List<Cidade> findByNomeCidade(Hotel hotel); // Devolve todas a cidades de um hotel específico.(?)
 
 	Cidade save(Cidade cidade);
 	
-	void deletById(Long id);
+	void deleteById(Long id);
 }

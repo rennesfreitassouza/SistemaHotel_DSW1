@@ -44,6 +44,9 @@ public class PromoHotel{
 	@JoinColumn(name = "sitereserva_id")
     private SiteReserva sitereserva;
 
+	public PromoHotel() {
+    }
+	
     public PromoHotel(Long id) {
         this.id = id;
     }

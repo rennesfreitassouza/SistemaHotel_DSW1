@@ -49,12 +49,14 @@ public class Hotel {
 	@OneToMany(mappedBy = "hotel") //a string é mapeada para o atributo chamado hotel da classe PromoHotel.
 	private List<PromoHotel> promocoesDoHotel;
 
+	public Hotel() {
+    }
+	
     public Hotel(Long id) {
         this.id = id;
     }
     
-    public Hotel(Long id, String cnpj) {
-    	this(id);
+    public Hotel(String cnpj) {
         this.cnpj = cnpj;
     }
 

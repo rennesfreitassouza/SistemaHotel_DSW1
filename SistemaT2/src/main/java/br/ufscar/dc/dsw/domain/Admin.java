@@ -1,6 +1,5 @@
 package br.ufscar.dc.dsw.domain;
 
-import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,8 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
 //Classe mapeada para a tabela:
@@ -42,8 +39,7 @@ public class Admin {
 		
 	}
 	
-	public Admin(Long id, String nome, String login, String senha) {
-		this.id = id;
+	public Admin(String nome, String login, String senha) {
 		this.nome = nome;
 		this.login = login;
 		this.senha = senha;

@@ -15,11 +15,12 @@ public interface IPromoHotelDAO extends CrudRepository<PromoHotel, Long>{
 	
 	List<PromoHotel> findAll();
 	
-	List<PromoHotel> findByPromoHotel(Hotel hotel); // Devolve todas as promoções de um hotel específico.
+	List<PromoHotel> findByhotel(Hotel hotel); // Devolve todas as promoções de um hotel específico.
 	
-	List<PromoHotel> findBySiteReserva(SiteReserva sitereserva); // Devolve todas as promoções de um site específico.
+	List<PromoHotel> findBysitereserva(SiteReserva sitereserva); // Devolve todas as promoções de um site específico.
+	
 	PromoHotel save(PromoHotel promohotel); // faz as operações de save e update.
 	
-	void deletById(Long id);
+	void deleteById(Long id);
 
 }

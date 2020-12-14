@@ -15,7 +15,7 @@ public interface ISiteReservaDAO extends CrudRepository<SiteReserva, Long>{
 	
 	SiteReserva save(SiteReserva sitereserva); // faz as operações de save e update.
 	
-	void deletById(Long id);
+	void deleteById(Long id);
 
 }
 
