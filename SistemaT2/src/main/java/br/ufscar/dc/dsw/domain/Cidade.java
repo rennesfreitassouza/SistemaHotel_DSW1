@@ -33,7 +33,8 @@ public class Cidade {
 	@ManyToMany	(targetEntity=Hotel.class)//Uma cidade pode conter vários hotéis, e um hotel pode estar em várias cidades.
 	private Set<Hotel> hotelDaCidade;
 
-	public Cidade() {
+	public Cidade(String nomeCidade) {
+		this.nomeCidade = nomeCidade;
 	}
 	
 	

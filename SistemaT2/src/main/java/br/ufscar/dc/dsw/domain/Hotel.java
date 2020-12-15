@@ -56,9 +56,9 @@ public class Hotel {
         this.id = id;
     }
     
-    public Hotel(String cnpj) {
-        this.cnpj = cnpj;
-    }
+//    public Hotel(String cnpj) {
+//        this.cnpj = cnpj;
+//    }
 
 	public Hotel(String cnpj, String nome, Set<Cidade> cidades, String email, String senha) {
 		this.cnpj = cnpj;

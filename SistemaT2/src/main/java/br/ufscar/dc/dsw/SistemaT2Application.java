@@ -1,5 +1,9 @@
 package br.ufscar.dc.dsw;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -28,21 +32,26 @@ public class SistemaT2Application {
 		return (args) -> {
 			
 			log.info("Salvando Cidade");
-			Cidade cidade = new Cidade();
+			Cidade cidade = new Cidade("São Carlos");
 			cidadeDAO.save(cidade);
 			
+			
+			//Set<Cidade> cidades, String email, String senha) {
+			Set<Cidade> setcidade = new HashSet<Cidade>();
+			setcidade.add(new Cidade("C1"));
 			log.info("Salvando hotel");
-			Hotel hotel = new Hotel();
+			Hotel hotel = new Hotel("CNPJ", "nOME", setcidade, "email@email.com", "senha");
 			hotelDAO.save(hotel);
 			
-			log.info("Salvando Promoção");
+			log.info("Salvando Site");
+			SiteReserva sitereserva = new SiteReserva("www", "nome", "tel", "e-mail", "senha");
+			siteReservaDAO.save(sitereserva);
 			
-			PromoHotel promoHotel = new PromoHotel();
+			log.info("Salvando Promoção");
+			PromoHotel promoHotel = new PromoHotel(1, "111", "222", hotel, sitereserva);
 			promoHotelDAO.save(promoHotel);
 
-			log.info("Salvando Site");
-			SiteReserva sitereserva = new SiteReserva();
-			siteReservaDAO.save(sitereserva);
+			
 		};
 	}
 }
