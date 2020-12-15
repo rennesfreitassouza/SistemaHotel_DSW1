@@ -1,7 +1,7 @@
 package br.ufscar.dc.dsw;
 
-import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.slf4j.Logger;
@@ -30,18 +30,48 @@ public class SistemaT2Application {
 	@Bean
 	public CommandLineRunner demo(ICidadeDAO cidadeDAO, IHotelDAO hotelDAO, IPromoHotelDAO promoHotelDAO, ISiteReservaDAO siteReservaDAO) {
 		return (args) -> {
-			
-			log.info("Salvando Cidade");
+
+			log.info("Salvando Cidade sao carlso sem nenhum hotel");
 			Cidade cidade = new Cidade("São Carlos");
-			cidadeDAO.save(cidade);
+			Cidade c2 = new Cidade("Ibaté");
+			//cidadeDAO.save(cidade);			
 			
-			
-			//Set<Cidade> cidades, String email, String senha) {
 			Set<Cidade> setcidade = new HashSet<Cidade>();
-			setcidade.add(new Cidade("C1"));
-			log.info("Salvando hotel");
+			
+			setcidade.add(cidade); 
+			setcidade.add(c2); 			
+			
 			Hotel hotel = new Hotel("CNPJ", "nOME", setcidade, "email@email.com", "senha");
-			hotelDAO.save(hotel);
+			
+			log.info("Salvando hotel");
+			hotelDAO.save(hotel); //not a transient instance  anymore
+			
+			//Adiconar hotel aos objetos cidades.
+			Set<Hotel> sethotel = new HashSet<Hotel>();
+			sethotel.add(hotel);
+			
+			for (Cidade c : setcidade) {
+			    c.setHotelDaCidade(sethotel); //Insere hotel noX objetoX de cada cidade c1 e c2. (persistir)
+			    cidadeDAO.save(c); //not a transient instance  anymore
+			}
+			
+			
+			//Agora inserir os objetos cidades, com o atributo hotel atualizado, no objeto hoteil.
+			hotel.setCidades(setcidade); //
+			hotelDAO.save(hotel);//atualiza
+			
+		
+//			List<Hotel> listcidade2 = cidadeDAO.findByHotelDaCidade(hotel);
+//			
+//			for (Hotel hotelx : listcidade2) {
+//				log.info("cidadeDAO.findByHotelDaCidade(hotel) = "+hotelx.getNome());
+//			}
+
+			
+			List<Hotel> listaHoteis = hotelDAO.findByCidades(c2);			
+			for (Hotel hotelx : listaHoteis) {
+				log.info("cidadeDAO.findByCidades(cidade) = "+hotelx.getNome());
+			}
 			
 			log.info("Salvando Site");
 			SiteReserva sitereserva = new SiteReserva("www", "nome", "tel", "e-mail", "senha");
@@ -51,7 +81,8 @@ public class SistemaT2Application {
 			PromoHotel promoHotel = new PromoHotel(1, "111", "222", hotel, sitereserva);
 			promoHotelDAO.save(promoHotel);
 
-			
+			log.info("Imprimindo cidade:");
+			log.info(cidade.getCidade());
 		};
 	}
 }
