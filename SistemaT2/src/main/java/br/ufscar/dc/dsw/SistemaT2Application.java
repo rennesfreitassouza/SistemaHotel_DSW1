@@ -86,20 +86,24 @@ public class SistemaT2Application {
 			hotel2.addCidade(cidade); //
 			hotelDAO.save(hotel2);//atualiza bd (localização do nomeHotel2 atualizada pra São Carlos.
 			
-			//R4:
+			//R3:
 			log.info("Listagem de todos os hotéis:");
 			List<Hotel> listaHoteis = hotelDAO.findAll();
 			for (Hotel hotelx : listaHoteis) {
 				log.info("hotelDAO.findAll() = "+hotelx.getNome());// 
 			}
 			
-			//R5:
+			//R4:
 			listaHoteis = hotelDAO.findByCidades(cidade); //Procura por hoteis na cidade de São carlos.			
 			for (Hotel hotelx : listaHoteis) {
 				log.info("cidadeDAO.findByCidades(cidade) = "+hotelx.getNome());// retorna o hotel do objeto cidade passada como
 																				// parâmetro para cidadeDAO.findByCidades.
 			}
 			
+			List<Cidade> listacidades = cidadeDAO.findAll();
+			for (Cidade cidadex : listacidades) {
+				log.info("cidadeDAO.findAll() = "+cidadex.getCidade());
+			}
 			List<PromoHotel> listpromoTeste = new ArrayList<PromoHotel>(); 
 			SiteReserva sitereserva =  new SiteReserva("www", "nome", "tel", "e-mail", "senha", listpromoTeste);
 			//Dúvida não testada: listpromoTeste não pode ser vazia para invocar o método addPromocoesDoHotel da classe siteReserva.
