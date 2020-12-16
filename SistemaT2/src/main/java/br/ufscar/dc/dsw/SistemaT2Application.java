@@ -1,5 +1,6 @@
 package br.ufscar.dc.dsw;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -30,59 +31,88 @@ public class SistemaT2Application {
 	@Bean
 	public CommandLineRunner demo(ICidadeDAO cidadeDAO, IHotelDAO hotelDAO, IPromoHotelDAO promoHotelDAO, ISiteReservaDAO siteReservaDAO) {
 		return (args) -> {
-
+			//Set<Hotel> sethotelTeste = new HashSet<Hotel>(); teste de chamaada de nétodo addHotelDaCidade inválido.
+			
 			log.info("Salvando Cidade sao carlso sem nenhum hotel");
 			Cidade cidade = new Cidade("São Carlos");
 			Cidade c2 = new Cidade("Ibaté");
-			//cidadeDAO.save(cidade);			
+			cidadeDAO.save(cidade);			
+			cidadeDAO.save(c2);			
 			
 			Set<Cidade> setcidade = new HashSet<Cidade>();
+			Set<Cidade> set2cidade = new HashSet<Cidade>();
 			
 			setcidade.add(cidade); 
 			setcidade.add(c2); 			
 			
-			Hotel hotel = new Hotel("CNPJ", "nOME", setcidade, "email@email.com", "senha");
+			set2cidade.add(cidade);
 			
-			log.info("Salvando hotel");
+			Hotel hotel = new Hotel("CNPJ", "nOMEHotel1", setcidade, "email@email.com", "senha");
+			Hotel hotel2 = new Hotel("CNPJ2", "nOMEHotel2", set2cidade, "email2@email.com", "senha2");
+			
+			log.info("Salvando hotéis");
 			hotelDAO.save(hotel); //not a transient instance  anymore
+			hotelDAO.save(hotel2); //not a transient instance  anymore
 			
-			//Adiconar hotel aos objetos cidades.
 			Set<Hotel> sethotel = new HashSet<Hotel>();
-			sethotel.add(hotel);
+			sethotel.add(hotel); // nomeHotel1
+			
+//			//Adicona hotel aos dois objetos cidade que representam São Carlos e Ibaté.
+//			cidade.addHotelDaCidade(hotel);
+//			cidadeDAO.save(cidade);
+//			c2.addHotelDaCidade(hotel);
+//			cidadeDAO.save(c2); 
+//			//nomeHotel1 está nas cidades de São Carlos e Ibaté. (persistir)
+//			
 			
 			for (Cidade c : setcidade) {
-			    c.setHotelDaCidade(sethotel); //Insere hotel noX objetoX de cada cidade c1 e c2. (persistir)
+			    c.setHotelDaCidade(sethotel); //add sethotel noX objetoX de cada cidade. (persistir)
 			    cidadeDAO.save(c); //not a transient instance  anymore
-			}
+			} 
+			
+			//Adicona hotel2 ao objeto cidade que representa São Carlos.
+			for (Cidade c : set2cidade) {
+			    c.addHotelDaCidade(hotel2); //Insere hotel2 no objeto cidade (persistir)
+			    cidadeDAO.save(c); //not a transient instance  anymore
+			} //nomeHotel2 está na cidade de São Carlos.
 			
 			
-			//Agora inserir os objetos cidades, com o atributo hotel atualizado, no objeto hoteil.
-			hotel.setCidades(setcidade); //
-			hotelDAO.save(hotel);//atualiza
+			//adicona os objetos cidades, com o atributo hotel atualizado, no objeto hotel.
+			hotel.addCidade(cidade); //
+			hotel.addCidade(c2); //
+			hotelDAO.save(hotel);//atualiza bd (localização do nomeHotel1 atualizada pra São Carlos e Ibaté)
 			
-		
-//			List<Hotel> listcidade2 = cidadeDAO.findByHotelDaCidade(hotel);
-//			
-//			for (Hotel hotelx : listcidade2) {
-//				log.info("cidadeDAO.findByHotelDaCidade(hotel) = "+hotelx.getNome());
-//			}
-
+			//adicona o objeto nomeado cidade, com o atributo hotel atualizado, no objeto hotel2.
+			hotel2.addCidade(cidade); //
+			hotelDAO.save(hotel2);//atualiza bd (localização do nomeHotel2 atualizada pra São Carlos.
 			
-			List<Hotel> listaHoteis = hotelDAO.findByCidades(c2);			
+			//R4:
+			log.info("Listagem de todos os hotéis:");
+			List<Hotel> listaHoteis = hotelDAO.findAll();
 			for (Hotel hotelx : listaHoteis) {
-				log.info("cidadeDAO.findByCidades(cidade) = "+hotelx.getNome());
+				log.info("hotelDAO.findAll() = "+hotelx.getNome());// 
 			}
 			
+			//R5:
+			listaHoteis = hotelDAO.findByCidades(cidade); //Procura por hoteis na cidade de São carlos.			
+			for (Hotel hotelx : listaHoteis) {
+				log.info("cidadeDAO.findByCidades(cidade) = "+hotelx.getNome());// retorna o hotel do objeto cidade passada como
+																				// parâmetro para cidadeDAO.findByCidades.
+			}
+			
+			List<PromoHotel> listpromoTeste = new ArrayList<PromoHotel>(); 
+			SiteReserva sitereserva =  new SiteReserva("www", "nome", "tel", "e-mail", "senha", listpromoTeste);
+			//Dúvida não testada: listpromoTeste não pode ser vazia para invocar o método addPromocoesDoHotel da classe siteReserva.
+			//Invocar o método setPromocoesDoHotel da classe siteReserva antes?
 			log.info("Salvando Site");
-			SiteReserva sitereserva = new SiteReserva("www", "nome", "tel", "e-mail", "senha");
 			siteReservaDAO.save(sitereserva);
 			
 			log.info("Salvando Promoção");
 			PromoHotel promoHotel = new PromoHotel(1, "111", "222", hotel, sitereserva);
 			promoHotelDAO.save(promoHotel);
 
-			log.info("Imprimindo cidade:");
-			log.info(cidade.getCidade());
+			
+			
 		};
 	}
 }

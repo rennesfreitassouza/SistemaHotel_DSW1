@@ -55,16 +55,17 @@ public class SiteReserva {
         this.url = url;
     }
     
-    public SiteReserva(String url, String nome, String telefone, String email, String senha) { 
+    public SiteReserva(String url, String nome, String telefone, String email, String senha, List<PromoHotel> promocoesDoSiteReserva) { 
 	    this.url = url;
 	    this.nome = nome;
 	    this.telefone = telefone;
 	    this.email = email;
 	    this.senha = senha;
+	    this.promocoesDoSiteReserva = promocoesDoSiteReserva;
 	}
     
-	public SiteReserva(Long id, String url, String nome, String telefone, String email, String senha) {
-	    this(url, nome, telefone, email, senha);
+	public SiteReserva(Long id, String url, String nome, String telefone, String email, String senha, List<PromoHotel> promocoesDoSiteReserva) {
+	    this(url, nome, telefone, email, senha, promocoesDoSiteReserva);
 	    this.id = id;
 	}
 	
@@ -122,5 +123,9 @@ public class SiteReserva {
 
     public void setPromocoesDoHotel(List<PromoHotel> promocoesDoSiteReserva) {
         this.promocoesDoSiteReserva = promocoesDoSiteReserva;
-    }     
+    }
+    
+    public void addPromocoesDoHotel(PromoHotel promocaoDoSiteReserva) {
+        this.promocoesDoSiteReserva.add(promocaoDoSiteReserva);
+    }
 }

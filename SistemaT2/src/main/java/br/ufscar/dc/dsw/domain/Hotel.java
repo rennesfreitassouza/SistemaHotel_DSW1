@@ -105,6 +105,10 @@ public class Hotel {
         this.cidades = cidades;
     }
     
+    public void addCidade(Cidade hotelEstaNaCidade) {
+        this.cidades.add(hotelEstaNaCidade);
+    }
+    
     public String getEmail() {
         return email;
     }

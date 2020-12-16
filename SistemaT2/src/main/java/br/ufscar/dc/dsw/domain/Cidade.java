@@ -39,12 +39,11 @@ public class Cidade {
 	public Cidade(String nomeCidade) {
 		this.nomeCidade = nomeCidade;
 	}
-	
-	
-//	public Cidade(String nomeCidade, Set<Hotel> hotelDaCidade) {
-//		this.nomeCidade = nomeCidade;
-//		this.hotelDaCidade = hotelDaCidade;
-//	}
+		
+	public Cidade(String nomeCidade, Set<Hotel> hotelDaCidade) {
+		this.nomeCidade = nomeCidade;
+		this.hotelDaCidade = hotelDaCidade;
+	}
 	
 	public String getCidade() {
 		return this.nomeCidade;
@@ -61,5 +60,9 @@ public class Cidade {
 	
 	public void setHotelDaCidade(Set<Hotel> hotelDaCidade) {
 		this.hotelDaCidade = hotelDaCidade;
+	}
+	
+	public void addHotelDaCidade(Hotel addhotelNaCidade) {
+		this.hotelDaCidade.add(addhotelNaCidade);
 	}
 }
