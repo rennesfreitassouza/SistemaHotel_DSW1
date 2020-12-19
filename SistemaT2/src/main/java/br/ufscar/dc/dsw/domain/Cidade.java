@@ -5,28 +5,28 @@ import java.util.Set; //Classe do java que permite não repetição.
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+//import javax.persistence.GeneratedValue;
+//import javax.persistence.GenerationType;
+//import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 //import javax.persistence.Inheritance;
 //import javax.persistence.InheritanceType;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 
 //Classe mapeada para a tabela:
 //create table Cidade(
 
 //	);
-
+@SuppressWarnings("serial")
 @Entity
 @Table(name = "Cidade")
-public class Cidade {
-	
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long id;
+public class Cidade extends AbstractEntity<Long>{
 
+	@NotBlank(message="NotNull.cidade.nomeCidade") // Significa que a String não é nula, mas está vazia. 
+	@Size(min = 3, max = 200, message = "{Size.cidade.nomeCidade}")
 	@Column(nullable = false, unique = false, length = 200)
     private String nomeCidade;
 	

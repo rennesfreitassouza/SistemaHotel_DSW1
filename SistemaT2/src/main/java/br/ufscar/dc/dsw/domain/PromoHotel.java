@@ -5,32 +5,35 @@ package br.ufscar.dc.dsw.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+//import javax.persistence.GeneratedValue;
+//import javax.persistence.GenerationType;
+//import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.JoinColumn;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 //create table PromoHotel(
 
 //	);
 
-
+@SuppressWarnings("serial")
 @Entity
 @Table(name = "PromoHotel")
-public class PromoHotel{
+public class PromoHotel extends AbstractEntity<Long>{
 	
-	@Id 
-	@GeneratedValue(strategy=GenerationType.AUTO)
-    private Long id;
-	
+	@NotBlank(message = "{NotBlank.promoHotel.preco}")
 	@Column(nullable=false, unique=false)
     private float preco;
 	
+	@NotBlank(message = "{NotBlank.promoHotel.iniciopromo}")
+	@Size(min = 10, max = 10, message = "{Size.promoHotel.iniciopromo}")
 	@Column(nullable=false, unique=false, length=10)
     private String iniciopromo;
-    
+
+	@NotBlank(message = "{NotBlank.promoHotel.fimpromo}")
+	@Size(min = 10, max = 10, message = "{Size.promoHotel.fimpromo}")
 	@Column(nullable=false, unique=false, length=10)
 	private String fimpromo;
     
@@ -47,9 +50,9 @@ public class PromoHotel{
 	public PromoHotel() {
     }
 	
-    public PromoHotel(Long id) {
-        this.id = id;
-    }
+//    public PromoHotel(Long id) {
+//        this.id = id;
+//    }
 
 	public PromoHotel(float preco, String iniciopromo, String fimpromo, Hotel hotel, SiteReserva sitereserva) {
 		this.preco = preco;
@@ -61,16 +64,16 @@ public class PromoHotel{
 	
 	public PromoHotel(Long id, float preco, String iniciopromo, String fimpromo, Hotel hotel, SiteReserva sitereserva) {
 	    this(preco, iniciopromo, fimpromo, hotel, sitereserva);
-	    this.id = id;
+	    //this.id = id;
 	}
 	
-	public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+//	public Long getId() {
+//        return id;
+//    }
+//
+//    public void setId(Long id) {
+//        this.id = id;
+//    }
 
     public float getPreco() {
         return preco;
