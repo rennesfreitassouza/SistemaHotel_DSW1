@@ -1,0 +1,9 @@
+br/ufscar/dc/dsw/dao/IPromoHotelDAO.class
+br/ufscar/dc/dsw/dao/ICidadeDAO.class
+br/ufscar/dc/dsw/dao/IHotelDAO.class
+br/ufscar/dc/dsw/domain/PromoHotel.class
+br/ufscar/dc/dsw/SistemaT2Application.class
+br/ufscar/dc/dsw/domain/Cidade.class
+br/ufscar/dc/dsw/domain/SiteReserva.class
+br/ufscar/dc/dsw/dao/ISiteReservaDAO.class
+br/ufscar/dc/dsw/domain/Hotel.class
