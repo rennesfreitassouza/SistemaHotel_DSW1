@@ -46,7 +46,7 @@ public class SistemaT2Application {
 			setcidade.add(c2); 			
 			
 			set2cidade.add(cidade);
-			
+			//dasd
 			Hotel hotel = new Hotel("CNPJCNPJCNPJ", "nOMEHotel1", setcidade, "email@email.com", "senha");
 			Hotel hotel2 = new Hotel("CNPJ2CNPJ2", "nOMEHotel2", set2cidade, "email2@email.com", "senha2");
 			
@@ -54,38 +54,38 @@ public class SistemaT2Application {
 			hotelDAO.save(hotel); //not a transient instance  anymore
 			hotelDAO.save(hotel2); //not a transient instance  anymore
 			
-			Set<Hotel> sethotel = new HashSet<Hotel>();
-			sethotel.add(hotel); // nomeHotel1
-			
-			//Adicona hotel aos dois objetos cidade que representam São Carlos e Ibaté.
-			cidade.addHotelDaCidade(hotel);
-			cidadeDAO.save(cidade);
-			c2.addHotelDaCidade(hotel);
-			cidadeDAO.save(c2); 
-//			//nomeHotel1 está nas cidades de São Carlos e Ibaté. (persistir)
+//			Set<Hotel> sethotel = new HashSet<Hotel>();
+//			sethotel.add(hotel); // nomeHotel1
 //			
-			
-			for (Cidade c : setcidade) {
-			    c.setHotelDaCidade(sethotel); //add sethotel noX objetoX de cada cidade. (persistir)
-			    cidadeDAO.save(c); //not a transient instance  anymore
-			} 
-			
-			//Adicona hotel2 ao objeto cidade que representa São Carlos.
-			for (Cidade c : set2cidade) {
-			    c.addHotelDaCidade(hotel2); //Insere hotel2 no objeto cidade (persistir)
-			    cidadeDAO.save(c); //not a transient instance  anymore
-			} //nomeHotel2 está na cidade de São Carlos.
-			
-			
-			//adicona os objetos cidades, com o atributo hotel atualizado, no objeto hotel.
-			hotel.addCidade(cidade); //
-			hotel.addCidade(c2); //
-			hotelDAO.save(hotel);//atualiza bd (localização do nomeHotel1 atualizada pra São Carlos e Ibaté)
-			
-			//adicona o objeto nomeado cidade, com o atributo hotel atualizado, no objeto hotel2.
-			hotel2.addCidade(cidade); //
-			hotelDAO.save(hotel2);//atualiza bd (localização do nomeHotel2 atualizada pra São Carlos.
-			
+//			//Adicona hotel aos dois objetos cidade que representam São Carlos e Ibaté.
+//			cidade.addHotelDaCidade(hotel);
+//			cidadeDAO.save(cidade);
+//			c2.addHotelDaCidade(hotel);
+//			cidadeDAO.save(c2); 
+////			//nomeHotel1 está nas cidades de São Carlos e Ibaté. (persistir)
+////			
+//			
+//			for (Cidade c : setcidade) {
+//			    c.setHotelDaCidade(sethotel); //add sethotel noX objetoX de cada cidade. (persistir)
+//			    cidadeDAO.save(c); //not a transient instance  anymore
+//			} 
+//			
+//			//Adicona hotel2 ao objeto cidade que representa São Carlos.
+//			for (Cidade c : set2cidade) {
+//			    c.addHotelDaCidade(hotel2); //Insere hotel2 no objeto cidade (persistir)
+//			    cidadeDAO.save(c); //not a transient instance  anymore
+//			} //nomeHotel2 está na cidade de São Carlos.
+//			
+//			
+//			//adicona os objetos cidades, com o atributo hotel atualizado, no objeto hotel.
+//			hotel.addCidade(cidade); //
+//			hotel.addCidade(c2); //
+//			hotelDAO.save(hotel);//atualiza bd (localização do nomeHotel1 atualizada pra São Carlos e Ibaté)
+//			
+//			//adicona o objeto nomeado cidade, com o atributo hotel atualizado, no objeto hotel2.
+//			hotel2.addCidade(cidade); //
+//			hotelDAO.save(hotel2);//atualiza bd (localização do nomeHotel2 atualizada pra São Carlos.
+//			
 //			//R3:
 //			//log.info("Listagem de todos os hotéis:");
 //			List<Hotel> listaHoteis = hotelDAO.findAll();

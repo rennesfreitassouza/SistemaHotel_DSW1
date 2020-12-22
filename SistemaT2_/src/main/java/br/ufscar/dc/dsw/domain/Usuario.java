@@ -3,8 +3,8 @@ package br.ufscar.dc.dsw.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-//import javax.persistence.Inheritance;
-//import javax.persistence.InheritanceType;
+import javax.persistence.Inheritance; //??/
+import javax.persistence.InheritanceType;
 //import javax.persistence.ManyToMany;
 //import javax.persistence.GeneratedValue;
 //import javax.persistence.GenerationType;
@@ -21,7 +21,7 @@ import javax.validation.constraints.Size;
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "Usuario")
-//@Inheritance(strategy = InheritanceType.JOINED)
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Usuario extends AbstractEntity<Long>{
 
 
