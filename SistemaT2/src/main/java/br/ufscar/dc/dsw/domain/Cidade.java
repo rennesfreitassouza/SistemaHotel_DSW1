@@ -45,6 +45,11 @@ public class Cidade extends AbstractEntity<Long>{
 		this.hotelDaCidade = hotelDaCidade;
 	}
 	
+	@Override
+	public Long getId() {
+		return super.getId();
+	}
+	
 	public String getCidade() {
 		return this.nomeCidade;
 	}
@@ -62,7 +67,7 @@ public class Cidade extends AbstractEntity<Long>{
 		this.hotelDaCidade = hotelDaCidade;
 	}
 	
-	public void addHotelDaCidade(Hotel addhotelNaCidade) {
+	public void addHotelDaCidade(Hotel addhotelNaCidade) { //Somente adiciona, não substitu.
 		this.hotelDaCidade.add(addhotelNaCidade);
 	}
 }

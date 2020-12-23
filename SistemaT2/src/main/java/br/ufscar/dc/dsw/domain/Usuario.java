@@ -3,6 +3,8 @@ package br.ufscar.dc.dsw.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Inheritance; //??/
+import javax.persistence.InheritanceType;
 //import javax.persistence.ManyToMany;
 //import javax.persistence.GeneratedValue;
 //import javax.persistence.GenerationType;
@@ -12,26 +14,27 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 //Classe mapeada para a tabela:
-//create table Admin(
+//create table usuario(
 
 //	);
 
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "Usuario")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Usuario extends AbstractEntity<Long>{
 
 
 	@Column(nullable = false, length = 256)
 	private String nome;
 	
-	@NotBlank(message = "{NotBlank.admin.login}")
-	@Size(max = 256, message = "{Size.admin.login}")
+	@NotBlank(message = "{NotBlank.usuario.login}")
+	@Size(max = 256, message = "{Size.usuario.login}")
 	@Column(nullable = false, unique = true, length = 256)
 	private String login;
 	
-	@NotBlank(message = "{NotBlank.admin.senha}")
-	@Size(max = 64, message = "{Size.admin.senha}")
+	@NotBlank(message = "{NotBlank.usuario.senha}")
+	@Size(max = 64, message = "{Size.usuario.senha}")
 	@Column(nullable = false, length = 64)
 	private String senha;
 	
@@ -45,9 +48,10 @@ public class Usuario extends AbstractEntity<Long>{
 		this.senha = senha;
 	}
 	
-//	public Long getId() {
-//		return id;
-//	}
+	@Override
+	public Long getId() {
+		return super.getId();
+	}
 //
 //	public void setId(Long id) {
 //		this.id = id;

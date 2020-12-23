@@ -80,10 +80,11 @@ public class SiteReserva extends Usuario{
 	    //this.id = id;
 	}
 	
-//	public Long getId() {
-//	    return id;
-//	}
-//	
+	@Override
+	public Long getId() {
+		return super.getId();
+	}
+	
 //	public void setId(Long id) {
 //	    this.id = id;
 //	}

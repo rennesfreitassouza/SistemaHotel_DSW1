@@ -82,13 +82,16 @@ public class Hotel extends Usuario{
 	    //this.id = id;
 	}
 	
-//	public Long getId() {
-//        return id;
-//    }
+
 //
 //    public void setId(Long id) {
 //        this.id = id;
 //    }
+	
+	@Override
+	public Long getId() {
+		return super.getId();
+	}
 
     public String getCnpj() {
         return cnpj;
@@ -116,7 +119,7 @@ public class Hotel extends Usuario{
         this.cidades = cidades;
     }
     
-    public void addCidade(Cidade hotelEstaNaCidade) {
+    public void addCidade(Cidade hotelEstaNaCidade) { //Atenção para o uso, somente adiciona, não substitui.
         this.cidades.add(hotelEstaNaCidade);
     }
     
