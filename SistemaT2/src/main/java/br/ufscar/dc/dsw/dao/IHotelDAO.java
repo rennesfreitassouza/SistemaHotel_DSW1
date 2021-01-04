@@ -14,7 +14,7 @@ public interface IHotelDAO extends CrudRepository<Hotel, Long>{
 	
 	List<Hotel> findAll();
 	
-	List<Hotel> findByCidades(Cidade cidade); // Devolve todas os hotéis de uma cidade.(?)
+	List<Hotel> findByCidades(Cidade cidade); // Devolve todas os hotéis de uma cidade.
 	
 	Hotel save (Hotel hotel); // faz as operações de save e update.
 	

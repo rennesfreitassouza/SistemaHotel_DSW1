@@ -2,6 +2,7 @@ package br.ufscar.dc.dsw.domain;
 
 
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set; //Classe do java que permite não repetição.
 
@@ -41,7 +42,7 @@ public class Hotel extends Usuario{
     
 	//Uma cidade pode conter vários hotéis, e um hotel pode estar em várias cidades.
 	@ManyToMany(targetEntity=Cidade.class, mappedBy = "hotelDaCidade") //a string é mapeada para o atributo chamado hotelDaCidade da classe Cidade.
-	private Set<Cidade> cidades;
+	private Set<Cidade> cidades = new HashSet<Cidade>();
 
 	//herdado
 //	@NotBlank(message = "{NotBlank.hotel.email}")

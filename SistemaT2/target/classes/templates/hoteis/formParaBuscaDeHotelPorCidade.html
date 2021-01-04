@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8" />
+	</head>
+	<body>
+		<div>
+			<form name ='form'>
+				<table>
+					<tr>
+						<td>Cidade</td>
+						<td><select name='cidadeParaSelecionar' onchange='submit()'>
+								<option value='0'>--</option>
+								<option th:each="nomeCidade : ${cidadesParaSelecionar}" 
+								th:text="${nomeCidade.getCidade()}"></option>
+						</select></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+		
+			<table border="1" style="width: 400px; border: 1px solid black">
+				<tr>
+					<th style="width: 70%;">Nome hotel</th>
+				</tr>
+				<tr th:each="hotel : ${hotelDaCidade}">
+					<td style="text-align: center">
+						<input th:value="${hotel.getNome()}" style="text-align: center">
+					</td>
+				</tr>
+			</table>		
+	</body>
+</html>

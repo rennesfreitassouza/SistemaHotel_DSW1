@@ -1,6 +1,7 @@
 package br.ufscar.dc.dsw.domain;
 
 
+import java.util.HashSet;
 import java.util.Set; //Classe do java que permite não repetição.
 
 import javax.persistence.Column;
@@ -31,7 +32,7 @@ public class Cidade extends AbstractEntity<Long>{
     private String nomeCidade;
 	
 	@ManyToMany	(targetEntity=Hotel.class)//Uma cidade pode conter vários hotéis, e um hotel pode estar em várias cidades.
-	private Set<Hotel> hotelDaCidade;
+	private Set<Hotel> hotelDaCidade = new HashSet<Hotel>();
 
 	public Cidade() {
 	}
