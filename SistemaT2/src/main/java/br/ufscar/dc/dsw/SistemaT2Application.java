@@ -74,14 +74,17 @@ public class SistemaT2Application {
 			Set<Hotel> set3hotel = new HashSet<Hotel>();
 			set3hotel.add(hotel3);
 			
-//			cidade1.addHotelDaCidade(hotel1);
+			//Não funciona (usar método setCidade da classe cidade antes):
+//			cidade1.addHotelDaCidade(hotel3);
 //			cidadeDAO.save(cidade1);
-//			cidade2.addHotelDaCidade(hotel1);
-//			cidadeDAO.save(cidade2); 
-			//nomeHotel1 está nas cidades de São Carlos e São Paulo. (persistir)
+//			cidade2.addHotelDaCidade(hotel3);
+//			cidadeDAO.save(cidade2);
+//			cidade3.addHotelDaCidade(hotel3);
+//			cidadeDAO.save(cidade3); 
+//			São Carlos, São Paulo e Uberaba agora contém o Hotel Bienvenido.
 			
 			
-			//ATUALIZAR OBJETOS DOS SETS: (NECESSÁRIO?)
+			//ATUALIZAR OBJETOS DOS SETS: 
 			Set<Cidade> set1cidadeUP = new HashSet<Cidade>();
 			Set<Cidade> set2cidadeUP = new HashSet<Cidade>();
 			Set<Cidade> set3cidadeUP = new HashSet<Cidade>();
@@ -114,8 +117,11 @@ public class SistemaT2Application {
 			
 
 			//Re-inicializa o atributo cidades do objeto hotel1 com set1cidade (que agora possui os objetos atualizados).
-			hotel1.setCidades(set1cidadeUP);
-//			hotel1.addCidade(cidade2); //
+//			hotel1.setCidades(set1cidadeUP);
+			
+			hotel1.addCidade(cidade1); //
+			hotel1.addCidade(cidade2); //
+			hotel1.addCidade(cidade3); //
 			hotelDAO.save(hotel1);//atualiza bd (localização do Hotel Boa Viagem atualizada pra São Carlos.
 			
 			//Re-inicializa o atributo cidades do objeto hotel2 com set2cidade (que agora possui o objeto atualizado).
@@ -126,19 +132,54 @@ public class SistemaT2Application {
 			hotel3.setCidades(set3cidadeUP);
 //			hotel2.addCidade(); //
 			hotelDAO.save(hotel3);//atualiza bd (localização do Hotel Bienvenido atualizada pra São Carlos, São Paulo e Uberaba).
- 
-//			SiteReserva sitereserva =  new SiteReserva("www", "nome", "tel", "e-mail", "senha", listpromoTeste);
+
+			
 //			//Dúvida não testada: listpromoTeste não pode ser vazia para invocar o método addPromocoesDoHotel da classe siteReserva.
 //			//Invocar o método setPromocoesDoHotel da classe siteReserva antes?
+
+	
+			SiteReserva sitereserva1 =  new SiteReserva("www.sitereservabrasil.com", "Reserva Brasil'", "(16)1234-5678", "site1@siteres.com", "site1");
+			SiteReserva sitereserva2 =  new SiteReserva("www.siteboareserva.com", "Boa Reserva", "(16)1234-5688", "site2@siteres.com", "site2");
+			SiteReserva sitereserva3 =  new SiteReserva("www.sitebelareserva.com", "Bela Reserva", "(16)1234-5699", "site3@siteres.com", "site3");
+
 //			log.info("Salvando Site");
-//			siteReservaDAO.save(sitereserva);
-//			
+			siteReservaDAO.save(sitereserva1);
+			siteReservaDAO.save(sitereserva2);
+			siteReservaDAO.save(sitereserva3);
+
+
+			PromoHotel promoHotel1 = new PromoHotel(220.5, "2020-11-11", "2020-12-11", hotel1, sitereserva1);
+			PromoHotel promoHotel2 = new PromoHotel(430.5, "2020-11-11", "2020-12-11", hotel2, sitereserva2);
+			PromoHotel promoHotel3 = new PromoHotel(355.5, "2020-11-11", "2020-12-11", hotel3, sitereserva3);
+
 //			log.info("Salvando Promoção");
-//			PromoHotel promoHotel = new PromoHotel(1, "111", "222", hotel1, sitereserva);
-//			promoHotelDAO.save(promoHotel);
-//
-//			
-//			
+			promoHotelDAO.save(promoHotel1);
+			promoHotelDAO.save(promoHotel2);
+			promoHotelDAO.save(promoHotel3);
+
+			List<PromoHotel> set1promoHotel1 = new ArrayList<PromoHotel>();
+			List<PromoHotel> set2promoHotel2 = new ArrayList<PromoHotel>();
+			List<PromoHotel> set3promoHotel3 = new ArrayList<PromoHotel>();
+			
+			set1promoHotel1.add(promoHotel1);
+			set2promoHotel2.add(promoHotel2);
+			set3promoHotel3.add(promoHotel3);
+
+			
+			//Não testado:
+//			sitereserva1.addPromocoesDoHotel(promoHotel1);
+//			sitereserva2.addPromocoesDoHotel(promoHotel2);
+//			sitereserva3.addPromocoesDoHotel(promoHotel3);
+			
+			
+			sitereserva1.setPromocoesDoHotel(set1promoHotel1);
+			sitereserva2.setPromocoesDoHotel(set2promoHotel2);
+			sitereserva3.setPromocoesDoHotel(set3promoHotel3);
+			
+//			log.info("Atualizando Promoção");
+			promoHotelDAO.save(promoHotel1);
+			promoHotelDAO.save(promoHotel2);
+			promoHotelDAO.save(promoHotel3);
 		};
 	}
 }

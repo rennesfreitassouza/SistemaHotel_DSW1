@@ -1,5 +1,6 @@
 package br.ufscar.dc.dsw.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -64,6 +65,18 @@ public class SiteReserva extends Usuario{
     public SiteReserva(String url) {
         this.url = url;
     }
+    
+    //
+    public SiteReserva(String url, String nome, String telefone, String email, String senha) { 
+    	super(nome, email, senha);
+    	
+    	this.url = url;
+	    
+	    this.telefone = telefone;
+	    
+	    this.promocoesDoSiteReserva = new ArrayList<PromoHotel>();
+	}
+    
     
     public SiteReserva(String url, String nome, String telefone, String email, String senha, List<PromoHotel> promocoesDoSiteReserva) { 
     	super(nome, email, senha);
