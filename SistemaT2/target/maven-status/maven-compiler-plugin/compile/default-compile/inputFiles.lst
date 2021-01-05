@@ -8,6 +8,7 @@
 /home/userr/eclipse-workspace/SistemaT2/src/main/java/br/ufscar/dc/dsw/dao/IHotelDAO.java
 /home/userr/eclipse-workspace/SistemaT2/src/main/java/br/ufscar/dc/dsw/service/spec/ICidadeService.java
 /home/userr/eclipse-workspace/SistemaT2/src/main/java/br/ufscar/dc/dsw/dao/ICidadeDAO.java
+/home/userr/eclipse-workspace/SistemaT2/src/main/java/br/ufscar/dc/dsw/controller/HotelRestController.java
 /home/userr/eclipse-workspace/SistemaT2/src/main/java/br/ufscar/dc/dsw/controller/HotelController.java
 /home/userr/eclipse-workspace/SistemaT2/src/main/java/br/ufscar/dc/dsw/conversor/BigDecimalConversor.java
 /home/userr/eclipse-workspace/SistemaT2/src/main/java/br/ufscar/dc/dsw/service/impl/SiteReservaService.java

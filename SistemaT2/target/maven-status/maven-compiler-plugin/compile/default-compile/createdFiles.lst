@@ -15,6 +15,7 @@ br/ufscar/dc/dsw/domain/Cidade.class
 br/ufscar/dc/dsw/domain/PromoHotel.class
 br/ufscar/dc/dsw/service/spec/ISiteReservaService.class
 br/ufscar/dc/dsw/domain/AbstractEntity.class
+br/ufscar/dc/dsw/controller/HotelRestController.class
 br/ufscar/dc/dsw/service/impl/SiteReservaService.class
 br/ufscar/dc/dsw/service/impl/HotelService.class
 br/ufscar/dc/dsw/service/spec/ICidadeService.class

@@ -19,5 +19,8 @@ public interface IHotelDAO extends CrudRepository<Hotel, Long>{
 	Hotel save (Hotel hotel); // faz as operações de save e update.
 	
 	void deleteById(Long id);
-
+	
+	//Procurar todas as cidades dado um estado: https://youtu.be/BsBwd5lh-8c?t=214
+//	@Query("select h from Hotel h where cidade = :cidade")
+//	public List<Hotel> findByCidade(@Param("estado") Cidade cidade);
 }

@@ -16,4 +16,5 @@ public interface ICidadeDAO extends CrudRepository<Cidade, Long>{
 	Cidade save(Cidade cidade);
 	
 	void deleteById(Long id);
+	
 }
