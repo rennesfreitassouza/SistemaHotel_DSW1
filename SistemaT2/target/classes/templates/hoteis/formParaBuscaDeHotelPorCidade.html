@@ -9,7 +9,7 @@
 			<form name ='form'>
 				<table>
 					<tr>
-						<td>Cidade</td>
+						<td><span th:text="#{formParaBuscaDeHotelPorCidade.cidade.label}"></td>
 						<td><select name='cidadeParaSelecionar' onchange='submit()'>
 								<option value='0'>--</option>
 								<option th:each="nomeCidade : ${cidadesParaSelecionar}" 
@@ -22,7 +22,7 @@
 		
 			<table border="1" style="width: 400px; border: 1px solid black">
 				<tr>
-					<th style="width: 70%;">Nome hotel</th>
+					<th style="width: 70%;"><span th:text="#{formParaBuscaDeHotelPorCidade.nome_hotel.label}"></span></th>
 				</tr>
 				<tr th:each="hotel : ${hotelDaCidade}">
 					<td style="text-align: center">

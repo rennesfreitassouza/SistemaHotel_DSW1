@@ -46,16 +46,9 @@ public class HotelController {
 	}
 
 	@GetMapping("/formParaBuscaDeHotelPorCidade")
-	public String formParaBuscaDeHotelPorCidade(/*@RequestParam(required = false) String nomeInseridoDaCidade*/
-					@RequestParam(required = false) String cidadeParaSelecionar, ModelMap model) {
-//		if (result.hasErrors()) {
-//			return "hoteis/erro"; //página de erros amigável
-//		}
-//		List<Cidade>teste = serviceC.buscarTodas();
-		//COMO PEGAR O VALOR INSERIDO NO INPUT DO FORUMULARIO E ATRIBUIR PARA UM TRIBUTO DA VISÃO. ENVIAR POST-> OUTRA VISAO (OPERADOR TERNARIO)
-		//model.addAttribute("nomeInseridoDaCidade", nomeInseridoDaCidade); //Lista todos os hotéis da cidade de Ibaté.
+	public String formParaBuscaDeHotelPorCidade(@RequestParam(required = false) String cidadeParaSelecionar, ModelMap model) {
 		List<Cidade>cidades = serviceC.buscarTodas();
-		model.addAttribute("cidadesParaSelecionar", cidades); //Lista todos os hotéis da cidade de Ibaté.
+		model.addAttribute("cidadesParaSelecionar", cidades);
 		
 		if (cidadeParaSelecionar != null) {
 			Cidade cidade = new Cidade();
@@ -70,25 +63,5 @@ public class HotelController {
 		}
 		
 		return "hoteis/formParaBuscaDeHotelPorCidade"; //Renderiza para formParaBuscaDeHotelPorCidade.html
-	}
-	
-	@PostMapping("/listarTodosHoteisDaCidade")
-	public String listarTodosHoteisDaCidade(String nomeInseridoDaCidade, ModelMap model) {
-//		if (result.hasErrors()) {
-//			return "hoteis/erro"; //página de erros amigável
-//		}
-		//buscar o objeto cidade pelo nome. Listar todas e pesquisar na lista uma que contenha o nome igual a enviada pelo formulário.
-		List<Cidade>listaCidadesCadastradas = serviceC.buscarTodas();
-		Cidade cidade = new Cidade();
-		for (Cidade cidadeDaLista : listaCidadesCadastradas) {
-			if (cidadeDaLista.getCidade().equals(nomeInseridoDaCidade))
-			{
-				cidade = cidadeDaLista;
-				break;
-			}
-		}
-		if (cidade.getHotelDaCidade() != null)
-			model.addAttribute("hoteisDaCidade", service.buscarTodosHoteisDaCidade(cidade)); //Lista todos os hotéis da cidade de Ibaté.
-		return "hoteis/buscarTodosHoteisDaCidade"; //Renderizar PARA HTML APROPRIADO.
 	}
 }
