@@ -56,6 +56,9 @@ public class HotelRestController {
 		}
 		
 		hotel.setNome((String) json.get("nome"));
+		hotel.setEmail((String) json.get("login"));
+		hotel.setSenha((String) json.get("senha"));
+		hotel.setCnpj((String) json.get("cnpj"));
 		
 	}
 	
@@ -68,7 +71,7 @@ public class HotelRestController {
 		return ResponseEntity.ok(lista); //Devolve uma lista de hotéis.
 	}
 	
-	@GetMapping(path = "/hoteis/{id}") // Retorno Ok?
+	@GetMapping(path = "/hoteis/{id}") // Retorno Ok.
 	public ResponseEntity<Hotel> lista(@PathVariable("id") long id){
 		Hotel hotel = serviceH.buscarPorId(id);
 		if (hotel == null) {
@@ -77,7 +80,9 @@ public class HotelRestController {
 		return ResponseEntity.ok(hotel);
 	}
 	
-	@GetMapping(path = "/hoteis/cidades/{nomeDaCidade}") // 
+	@GetMapping(path = "/hoteis/cidades/{nomeDaCidade}") // GET localhost:8080/hoteis/cidades/São Carlos
+													     // GET localhost:8080/hoteis/cidades/São Paulo
+														 // GET localhost:8080/hoteis/cidades/Uberaba
 	public ResponseEntity<List<Hotel>> lista(@PathVariable("nomeDaCidade") String nomeCidade){
 		List<Cidade> todas_Cidades = new ArrayList<Cidade>();
 		Cidade cidadeProcurada = new Cidade();
@@ -100,6 +105,12 @@ public class HotelRestController {
 	@PostMapping(path = "/hoteis")
 	@ResponseBody
 	public ResponseEntity<Hotel> cria(@RequestBody JSONObject json) {
+// POST localhost:8080/hoteis
+// Body:		
+//		{
+//		    "nome" : "Teste Nome Hotel", "login" : "Teste nome Login", "senha" : "TesteSenha", "cnpj" : "11111111111"
+//
+//		}
 		try {
 			if (isJSONValid(json.toString())) {
 				Hotel hotel = new Hotel();
@@ -116,6 +127,11 @@ public class HotelRestController {
 	}
 
 	@PutMapping(path = "/hoteis/{id}")
+// PUT localhost:8080/hoteis/7
+//	{
+//	    "nome" : "Teste updated Nome Hotel", "login" : "Teste nome Login", "senha" : "TesteSenha", "cnpj" : "11111111111"
+//
+//	}	
 	public ResponseEntity<Hotel> atualiza(@PathVariable("id") long id, @RequestBody JSONObject json)  {
 		try {
 			if (isJSONValid(json.toString())) {
@@ -138,6 +154,7 @@ public class HotelRestController {
 	}
 	
 	@DeleteMapping(path = "/hoteis/{id}")
+	//DELETE localhost:8080/hoteis/7
 	public ResponseEntity<Boolean> remove(@PathVariable("id") long id) {
 		Hotel hotel = serviceH.buscarPorId(id);
 		if (hotel == null) {
