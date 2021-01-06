@@ -19,6 +19,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 
 //Classe mapeada para a tabela:
 //create table Hotel(
@@ -26,6 +28,7 @@ import javax.validation.constraints.Size;
 //	);
 
 @SuppressWarnings("serial")
+@JsonIgnoreProperties(value = { "cidades", "promocoesDoHotel" }) 
 @Entity
 @Table(name = "Hotel")
 public class Hotel extends Usuario{
