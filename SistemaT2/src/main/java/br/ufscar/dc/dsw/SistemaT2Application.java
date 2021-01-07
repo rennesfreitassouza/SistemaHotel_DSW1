@@ -11,11 +11,15 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import br.ufscar.dc.dsw.dao.ICidadeDAO;
 import br.ufscar.dc.dsw.dao.IHotelDAO;
 import br.ufscar.dc.dsw.dao.IPromoHotelDAO;
 import br.ufscar.dc.dsw.dao.ISiteReservaDAO;
+import br.ufscar.dc.dsw.dao.IUsuarioDAO;
+import br.ufscar.dc.dsw.domain.Usuario;
+
 
 import br.ufscar.dc.dsw.domain.*;
 
@@ -29,9 +33,24 @@ public class SistemaT2Application {
 	}
 	
 	@Bean
-	public CommandLineRunner demo(ICidadeDAO cidadeDAO, IHotelDAO hotelDAO, IPromoHotelDAO promoHotelDAO, ISiteReservaDAO siteReservaDAO) {
+	public CommandLineRunner demo(ICidadeDAO cidadeDAO, IHotelDAO hotelDAO, IPromoHotelDAO promoHotelDAO, ISiteReservaDAO siteReservaDAO, IUsuarioDAO dao, BCryptPasswordEncoder encoder) {
 		return (args) -> {
 			
+			Usuario u1 = new Usuario("Luis", "luis@admin.com", encoder.encode("luis"));
+			//u1.setNome("Luis");
+			//u1.setLogin("luis@admin.com");
+			//u1.setSenha(encoder.encode("luis"));
+			//u1.setRole("ROLE_USER");
+			//u1.setEnabled(true);
+			dao.save(u1);
+			
+			Usuario u2 = new Usuario("Rennes","rennes@admin.com", encoder.encode("rennes")) ;
+			//u1.setNome("Rennes");
+			//u2.setLogin("rennes@admin.com");
+			//u2.setSenha(encoder.encode("rennes"));
+			//u2.setRole("ROLE_ADMIN");
+			//u2.setEnabled(true);
+			dao.save(u2);		
 			
 			Cidade cidade1 = new Cidade("São Carlos");
 			Cidade cidade2 = new Cidade("São Paulo");
@@ -56,9 +75,9 @@ public class SistemaT2Application {
 			set3cidade.add(cidade3); //Adiciona Uberaba ao objeto.
 			
 			
-			Hotel hotel1 = new Hotel("55.789.390/0008-99", "Hotel Boa Viagem", set1cidade, "hotel1@hotel.com", "hotel1");
-			Hotel hotel2 = new Hotel("71.150.470/0001-40", "Hotel Bela Vista", set2cidade, "hotel2@hotel.com", "hotel2");
-			Hotel hotel3 = new Hotel("32.106.536/0001-82", "Hotel Bienvenido", set3cidade, "hotel3@hotel.com", "hotel3");
+			Hotel hotel1 = new Hotel("55.789.390/0008-99", "Hotel Boa Viagem", set1cidade, "hotel1@hotel.com", encoder.encode("hotel1"));
+			Hotel hotel2 = new Hotel("71.150.470/0001-40", "Hotel Bela Vista", set2cidade, "hotel2@hotel.com", encoder.encode("hotel2"));
+			Hotel hotel3 = new Hotel("32.106.536/0001-82", "Hotel Bienvenido", set3cidade, "hotel3@hotel.com", encoder.encode("hotel3"));
 			
 			//log.info("Salvando hotéis");
 			hotelDAO.save(hotel1); //not a transient instance  anymore - Hotel Boa Viajem está em São Carlos e São Paulo.
@@ -138,9 +157,9 @@ public class SistemaT2Application {
 //			//Invocar o método setPromocoesDoHotel da classe siteReserva antes?
 
 	
-			SiteReserva sitereserva1 =  new SiteReserva("www.sitereservabrasil.com", "Reserva Brasil'", "(16)1234-5678", "site1@siteres.com", "site1");
-			SiteReserva sitereserva2 =  new SiteReserva("www.siteboareserva.com", "Boa Reserva", "(16)1234-5688", "site2@siteres.com", "site2");
-			SiteReserva sitereserva3 =  new SiteReserva("www.sitebelareserva.com", "Bela Reserva", "(16)1234-5699", "site3@siteres.com", "site3");
+			SiteReserva sitereserva1 =  new SiteReserva("www.sitereservabrasil.com", "Reserva Brasil'", "(16)1234-5678", "site1@siteres.com", encoder.encode("site1"));
+			SiteReserva sitereserva2 =  new SiteReserva("www.siteboareserva.com", "Boa Reserva", "(16)1234-5688", "site2@siteres.com", encoder.encode("site2"));
+			SiteReserva sitereserva3 =  new SiteReserva("www.sitebelareserva.com", "Bela Reserva", "(16)1234-5699", "site3@siteres.com", encoder.encode("site3"));
 
 //			log.info("Salvando Site");
 			siteReservaDAO.save(sitereserva1);
