@@ -1,4 +1,4 @@
-- Checklist das funcionalidades implementadas e divisão dos requisitos por membro da equipe:
+-> Checklist das funcionalidades implementadas e divisão dos requisitos por membro da equipe:
 
 - R1:
 
