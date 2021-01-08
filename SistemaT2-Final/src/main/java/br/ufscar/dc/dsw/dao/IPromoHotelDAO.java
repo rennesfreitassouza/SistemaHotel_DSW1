@@ -13,6 +13,8 @@ public interface IPromoHotelDAO extends CrudRepository<PromoHotel, Long>{
 	
 	PromoHotel findById(long id);
 	
+	PromoHotel findByIniciopromo(String iniciopromo);
+	
 	List<PromoHotel> findAll();
 	
 	//TESTAR

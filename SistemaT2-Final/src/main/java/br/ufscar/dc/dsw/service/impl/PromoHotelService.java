@@ -30,6 +30,11 @@ public class PromoHotelService implements IPromoHotelService{
 	public PromoHotel buscarPorId(Long id) {
 		return dao.findById(id.longValue());
 	}
+	
+	@Transactional(readOnly = true) 
+	public PromoHotel findByIniciopromo(String iniciopromo) {
+		return dao.findByIniciopromo(iniciopromo);
+	}
 
 	@Transactional(readOnly = true)
 	public List<PromoHotel> buscarTodos() {

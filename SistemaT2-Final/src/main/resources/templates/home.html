@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity"
@@ -27,4 +27,39 @@
 		</div>
 	</div>
 </body>
+</html> -->
+
+<!DOCTYPE html>
+<html layout:decorate="~{layout2}">
+<head>
+<meta charset="UTF-8" />
+</head>
+<body>
+	<section class="layout-content" layout:fragment="corpo">
+
+	<div sec:authorize="hasRole('admin.com')">
+		<div class="container" style="text-align: center;">
+			<h1 th:text="#{admin.index.title}"></h1>
+			<img alt="" th:src="@{/image/image3}" style="width:800px;">
+		</div>
+	</div>
+
+	<div sec:authorize="hasRole('hotel.com')">
+		<div class="container" style="text-align: center;">
+			<h1 th:text="#{hotel.index.title}"></h1>
+			<img alt="" th:src="@{/image/image3}" style="width:800px;">
+		</div>
+	</div>
+	
+	<div sec:authorize="hasRole('siteres.com')">
+		<div class="container" style="text-align: center;">
+			<h1 th:text="#{siteres.index.title}"></h1>
+			<img alt="" th:src="@{/image/image3}" style="width:800px;">
+		</div>
+	</div>
+
+	</section>
+</body>
 </html>
+
+ 

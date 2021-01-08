@@ -67,16 +67,25 @@ public class PromoHotelController {
 	@PostMapping("/salvar")
 	public String salvar(@Valid PromoHotel promohotel, BindingResult result, RedirectAttributes attr) {
 		
-		Hotel hotel = serviceH.buscarPorLogin(this.getUsuario().getLogin());
-		promohotel.setHotel(hotel);
+		//PromoHotel promodata = serviceP.findByIniciopromo(promohotel.getIniciopromo());
 		
-		if (result.hasErrors() || promohotel.getPreco() == null) {
-			return "hotel/cadastro";
+		if (serviceP.findByIniciopromo(promohotel.getIniciopromo()) == null) {
+				
+			Hotel hotel = serviceH.buscarPorLogin(this.getUsuario().getLogin());
+			promohotel.setHotel(hotel);
+			
+			if (result.hasErrors() || promohotel.getPreco() == null) {
+				return "hotel/cadastro";
+			}
+	
+			serviceP.salvar(promohotel);
+			attr.addFlashAttribute("sucess", "Promoção inserida com sucesso");
+			return "redirect:/hotel/lista";
 		}
-
-		serviceP.salvar(promohotel);
-		attr.addFlashAttribute("sucess", "Promoção inserida com sucesso");
-		return "redirect:/hotel/lista";
+		else {
+		attr.addFlashAttribute("fail", "Já existe promoção nessa data");
+		}
+		return "hotel/cadastro";
 	}
 
 	@ModelAttribute("sitereservas")

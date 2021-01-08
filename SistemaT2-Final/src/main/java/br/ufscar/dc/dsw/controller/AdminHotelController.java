@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import br.ufscar.dc.dsw.domain.Hotel;
 import br.ufscar.dc.dsw.service.spec.IHotelService;
@@ -21,6 +22,9 @@ public class AdminHotelController {
 	
 	@Autowired
 	private IHotelService service;
+	
+	@Autowired
+	private BCryptPasswordEncoder encoder;
 	
 	@GetMapping("/cadastrar")
 	public String cadastrar(Hotel hotel) {
@@ -39,7 +43,7 @@ public class AdminHotelController {
 		if (result.hasErrors()) {
 			return "admin/hotel/cadastro";
 		}
-		
+		hotel.setSenha(encoder.encode(hotel.getSenha()));
 		service.salvar(hotel);
 		attr.addFlashAttribute("sucess", "Hotel inserido com sucesso.");
 		return "redirect:/adminhoteis/listar";
@@ -57,7 +61,7 @@ public class AdminHotelController {
 		if (result.hasErrors()) {
 			return "admin/hotel/cadastro";
 		}
-
+		hotel.setSenha(encoder.encode(hotel.getSenha()));
 		service.salvar(hotel);
 		attr.addFlashAttribute("sucess", "Hotel editado com sucesso.");
 		return "redirect:/adminhoteis/listar";

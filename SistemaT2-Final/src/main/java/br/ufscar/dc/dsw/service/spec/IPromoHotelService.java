@@ -19,4 +19,6 @@ public interface IPromoHotelService {
 	public List<PromoHotel> findByHotel(Hotel hotel);
 	
 	public List<PromoHotel> findBySitereserva(SiteReserva sitereserva);
+	
+	public PromoHotel findByIniciopromo(String iniciopromo);
 }
