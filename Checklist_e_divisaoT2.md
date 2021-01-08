@@ -1,50 +1,51 @@
-- Checklist das funcionalidades implementadas e divisão dos requisitos por membro da equipe -
+- Checklist das funcionalidades implementadas e divisão dos requisitos por membro da equipe:
 
-R1:
-
-( ) Implementado ( ) Parcialmente implementado ( ) Não implementado
-Divisão na implementação da funcionalidade: Daniel ( ), Luis ( ) e Rennes ( )
-
-R2:
+- R1:
 
 ( ) Implementado ( ) Parcialmente implementado ( ) Não implementado
 Divisão na implementação da funcionalidade: Daniel ( ), Luis ( ) e Rennes ( )
 
-R3:
+- R2:
 
 ( ) Implementado ( ) Parcialmente implementado ( ) Não implementado
 Divisão na implementação da funcionalidade: Daniel ( ), Luis ( ) e Rennes ( )
 
-R4:
+- R3:
+
+( ) Implementado ( ) Parcialmente implementado ( ) Não implementado
+Divisão na implementação da funcionalidade: Daniel ( ), Luis ( ) e Rennes ( )
+
+- R4:
 
 ( ) Implementado ( ) Parcialmente implementado ( ) Não implementado
 Divisão na implementação da funcionalidade: Daniel (33%), Luis (33%) e Rennes ( )
 
-R5:
+- R5:
 
 ( ) Implementado ( ) Parcialmente implementado ( ) Não implementado 
 Divisão na implementação da funcionalidade: Daniel ( ), Luis ( ) e Rennes ( 
 
-R6:
+- R6:
 
 ( ) Implementado ( ) Parcialmente implementado ( ) Não implementado
 Divisão na implementação da funcionalidade: Daniel ( ), Luis ( ) e Rennes ( )
 
-R7:
+- R7:
 
 ( ) Implementado ( ) Parcialmente implementado ( ) Não implementado
 Divisão na implementação da funcionalidade: Daniel ( ), Luis ( ) e Rennes ( )
 
-R8:
+- R8:
 
 ( ) Implementado ( ) Parcialmente implementado ( ) Não implementado
 Divisão na implementação da funcionalidade: Daniel ( ), Luis ( ) e Rennes ( )
 
-R9:
+- R9:
 
 ( ) Implementado ( ) Parcialmente implementado ( ) Não implementado
 Divisão na implementação da funcionalidade: Daniel ( ), Luis ( ) e Rennes ( )
 
-R10:
+-R10:
+
 ( ) Implementado ( ) Parcialmente implementado ( ) Não implementado
 Divisão na implementação da funcionalidade: Daniel ( ), Luis ( ) e Rennes ( )
