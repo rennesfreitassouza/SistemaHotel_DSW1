@@ -1,4 +1,4 @@
-- Roteiro de execução -
+- Roteiro de execução:
 
 - SGBD utilizado: MySQL version 8
 
@@ -11,7 +11,7 @@
   GRANT ALL PRIVILEGES ON *.* TO 'user'@'localhost';
   FLUSH PRIVILEGES;
     
-- Executar o comando no diretório raiz do Projeto com usuário com privilégios de administrador: sudo mvn spring-boot:run
+- Executar o comando no diretório raiz do projeto com usuário com privilégios de administrador: sudo mvn spring-boot:run
 
 - IDE utilizada pela equipe: Eclipse IDE 2020;
 
