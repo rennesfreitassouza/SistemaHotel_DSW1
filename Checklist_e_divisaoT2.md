@@ -43,7 +43,7 @@ Divisão na implementação da funcionalidade: Daniel ( ), Luis ( ) e Rennes ( )
 R9:
 
 ( ) Implementado ( ) Parcialmente implementado ( ) Não implementado
-Divisão na implementação da funcionalidade: Daniel ( ), Luis ( ) e Rennes ( )R9:
+Divisão na implementação da funcionalidade: Daniel ( ), Luis ( ) e Rennes ( )
 
 R10:
 ( ) Implementado ( ) Parcialmente implementado ( ) Não implementado
