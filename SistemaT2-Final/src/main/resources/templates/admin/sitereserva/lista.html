@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout2}">
+<head>
+<meta charset="UTF-8" />
+</head>
+<body>
+	<section class="layout-content" layout:fragment="corpo">
+
+		<nav class="navbar navbar-expand-md bg-light">
+			<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item active">
+						<i class="oi oi-caret-right"></i>
+						<span>Lista de Sites de Reserva</span>
+					</li>
+				</ul>
+			</div>
+			<a class="btn btn-primary btn-md" th:href="@{/sites/cadastrar}" role="button"> 
+				<span class="oi oi-plus" title="Cadastro" aria-hidden="true"></span> 
+				<span>Novo Site de Reserva</span>
+			</a>
+		</nav>
+
+		<div class="container col-lg" id="listagem">
+
+			<div th:replace="fragments/alert"></div>
+
+			<div class="table-responsive col-xl" >
+				<table class="table table-striped table-hover table-sm">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>Nome</th>
+							<th>Login</th>
+							<th>Senha</th>
+							<th>URL</th>
+							<th>Telefone</th>
+							<th>Ação</th>
+						</tr>
+					</thead>
+					<tbody>						
+						<tr th:each="sitereserva : ${sites}">
+							<td th:text="${sitereserva.id}"></td>
+							<td th:text="${sitereserva.nome}"></td>
+							<td th:text="${sitereserva.login}"></td>
+							<td th:text="${sitereserva.senha}"></td>
+							<td th:text="${sitereserva.url}"></td>
+							<td th:text="${sitereserva.telefone}"></td>
+							<td colspan="2">
+								<a class="btn btn-info btn-sm"
+									th:href="@{/sites/editar/{id} (id=${sitereserva.id}) }" role="button"> 
+									<span class="oi oi-brush" title="Editar" aria-hidden="true"></span>
+								</a>
+								<button th:id="${#strings.concat('btn_sites/excluir/',sitereserva.id)}" 
+									type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal">
+									<span class="oi oi-circle-x" title="Excluir" aria-hidden="true"></span>
+								</button>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<div th:replace="fragments/modal :: modal"></div>
+	</section>
+</body>
+</html>

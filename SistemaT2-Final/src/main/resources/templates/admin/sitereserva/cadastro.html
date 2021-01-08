@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout2}">
+<head>
+<meta charset="UTF-8" />
+</head>
+<body>
+
+	<section class="layout-content" layout:fragment="corpo">
+
+		<nav class="navbar navbar-expand-md bg-light">
+			<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item active"><i class="oi oi-caret-right"></i>
+						<span>Cadastrar Sites de Reserva</span></li>
+				</ul>
+			</div>
+			<a class="btn btn-primary btn-md" th:href="@{/sites/listar}"
+				role="button"> <span class="oi oi-spreadsheet" title="Cadastro"
+				aria-hidden="true"></span> <span>Listar Sites de Reserva</span>
+			</a>
+		</nav>
+
+		<div class="container" id="cadastro">
+
+			<div th:replace="fragments/alert"></div>
+
+			<form
+				th:action="${sitereserva.id == null} ? @{/sites/salvar} : @{/sites/editar}"
+				th:object="${sitereserva}" method="POST">
+
+				<div class="form-row">
+					<div class="form-group col-md-6">
+						<label for="nome">Nome</label> 
+						<input type="text" class="form-control" id="nome" placeholder="Nome"
+							autofocus="autofocus" th:field="*{nome}"
+							th:classappend="${#fields.hasErrors('nome')} ? is-invalid" />
+
+						<div class="invalid-feedback">
+							<span th:errors="*{nome}"></span>
+						</div>
+					</div>
+
+					<div class="form-group col-md-6">
+						<label for="login">Login</label> 
+						<input type="text" class="form-control" id="login" placeholder="Login"
+							autofocus="autofocus" th:field="*{login}"
+							th:classappend="${#fields.hasErrors('login')} ? is-invalid" />
+
+						<div class="invalid-feedback">
+							<span th:errors="*{login}"></span>
+						</div>
+					</div>
+
+					<div class="form-group col-md-6">
+						<label for="senha">Senha</label> 
+						<input type="password" class="form-control" id="senha" placeholder="Senha"
+							autofocus="autofocus" th:field="*{senha}"
+							th:classappend="${#fields.hasErrors('senha')} ? is-invalid" />
+
+						<div class="invalid-feedback">
+							<span th:errors="*{senha}"></span>
+						</div>
+					</div>
+
+					<div class="form-group col-md-6">
+						<label for="url">URL</label> 
+						<input type="text" class="form-control" id="url" placeholder="URL"
+							autofocus="autofocus" th:field="*{url}"
+							th:classappend="${#fields.hasErrors('url')} ? is-invalid" />
+						                               
+						<div class="invalid-feedback">
+							<span th:errors="*{url}"></span>
+						</div>
+					</div>
+
+					<div class="form-group col-md-6">
+						<label for="telefone">Telefone</label> 
+						<input type="text" class="form-control" id="telefone" placeholder="Telefone"
+							autofocus="autofocus" th:field="*{telefone}"
+							th:classappend="${#fields.hasErrors('telefone')} ? is-invalid" />
+
+						<div class="invalid-feedback">
+							<span th:errors="*{telefone}"></span>
+						</div>
+					</div>
+				</div>
+
+				<input type="hidden" id="id" th:field="*{id}" />
+				<button type="submit" class="btn btn-primary btn-sm">Salvar</button>
+			</form>
+		</div>
+	</section>
+</body>
+</html>
