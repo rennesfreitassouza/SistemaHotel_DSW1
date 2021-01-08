@@ -2,23 +2,23 @@
 
 - R1:
 
-( ) Implementado ( ) Parcialmente implementado ( ) Não implementado
-Divisão na implementação da funcionalidade: Daniel ( ), Luis ( ) e Rennes ( )
+(X) Implementado ( ) Parcialmente implementado ( ) Não implementado
+Divisão na implementação da funcionalidade: Daniel (33,3%), Luis (33,3%) e Rennes (33,3%)
 
 - R2:
 
-( ) Implementado ( ) Parcialmente implementado ( ) Não implementado
-Divisão na implementação da funcionalidade: Daniel ( ), Luis ( ) e Rennes ( )
+(X) Implementado ( ) Parcialmente implementado ( ) Não implementado
+Divisão na implementação da funcionalidade: Daniel (33,3%), Luis (33,3%) e Rennes (33,3%)
 
 - R3:
 
-( ) Implementado ( ) Parcialmente implementado ( ) Não implementado
-Divisão na implementação da funcionalidade: Daniel ( ), Luis ( ) e Rennes ( )
+(X) Implementado ( ) Parcialmente implementado ( ) Não implementado
+Divisão na implementação da funcionalidade: Daniel (33,3%), Luis (33,3%) e Rennes (33,3%)
 
 - R4:
 
-( ) Implementado ( ) Parcialmente implementado ( ) Não implementado
-Divisão na implementação da funcionalidade: Daniel ( ), Luis ( ) e Rennes ( )
+(X) Implementado ( ) Parcialmente implementado ( ) Não implementado
+Divisão na implementação da funcionalidade: Daniel (33,3%), Luis (33,3%) e Rennes (33,3%)
 
 - R5:
 
@@ -27,25 +27,25 @@ Divisão na implementação da funcionalidade: Daniel ( ), Luis ( ) e Rennes (
 
 - R6:
 
-( ) Implementado ( ) Parcialmente implementado ( ) Não implementado
-Divisão na implementação da funcionalidade: Daniel ( ), Luis ( ) e Rennes ( )
+(X) Implementado ( ) Parcialmente implementado ( ) Não implementado
+Divisão na implementação da funcionalidade: Daniel (33,3%), Luis (33,3%) e Rennes (33,3%)
 
 - R7:
 
-( ) Implementado ( ) Parcialmente implementado ( ) Não implementado
+( ) Implementado ( ) Parcialmente implementado (X) Não implementado
 Divisão na implementação da funcionalidade: Daniel ( ), Luis ( ) e Rennes ( )
 
 - R8:
 
-( ) Implementado ( ) Parcialmente implementado ( ) Não implementado
-Divisão na implementação da funcionalidade: Daniel ( ), Luis ( ) e Rennes ( )
+(X) Implementado ( ) Parcialmente implementado ( ) Não implementado
+Divisão na implementação da funcionalidade: Daniel (33,3%), Luis (33,3%) e Rennes (33,3%)
 
 - R9:
 
-( ) Implementado ( ) Parcialmente implementado ( ) Não implementado
-Divisão na implementação da funcionalidade: Daniel ( ), Luis ( ) e Rennes ( )
+( ) Implementado (X) Parcialmente implementado ( ) Não implementado
+Divisão na implementação da funcionalidade: Daniel (33,3%), Luis (33,3%) e Rennes (33,3%)
 
 - R10:
 
-( ) Implementado ( ) Parcialmente implementado ( ) Não implementado
-Divisão na implementação da funcionalidade: Daniel ( ), Luis ( ) e Rennes ( )
+(X) Implementado ( ) Parcialmente implementado ( ) Não implementado
+Divisão na implementação da funcionalidade: Daniel (33,3%), Luis (33,3%) e Rennes (33,3%)
