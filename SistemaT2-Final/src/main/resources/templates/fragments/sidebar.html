@@ -14,30 +14,30 @@
 		<div sec:authorize="hasRole('admin.com')">
 			
 			<ul class="nav nav-pills">
-				<li class="nav-item"><span class="nav-link active">Hoteis</span></li>
+				<li class="nav-item"><span class="nav-link active" th:text="#{sideBar.hotel.title}"></span></li>
 				<li class="nav-item"><a class="nav-link"
-					th:href="@{/adminhoteis/cadastrar}"> <i class="oi oi-plus"></i> <span>Cadastrar</span>
+					th:href="@{/adminhoteis/cadastrar}"> <i class="oi oi-plus"></i> <span th:text="#{sideBar.hotel.cadastrar}"></span>
 				</a></li>
 				<li class="nav-item"><a class="nav-link"
 					th:href="@{/adminhoteis/listar}"> <i class="oi oi-spreadsheet"></i>
-						<span>Listar</span>
+						<span th:text="#{sideBar.hotel.listar}"></span>
 				</a></li>
 			</ul>
 	
 			<ul class="nav nav-pills">
-				<li class="nav-item"><span class="nav-link active">Sites de Reserva</span></li>
+				<li class="nav-item"><span class="nav-link active" th:text="#{sideBar.siteReserva.title}"></span></li>
 				<li class="nav-item"><a class="nav-link"
-					th:href="@{/sites/cadastrar}"> <i class="oi oi-plus"></i> <span>Cadastrar</span>
+					th:href="@{/sites/cadastrar}"> <i class="oi oi-plus"></i> <span th:text="#{sideBar.hotel.cadastrar}"></span>
 				</a></li>
 				<li class="nav-item"><a class="nav-link" th:href="@{/sites/listar}">
-						<i class="oi oi-spreadsheet"></i> <span>Listar</span>
+						<i class="oi oi-spreadsheet"></i> <span th:text="#{sideBar.hotel.listar}"></span>
 				</a></li>
 			</ul>
 		</div>
 
 		<div sec:authorize="hasRole('hotel.com')">
 			<ul class="nav nav-pills">
-				<li class="nav-item"><span class="nav-link active">Promoções de Hotéis</span></li>
+				<li class="nav-item"><span class="nav-link active" th:text="#{sideBar.hotelPromo.title}"></span></li>
 				<li class="nav-item"><a class="nav-link"
 					th:href="@{/hotel/lista}"><i class="oi oi-spreadsheet"></i><span th:text="#{hotel.message.1}"></span></a></li>
 				<li class="nav-item"><a class="nav-link"
@@ -46,7 +46,7 @@
 		</div>
 		<div sec:authorize="hasRole('siteres.com')">
 			<ul class="nav nav-pills">
-					<li class="nav-item"><span class="nav-link active">Promoções de Hotéis</span></li>
+					<li class="nav-item"><span class="nav-link active" th:text="#{sideBar.hotelPromo.title}"></span></li>
 					<li class="nav-item"><a class="nav-link"
 						th:href="@{/sitereserva/lista}"><i class="oi oi-spreadsheet"></i><span th:text="#{hotel.message.1}"></span></a></li>
 			</ul>
