@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
     <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}"/>
 
-    <title layout:title-pattern="$LAYOUT_TITLE - $CONTENT_TITLE">Sistema de Reservas de quartos de hotel</title>
+    <title layout:title-pattern="$LAYOUT_TITLE - $CONTENT_TITLE" th:text="#{header.title}"></title>
 </head>
 <body>
     <th:block th:replace="fragments/header :: cabecalho"/>
