@@ -32,8 +32,8 @@ Divisão na implementação da funcionalidade: Daniel (33,3%), Luis (33,3%) e Re
 
 - R7:
 
-( ) Implementado ( ) Parcialmente implementado (X) Não implementado
-Divisão na implementação da funcionalidade: Daniel ( ), Luis ( ) e Rennes ( )
+(X) Implementado ( ) Parcialmente implementado ( ) Não implementado
+Divisão na implementação da funcionalidade: Daniel (33,3%), Luis (33,3%) e Rennes (33,3%)
 
 - R8:
 
@@ -42,7 +42,7 @@ Divisão na implementação da funcionalidade: Daniel (33,3%), Luis (33,3%) e Re
 
 - R9:
 
-( ) Implementado (X) Parcialmente implementado ( ) Não implementado
+(X) Implementado ( ) Parcialmente implementado ( ) Não implementado
 Divisão na implementação da funcionalidade: Daniel (33,3%), Luis (33,3%) e Rennes (33,3%)
 
 - R10:
