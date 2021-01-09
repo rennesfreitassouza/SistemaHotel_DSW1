@@ -32,7 +32,7 @@
 							<th><span th:text="#{listarTodosHoteis.e-mail.label}"></span></th>
 							<th><span th:text="#{listarTodosHoteis.cnpj.label}"></span></th>
 							<th><span th:text="#{listarTodosHoteis.nome.label}"></span></th>
-							<th><span th:text="#{listarTodosHoteis.senha.label}"></span></th>
+<!--							 <th><span th:text="#{listarTodosHoteis.senha.label}"></span></th>-->
 						</tr>
 					</thead>
 					<tr th:each="hotel : ${hoteis}">
@@ -40,7 +40,7 @@
 						<td th:text="${hotel.getEmail()}"></td>
 						<td th:text="${hotel.getCnpj()}"></td>
 						<td th:text="${hotel.getNome()}"></td>
-						<td th:text="${hotel.getSenha()}"></td>
+<!--						<td th:text="${hotel.getSenha()}"></td>-->
 					</tr>
 				</table>
 			</div>
