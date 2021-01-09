@@ -1,7 +1,7 @@
 package br.ufscar.dc.dsw.domain;
 
 
-//import java.util.HashMap;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set; //Classe do java que permite não repetição.
 
@@ -10,8 +10,7 @@ import javax.persistence.Entity;
 //import javax.persistence.GeneratedValue;
 //import javax.persistence.GenerationType;
 //import javax.persistence.Id;
-//import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 //import javax.persistence.Inheritance;
 //import javax.persistence.InheritanceType;
 import javax.persistence.Table;
@@ -33,7 +32,7 @@ public class Cidade extends AbstractEntity<Long>{
 	@Column(nullable = false, unique = false, length = 200)
     private String nomeCidade;
 	
-	@OneToMany	(mappedBy = "cidade")//Uma cidade pode conter vários hotéis, e um hotel pode estar em apenas uma cidade.
+	@ManyToMany	(targetEntity=Hotel.class)//Uma cidade pode conter vários hotéis, e um hotel pode estar em várias cidades.
 	private Set<Hotel> hotelDaCidade;
 
 	public Cidade() {
