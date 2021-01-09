@@ -8,8 +8,10 @@ import java.util.Set; //Classe do java que permite não repetição.
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 //import javax.persistence.GeneratedValue;
 //import javax.persistence.GenerationType;
 //import javax.persistence.Id;
@@ -43,9 +45,11 @@ public class Hotel extends Usuario{
 //	@Column(nullable = false, unique = false, length = 250)
 //    private String nome;
     
-	//Uma cidade pode conter vários hotéis, e um hotel pode estar em várias cidades.
-	@ManyToMany(targetEntity=Cidade.class, mappedBy = "hotelDaCidade") //a string é mapeada para o atributo chamado hotelDaCidade da classe Cidade.
-	private Set<Cidade> cidades = new HashSet<Cidade>();
+	//Uma cidade pode conter vários hotéis. Um hotel (Ibis São Carlos <> Ibis Araraquara)
+	//pode estar em apenas uma Cidade.
+	@ManyToOne
+	@JoinColumn (name = "cidade_hotelDaCidade") //a string é mapeada para o atributo chamado hotelDaCidade da classe Cidade.
+	private Cidade cidade = new Cidade();
 
 	//herdado
 //	@NotBlank(message = "{NotBlank.hotel.email}")
@@ -72,17 +76,15 @@ public class Hotel extends Usuario{
 //        this.cnpj = cnpj;
 //    }
 
-	public Hotel(String cnpj, String nome, Set<Cidade> cidades, String email, String senha) {
+	public Hotel(String cnpj, String nome, Cidade cidade, String email, String senha) {
 		super(nome,email,senha);
 		
 		this.cnpj = cnpj;
-	    this.cidades = cidades;
-	    
-	    
+	    this.cidade = cidade;   
 	}
 	
-	public Hotel(Long id, String cnpj, String nome, Set<Cidade> cidades, String email, String senha) {
-	    this(cnpj, nome, cidades, email, senha);
+	public Hotel(Long id, String cnpj, String nome, Cidade cidade, String email, String senha) {
+	    this(cnpj, nome, cidade, email, senha);
 	    //this.id = id;
 	}
 	
@@ -115,16 +117,12 @@ public class Hotel extends Usuario{
         super.setNome(nome);
     }
     
-    public Set<Cidade> getCidades() {
-        return cidades;
+    public Cidade getCidade() {
+        return cidade;
     }
 
-    public void setCidades(Set<Cidade> cidades) {
-        this.cidades = cidades;
-    }
-    
-    public void addCidade(Cidade hotelEstaNaCidade) { //Atenção para o uso, somente adiciona, não substitui.
-        this.cidades.add(hotelEstaNaCidade);
+    public void setCidade(Cidade cidade) {
+        this.cidade = cidade;
     }
     
     public String getEmail() {

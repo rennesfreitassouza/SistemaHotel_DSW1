@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+
+<title>Sistema de reservas de quartos de hotéis</title>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+<!-- <link rel="icon" th:href="@{/image/favicon.png}" /> -->
+
+<!-- <!-- Bootstrap core CSS -->
+<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
+<link th:href="@{/webjars/open-iconic/font/css/open-iconic-bootstrap.min.css}"
+	rel="stylesheet" />
+
+<!-- Custom styles for this template -->
+<!-- <link th:href="@{/css/style.css}" rel="stylesheet" /> -->
+</head>
+<body>
+
+	<!-- <header>
+		<div>header</div>
+	</header> -->
+
+	<div class="layout-main">
+		<section layout:fragment="corpo">
+			<div>conteúdo principal das páginas</div>
+		</section>
+	</div>
+
+<!-- 	<footer th:replace="fragments/footer :: rodape"> -->
+<!-- 		<div>footer</div> -->
+<!-- 	</footer> -->
+
+<!-- 	<!-- Bootstrap core JavaScript -->
+<!--     ================================================== -->
+<!-- 	<!-- Placed at the end of the document so the pages load faster -->
+
+</body>
+</html>
+
+<!-- <!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}"/>
+
+    <title layout:title-pattern="$LAYOUT_TITLE - $CONTENT_TITLE">Sistema de Reservas de quartos de hotel</title>
+</head>
+<body>
+    <th:block th:replace="fragments/header :: header"/>
+    <div class="container">
+        <th:block layout:fragment="content"/>
+    </div>
+    <th:block th:replace="fragments/footer :: footer"/>
+</body>
+</html> -->
