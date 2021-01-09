@@ -59,29 +59,29 @@ public class SistemaT2Application {
 			cidadeDAO.save(cidade2);			
 			cidadeDAO.save(cidade3);
 			
-			Set<Cidade> set1cidade = new HashSet<Cidade>();
-			Set<Cidade> set2cidade = new HashSet<Cidade>();
-			Set<Cidade> set3cidade = new HashSet<Cidade>();
+//			Set<Cidade> set1cidade = new HashSet<Cidade>();
+//			Set<Cidade> set2cidade = new HashSet<Cidade>();
+//			Set<Cidade> set3cidade = new HashSet<Cidade>();
 			
-			set1cidade.add(cidade1); //Adiciona São Carlos a set1cidade.
+//			set1cidade.add(cidade1); //Adiciona São Carlos a set1cidade.
+//			
+//			
+//			set2cidade.add(cidade1);  //Adiciona São Carlos ao objeto.
+//			set2cidade.add(cidade2); //Adiciona São Paulo a setcidade2
+//			
+//			set3cidade.add(cidade1); //Adiciona São Carlos ao objeto.
+//			set3cidade.add(cidade2); //Adiciona São Paulo ao objeto.
+//			set3cidade.add(cidade3); //Adiciona Uberaba ao objeto.
 			
 			
-			set2cidade.add(cidade1);  //Adiciona São Carlos ao objeto.
-			set2cidade.add(cidade2); //Adiciona São Paulo a setcidade2
-			
-			set3cidade.add(cidade1); //Adiciona São Carlos ao objeto.
-			set3cidade.add(cidade2); //Adiciona São Paulo ao objeto.
-			set3cidade.add(cidade3); //Adiciona Uberaba ao objeto.
-			
-			
-			Hotel hotel1 = new Hotel("55.789.390/0008-99", "Hotel Boa Viagem", set1cidade, "hotel1@hotel.com", encoder.encode("hotel1"));
-			Hotel hotel2 = new Hotel("71.150.470/0001-40", "Hotel Bela Vista", set2cidade, "hotel2@hotel.com", encoder.encode("hotel2"));
-			Hotel hotel3 = new Hotel("32.106.536/0001-82", "Hotel Bienvenido", set3cidade, "hotel3@hotel.com", encoder.encode("hotel3"));
+			Hotel hotel1 = new Hotel("55.789.390/0008-99", "Hotel Boa Viagem", cidade1, "hotel1@hotel.com", encoder.encode("hotel1"));
+			Hotel hotel2 = new Hotel("71.150.470/0001-40", "Hotel Bela Vista", cidade2, "hotel2@hotel.com", encoder.encode("hotel2"));
+			Hotel hotel3 = new Hotel("32.106.536/0001-82", "Hotel Bienvenido", cidade3, "hotel3@hotel.com", encoder.encode("hotel3"));
 			
 			//log.info("Salvando hotéis");
-			hotelDAO.save(hotel1); //not a transient instance  anymore - Hotel Boa Viajem está em São Carlos e São Paulo.
-			hotelDAO.save(hotel2); //not a transient instance  anymore - Hotel Bela Vista está em São Carlos. 
-			hotelDAO.save(hotel3); //not a transient instance  anymore - Hotel Bienvenido está em Uberaba e São Pualo.
+			hotelDAO.save(hotel1); //not a transient instance  anymore - Hotel Boa Viajem está em São Carlos
+			hotelDAO.save(hotel2); //not a transient instance  anymore - Hotel Bela Vista está em São Paulo. 
+			hotelDAO.save(hotel3); //not a transient instance  anymore - Hotel Bienvenido está em Uberaba.
 			
 			Set<Hotel> set1hotel = new HashSet<Hotel>();
 			set1hotel.add(hotel1);
@@ -102,54 +102,28 @@ public class SistemaT2Application {
 //			São Carlos, São Paulo e Uberaba agora contém o Hotel Bienvenido.
 			
 			
-			//ATUALIZAR OBJETOS DOS SETS: 
-			Set<Cidade> set1cidadeUP = new HashSet<Cidade>();
-			Set<Cidade> set2cidadeUP = new HashSet<Cidade>();
-			Set<Cidade> set3cidadeUP = new HashSet<Cidade>();
-//	ATENÇÃO ORDEM (PRIMEIRO INICIALIZAR COM O  método setHotelDaCidade):	
+			//Re-Inicializa o atributo hotelDaCidade dos objetos que representam as cidades com os objetos do tipo Set <hotel>:
 			
-			//Inicializa o atributo hotelDaCidade dos objetos que representam as cidades com o método set1hotel
-			for (Cidade c : set3cidade) {
-			    c.setHotelDaCidade(set3hotel); //Insere hotel3 nos objetos que estão no set3cidade (persistir).
-			    
-			    cidadeDAO.save(c); //not a transient instance  anymore
-			    set3cidadeUP.add(c);
-			} //São Carlos, São Paulo e Uberaba agora contém o Hotel Bienvenido.
+			cidade1.setHotelDaCidade(set1hotel); //Insere set1hotel no objeto chamadado cidade1 (persistir).
+			cidadeDAO.save(cidade1); //not a transient instance  anymore
+			//São Carlos agora contém o Hotel Bienvenido.
 			
-			//ADD
-			for (Cidade c : set2cidade) {
-			    c.addHotelDaCidade(hotel2); //Insere hotel2 no objeto que está no set2cidade (persistir).
-			    
-			    cidadeDAO.save(c); //not a transient instance  anymore
-			    set2cidadeUP.add(c);
-			} //São Carlos e São Paulo agora contém o Hotel Bela Vista.
+			cidade2.setHotelDaCidade(set2hotel); //Insere set2hotel no objeto chamdado cidade2 (persistir).
+			cidadeDAO.save(cidade2); //not a transient instance  anymore
+			//São Paulo  agora contém o Hotel Bela Vista.
+			 
+			cidade3.setHotelDaCidade(set3hotel); //Insere set3hotel no objeto chamdado cidade3 (persistir).
+			cidadeDAO.save(cidade3); //not a transient instance  anymore
+			//Uberaba agora contém o Hotel Bienvenido.
 			
+			hotel1.setCidade(cidade1); //
+			hotelDAO.save(hotel1); //Atualiza bd (localização do Hotel Boa Viagem atualizada pra São Carlos.
 			
-			//ADD
-			for (Cidade c : set1cidade) {
-			    c.addHotelDaCidade(hotel1); //atribui set1hotel nos objetos de cada cidade do Set set1cidade1. (persistir)
-			    
-			    cidadeDAO.save(c); //not a transient instance  anymore
-			    set1cidadeUP.add(c);
-			} //São Carlos agora contém o hotel Boa Viajem.
+			hotel2.setCidade(cidade2);
+			hotelDAO.save(hotel2);//atualiza bd (localização do Hotel Bela Vista atualizada pra São Paulo.
 			
-
-			//Re-inicializa o atributo cidades do objeto hotel1 com set1cidade (que agora possui os objetos atualizados).
-//			hotel1.setCidades(set1cidadeUP);
-			
-			hotel1.addCidade(cidade1); //
-			hotel1.addCidade(cidade2); //
-			hotel1.addCidade(cidade3); //
-			hotelDAO.save(hotel1);//atualiza bd (localização do Hotel Boa Viagem atualizada pra São Carlos.
-			
-			//Re-inicializa o atributo cidades do objeto hotel2 com set2cidade (que agora possui o objeto atualizado).
-			hotel2.setCidades(set2cidadeUP);
-//			hotel2.addCidade(cidade1); //
-			hotelDAO.save(hotel2);//atualiza bd (localização do Hotel Bela Vista atualizada pra São Carlos e São Paulo.
-			
-			hotel3.setCidades(set3cidadeUP);
-//			hotel2.addCidade(); //
-			hotelDAO.save(hotel3);//atualiza bd (localização do Hotel Bienvenido atualizada pra São Carlos, São Paulo e Uberaba).
+			hotel3.setCidade(cidade3);
+			hotelDAO.save(hotel3);//atualiza bd (localização do Hotel Bienvenido Uberaba).
 
 			
 //			//Dúvida não testada: listpromoTeste não pode ser vazia para invocar o método addPromocoesDoHotel da classe siteReserva.
