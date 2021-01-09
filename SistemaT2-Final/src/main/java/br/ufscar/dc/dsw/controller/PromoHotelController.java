@@ -65,27 +65,31 @@ public class PromoHotelController {
 	}
 	
 	@PostMapping("/salvar")
-	public String salvar(@Valid PromoHotel promohotel, BindingResult result, RedirectAttributes attr) {
+	public String salvar(ModelMap model, @Valid PromoHotel promohotel, BindingResult result, RedirectAttributes attr) {
 		
-		//PromoHotel promodata = serviceP.findByIniciopromo(promohotel.getIniciopromo());
+		PromoHotel promodata = serviceP.findByIniciopromo(promohotel.getIniciopromo());
+		System.out.println(promodata);
 		
-		if (serviceP.findByIniciopromo(promohotel.getIniciopromo()) == null) {
+		if (promodata != null) {
 				
+			model.addAttribute("promohotel",promohotel);
+			attr.addFlashAttribute("fail", "Ja existe promoção nessa data");
+			return "redirect:/hotel/cadastrar";
+		}
+		else {
 			Hotel hotel = serviceH.buscarPorLogin(this.getUsuario().getLogin());
 			promohotel.setHotel(hotel);
 			
-			if (result.hasErrors() || promohotel.getPreco() == null) {
-				return "hotel/cadastro";
+			if (result.hasErrors()) {
+				model.addAttribute("promohotel",promohotel);
+				return "redirect:/hotel/cadastrar";
 			}
 	
 			serviceP.salvar(promohotel);
 			attr.addFlashAttribute("sucess", "Promoção inserida com sucesso");
-			return "redirect:/hotel/lista";
+			
 		}
-		else {
-		attr.addFlashAttribute("fail", "Já existe promoção nessa data");
-		}
-		return "hotel/cadastro";
+		return "redirect:/hotel/lista";
 	}
 
 	@ModelAttribute("sitereservas")
