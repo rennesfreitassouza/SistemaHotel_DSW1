@@ -15,5 +15,5 @@ public interface ISiteReservaService {
 	
 	public SiteReserva buscarPorLogin(String login);
 	
-	boolean siteReservaTemPromo(Long id);
+	//boolean siteReservaTemPromo(Long id);
 }

@@ -40,8 +40,8 @@ public class SiteReservaService implements ISiteReservaService{
 		return dao.findAll();
 	}
 	
-	@Transactional(readOnly = true)
+	/*@Transactional(readOnly = true)
 	public boolean siteReservaTemPromo(Long id) {
 		return !dao.findById(id.longValue()).getPromocoesDoHotel().isEmpty();
-	}
+	}*/
 }

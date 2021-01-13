@@ -1,6 +1,7 @@
 package br.ufscar.dc.dsw.controller;
 
 import javax.validation.Valid;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -17,6 +18,7 @@ import br.ufscar.dc.dsw.domain.Hotel;
 import br.ufscar.dc.dsw.domain.PromoHotel;
 import br.ufscar.dc.dsw.domain.SiteReserva;
 import br.ufscar.dc.dsw.service.spec.ISiteReservaService;
+import br.ufscar.dc.dsw.service.spec.IPromoHotelService;
 
 @Controller
 @RequestMapping("/sites")
@@ -26,26 +28,24 @@ public class AdminSiteReservaController {
 	private ISiteReservaService service;
 	
 	@Autowired
+	private IPromoHotelService serviceP;
+	
+	@Autowired
 	private BCryptPasswordEncoder encoder;
 
-	@GetMapping("/cadastrar")
+	/*@GetMapping("/cadastrar")
 	public String cadastrar(ModelMap model) {
 		
 		SiteReserva sitereserva = new SiteReserva();
 		model.addAttribute("sitereserva",sitereserva);
 		return "admin/sitereserva/cadastro";
-	}
-	
-	/*	@GetMapping("/cadastrar")
-	public String cadastrar(ModelMap model) {
-		
-		PromoHotel promohotel = new PromoHotel();
-		Hotel hotel = serviceH.buscarPorLogin(this.getUsuario().getLogin());
-		promohotel.setHotel(hotel);
-		model.addAttribute("promohotel",promohotel);
-		
-		return "hotel/cadastro";
 	}*/
+	
+	@GetMapping("/cadastrar")
+	public String cadastrar(SiteReserva siteReserva) {
+		return "admin/sitereserva/cadastro";
+	}
+
 
 	@GetMapping("/listar")
 	public String listar(ModelMap model) {
@@ -54,10 +54,12 @@ public class AdminSiteReservaController {
 	}
 
 	@PostMapping("/salvar")
-	public String salvar(@Valid SiteReserva sitereserva, BindingResult result, RedirectAttributes attr) {
+	public String salvar(ModelMap model, @Valid SiteReserva sitereserva, BindingResult result, RedirectAttributes attr) {
 
 		
 		if (result.hasErrors()) {
+			System.out.println(result);
+			model.addAttribute("siteReserva",sitereserva);
 			return "admin/sitereserva/cadastro";
 		}
 		
@@ -70,7 +72,7 @@ public class AdminSiteReservaController {
 
 	@GetMapping("/editar/{id}")
 	public String preEditar(@PathVariable("id") Long id, ModelMap model) {
-		model.addAttribute("sitereserva", service.buscarPorId(id));
+		model.addAttribute("siteReserva", service.buscarPorId(id));
 		return "admin/sitereserva/cadastro";
 	}
 
@@ -88,7 +90,11 @@ public class AdminSiteReservaController {
 
 	@GetMapping("/excluir/{id}")
 	public String excluir(@PathVariable("id") Long id, ModelMap model) {
-		if (service.siteReservaTemPromo(id)) {
+		//if (service.siteReservaTemPromo(id)) {
+		SiteReserva sitereserva = service.buscarPorId(id);
+		List<PromoHotel> promosite = serviceP.findBySitereserva(sitereserva); // verifica se existe promoções deste site de reservas
+		
+		if (promosite != null) {
 			model.addAttribute("fail", "Site de Reserva não excluído. Possui promo(s) vinculada(s).");
 		} else {
 			service.excluir(id);

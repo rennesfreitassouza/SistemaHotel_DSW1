@@ -74,22 +74,22 @@ public class SiteReserva extends Usuario{
 	    
 	    this.telefone = telefone;
 	    
-	    this.promocoesDoSiteReserva = new ArrayList<PromoHotel>();
+	   // this.promocoesDoSiteReserva = new ArrayList<PromoHotel>();
 	}
     
     
-    public SiteReserva(String url, String nome, String telefone, String email, String senha, List<PromoHotel> promocoesDoSiteReserva) { 
+    /*public SiteReserva(String url, String nome, String telefone, String email, String senha)}//, List<PromoHotel> promocoesDoSiteReserva) { 
     	super(nome, email, senha);
     	
     	this.url = url;
 	    
 	    this.telefone = telefone;
 	    
-	    this.promocoesDoSiteReserva = promocoesDoSiteReserva;
-	}
+	   // this.promocoesDoSiteReserva = promocoesDoSiteReserva;
+	}*/
     
-	public SiteReserva(Long id, String url, String nome, String telefone, String email, String senha, List<PromoHotel> promocoesDoSiteReserva) {
-	    this(url, nome, telefone, email, senha, promocoesDoSiteReserva);
+	public SiteReserva(Long id, String url, String nome, String telefone, String email, String senha) {//, List<PromoHotel> promocoesDoSiteReserva) {
+	    this(url, nome, telefone, email, senha);//, promocoesDoSiteReserva);
 	    //this.id = id;
 	}
 	
@@ -145,7 +145,7 @@ public class SiteReserva extends Usuario{
 	    super.setSenha(senha);
 	}
 	
-    public List<PromoHotel> getPromocoesDoHotel() {
+   /* public List<PromoHotel> getPromocoesDoHotel() {
         return promocoesDoSiteReserva;
     }
 
@@ -155,5 +155,5 @@ public class SiteReserva extends Usuario{
     
     public void addPromocoesDoHotel(PromoHotel promocaoDoSiteReserva) {
         this.promocoesDoSiteReserva.add(promocaoDoSiteReserva);
-    }
+    }*/
 }

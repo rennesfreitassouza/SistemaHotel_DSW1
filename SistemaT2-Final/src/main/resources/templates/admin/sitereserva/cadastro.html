@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html layout:decorate="~{layout2}">
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:th="http://www.thymeleaf.org"
+	layout:decorate="~{layout2}">
 <head>
 <meta charset="UTF-8" />
 </head>
@@ -25,8 +27,8 @@
 			<div th:replace="fragments/alert"></div>
 
 			<form
-				th:action="${sitereserva.id == null} ? @{/sites/salvar} : @{/sites/editar}"
-				th:object="${sitereserva}" method="POST">
+				th:action="${siteReserva.id == null} ? @{/sites/salvar} : @{/sites/editar}"
+				th:object="${siteReserva}" method="POST">
 
 				<div class="form-row">
 					<div class="form-group col-md-6">

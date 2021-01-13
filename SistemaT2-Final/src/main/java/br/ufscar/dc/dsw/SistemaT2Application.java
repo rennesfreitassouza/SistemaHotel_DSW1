@@ -190,9 +190,9 @@ public class SistemaT2Application {
 //			sitereserva3.addPromocoesDoHotel(promoHotel3);
 			
 			
-			sitereserva1.setPromocoesDoHotel(set1promoHotel1);
+			/*sitereserva1.setPromocoesDoHotel(set1promoHotel1);
 			sitereserva2.setPromocoesDoHotel(set2promoHotel2);
-			sitereserva3.setPromocoesDoHotel(set3promoHotel3);
+			sitereserva3.setPromocoesDoHotel(set3promoHotel3);*/
 			
 //			log.info("Atualizando Promoção");
 			promoHotelDAO.save(promoHotel1);
