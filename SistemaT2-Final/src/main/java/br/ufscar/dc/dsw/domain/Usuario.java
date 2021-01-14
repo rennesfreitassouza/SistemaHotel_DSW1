@@ -24,7 +24,7 @@ import javax.validation.constraints.Size;
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Usuario extends AbstractEntity<Long>{
 
-
+	@NotBlank(message = "{NotBlank.usuario.nome}")
 	@Column(nullable = false, length = 256)
 	private String nome;
 	
