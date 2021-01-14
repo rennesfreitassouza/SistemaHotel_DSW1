@@ -54,12 +54,12 @@ public class AdminSiteReservaController {
 	}
 
 	@PostMapping("/salvar")
-	public String salvar(ModelMap model, @Valid SiteReserva sitereserva, BindingResult result, RedirectAttributes attr) {
-
+	public String salvar(ModelMap model, @Valid SiteReserva siteReserva, BindingResult result, RedirectAttributes attr) {
 		
 		if (result.hasErrors()) {
 			System.out.println(result);
-			model.addAttribute("siteReserva",sitereserva);
+			model.addAttribute("siteReserva",siteReserva);
+      
 			return "admin/sitereserva/cadastro";
 		}
 		
