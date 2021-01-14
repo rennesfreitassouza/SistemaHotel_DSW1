@@ -5,7 +5,7 @@ import java.util.List;
 import br.ufscar.dc.dsw.domain.SiteReserva;
 
 public interface ISiteReservaService {
-	public void salvar(SiteReserva siteReserva);
+	public void salvar(SiteReserva sitereserva);
 	
 	public void excluir(Long id);
 	
