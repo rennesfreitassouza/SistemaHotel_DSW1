@@ -59,13 +59,13 @@ public class AdminSiteReservaController {
 		if (result.hasErrors()) {
 			System.out.println(result);
 			model.addAttribute("siteReserva",siteReserva);
+      
 			return "admin/sitereserva/cadastro";
 		}
 		
 		//sitereserva.setId(sitereserva.getId());
-		
-		siteReserva.setSenha(encoder.encode(siteReserva.getSenha()));
-		service.salvar(siteReserva);
+		sitereserva.setSenha(encoder.encode(sitereserva.getSenha()));
+		service.salvar(sitereserva);
 		attr.addFlashAttribute("sucess", "Site de Reserva inserido com sucesso");
 		return "redirect:/sites/listar";
 	}
@@ -77,13 +77,13 @@ public class AdminSiteReservaController {
 	}
 
 	@PostMapping("/editar")
-	public String editar(@Valid SiteReserva siteReserva, BindingResult result, RedirectAttributes attr) {
+	public String editar(@Valid SiteReserva sitereserva, BindingResult result, RedirectAttributes attr) {
 
 		if (result.hasErrors()) {
 			return "admin/sitereserva/cadastro";
 		}
-		siteReserva.setSenha(encoder.encode(siteReserva.getSenha()));
-		service.salvar(siteReserva);
+		sitereserva.setSenha(encoder.encode(sitereserva.getSenha()));
+		service.salvar(sitereserva);
 		attr.addFlashAttribute("sucess", "Site de Reserva editado com sucesso.");
 		return "redirect:/sites/listar";
 	}
@@ -91,8 +91,8 @@ public class AdminSiteReservaController {
 	@GetMapping("/excluir/{id}")
 	public String excluir(@PathVariable("id") Long id, ModelMap model) {
 		//if (service.siteReservaTemPromo(id)) {
-		SiteReserva siteReserva = service.buscarPorId(id);
-		List<PromoHotel> promosite = serviceP.findBySitereserva(siteReserva); // verifica se existe promoções deste site de reservas
+		SiteReserva sitereserva = service.buscarPorId(id);
+		List<PromoHotel> promosite = serviceP.findBySitereserva(sitereserva); // verifica se existe promoções deste site de reservas
 		
 		if (promosite != null) {
 			model.addAttribute("fail", "Site de Reserva não excluído. Possui promo(s) vinculada(s).");

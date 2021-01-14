@@ -39,19 +39,19 @@
 						</tr>
 					</thead>
 					<tbody>						
-						<tr th:each="siteReserva : ${sites}">
-							<td th:text="${siteReserva.id}"></td>
-							<td th:text="${siteReserva.nome}"></td>
-							<td th:text="${siteReserva.login}"></td>
-							<td th:text="${siteReserva.senha}"></td>
-							<td th:text="${siteReserva.url}"></td>
-							<td th:text="${siteReserva.telefone}"></td>
+						<tr th:each="sitereserva : ${sites}">
+							<td th:text="${sitereserva.id}"></td>
+							<td th:text="${sitereserva.nome}"></td>
+							<td th:text="${sitereserva.login}"></td>
+							<td th:text="${sitereserva.senha}"></td>
+							<td th:text="${sitereserva.url}"></td>
+							<td th:text="${sitereserva.telefone}"></td>
 							<td colspan="2">
 								<a class="btn btn-info btn-sm"
-									th:href="@{/sites/editar/{id} (id=${siteReserva.id}) }" role="button"> 
+									th:href="@{/sites/editar/{id} (id=${sitereserva.id}) }" role="button"> 
 									<span class="oi oi-brush" title="Editar" aria-hidden="true"></span>
 								</a>
-								<button th:id="${#strings.concat('btn_sites/excluir/',siteReserva.id)}" 
+								<button th:id="${#strings.concat('btn_sites/excluir/',sitereserva.id)}" 
 									type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal">
 									<span class="oi oi-circle-x" title="Excluir" aria-hidden="true"></span>
 								</button>

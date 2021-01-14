@@ -13,7 +13,7 @@ public interface ISiteReservaDAO extends CrudRepository<SiteReserva, Long>{
 	
 	List<SiteReserva> findAll();
 	
-	SiteReserva save(SiteReserva siteReserva); // faz as operações de save e update.
+	SiteReserva save(SiteReserva sitereserva); // faz as operações de save e update.
 	
 	SiteReserva findByLogin(String login);
 	
