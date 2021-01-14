@@ -110,12 +110,14 @@ public class SiteReserva extends Usuario{
 	    this.url = url;
 	}
 	
-	public String getNomeHotel() {
-	    return getNome();
+	@Override
+	public String getNome() {
+	    return super.getNome();
 	}
 	
+	@Override
 	public void setNome(String nome) {
-	    setNome(nome);
+	    super.setNome(nome);
 	}
 	
 	public String getTelefone() {
