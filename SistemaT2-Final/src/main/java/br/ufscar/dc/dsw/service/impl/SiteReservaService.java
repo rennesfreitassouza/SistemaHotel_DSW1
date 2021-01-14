@@ -16,8 +16,8 @@ public class SiteReservaService implements ISiteReservaService{
 	@Autowired
 	ISiteReservaDAO dao;
 	
-	public void salvar(SiteReserva sitereserva) {
-		dao.save(sitereserva);
+	public void salvar(SiteReserva siteReserva) {
+		dao.save(siteReserva);
 	}
 
 	public void excluir(Long id) {
