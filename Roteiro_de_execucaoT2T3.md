@@ -23,15 +23,15 @@
 - Versão do Apache Maven utilizada para compilar o projeto: 3.6;
       
       
- - Usuários populados:
+ Usuários populados:
 	
-	  login: luis@admin.com
-	  senha: luis
-	  papel: Admin
-	  
-	  login: rennes@admin.com
-	  senha: rennes
-	  papel: Admin
+	login: luis@admin.com
+	senha: luis
+	papel: Admin
+
+	login: rennes@admin.com
+	senha: rennes
+	papel: Admin
 	  
       - (id's de hotéis populados: 3, 4, e 5)
 	  
