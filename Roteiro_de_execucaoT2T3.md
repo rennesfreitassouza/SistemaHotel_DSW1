@@ -61,5 +61,6 @@
 	  senha: site3
 	  papel: Site de Reserva
 	  
-[a tabela PromoHotel, referente as promoções de um site de reservas, também está sendo populada]. - (id's de promoções populados: 1, 2, e 3)
+[a tabela PromoHotel, referente as promoções de um site de reservas, também está sendo populada].
+	(id's de promoções populados: 1, 2, e 3)
     
