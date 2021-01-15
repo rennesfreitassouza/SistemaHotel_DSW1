@@ -90,7 +90,7 @@ Após a integração com o restante de projeto, apenas os métodos GET do CRUD d
 	Cria uma novo hotel [Create - CRUD]
 		POST http://localhost:8080/hoteis
 		Body: raw/JSON (application/json)
-		( ) Implementado (X) Parcialmente implementado ( ) Não implementado
+		(X) Implementado ( ) Parcialmente implementado ( ) Não implementado
 		Divisão na implementação da funcionalidade:  Daniel (33,3%), Luis (33,3%) e Rennes (33,3%)
 
 	Retorna a lista de hotéis [Read - CRUD]
@@ -111,12 +111,12 @@ Após a integração com o restante de projeto, apenas os métodos GET do CRUD d
 	Atualiza o hotel de id = {id} [Update - CRUD]
 		PUT http://localhost:8080/hoteis/{id} (id's de hotéis populados: 3, 4, e 5)
 		Body: raw/JSON (application/json)
-		( ) Implementado (X) Parcialmente implementado ( ) Não implementado
+		(X) Implementado ( ) Parcialmente implementado ( ) Não implementado
 		Divisão na implementação da funcionalidade:  Daniel (33,3%), Luis (33,3%) e Rennes (33,3%)
 
 	Remove o hotel de id = {id} [Delete - CRUD]
 		DELETE http://localhost:8080/hoteis/{id} (id's de hotéis populados: 3, 4, e 5)
-		( ) Implementado (X) Parcialmente implementado ( ) Não implementado
+		(X) Implementado ( ) Parcialmente implementado ( ) Não implementado
 		Divisão na implementação da funcionalidade:  Daniel (33,3%), Luis (33,3%) e Rennes (33,3%)
 
 Retorna a lista de promoções [Read - CRUD]
