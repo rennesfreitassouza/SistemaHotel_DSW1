@@ -94,11 +94,12 @@ public class AdminSiteReservaController {
 		SiteReserva siteReserva = service.buscarPorId(id);
 		List<PromoHotel> promosite = serviceP.findBySitereserva(siteReserva); // verifica se existe promoções deste site de reservas
 		
-		if (promosite != null) {
-			model.addAttribute("fail", "Site de Reserva não excluído. Possui promo(s) vinculada(s).");
-		} else {
+		//System.out.println(promosite);
+		if (promosite.isEmpty()) {
 			service.excluir(id);
 			model.addAttribute("sucess", "Site de Reserva excluído com sucesso.");
+		} else {
+			model.addAttribute("fail", "Site de Reserva não excluído. Possui promo(s) vinculada(s).");
 		}
 		return listar(model);
 	}
