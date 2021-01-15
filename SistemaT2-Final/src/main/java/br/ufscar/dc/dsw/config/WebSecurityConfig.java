@@ -49,6 +49,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/hoteis").permitAll()
 				.antMatchers("/hoteis/{\\d+}").permitAll()
 				.antMatchers("/promocoes/{\\d+}").permitAll()
+				.antMatchers("/siterest").permitAll()
+				.antMatchers("/siterest/{\\d+}").permitAll()
 				.antMatchers("/admin/**", "/adminhoteis/**", "/sites/**").hasRole("admin.com")
 				.antMatchers("/hotel/**").hasRole("hotel.com")
 				.antMatchers("/sitereserva/**").hasRole("siteres.com")
