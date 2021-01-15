@@ -33,7 +33,7 @@
 	  senha: rennes
 	  papel: Admin
 	  
-      -(id's de hotéis populados: 3, 4, e 5)
+      - (id's de hotéis populados: 3, 4, e 5)
 	  
       login: hotel1@hotel.com
 	  senha: hotel1
@@ -47,7 +47,7 @@
 	  senha: hotel3
 	  papel: Hotel
 	  
-      -(id's de sites de reservas populados: 6, 7, e 8)
+      - (id's de sites de reservas populados: 6, 7, e 8)
       
 	  login: site1@siteres.com
 	  senha: site1
@@ -61,5 +61,5 @@
 	  senha: site3
 	  papel: Site de Reserva
 	  
-[a tabela PromoHotel, referente as promoções de um site de reservas, também está sendo populada].(id's de promoções populados: 1, 2, e 3)
+[a tabela PromoHotel, referente as promoções de um site de reservas, também está sendo populada]. - (id's de promoções populados: 1, 2, e 3)
     
