@@ -1,7 +1,8 @@
 		Checklist das funcionalidades implementadas e divisão dos requisitos por membro da equipe:
 
 	
-	Divisão Referente a Atividade AA-2:
+Divisão Referente a Atividade AA-2:
+
 - R1:
 
 ( ) Implementado (X) Parcialmente implementado ( ) Não implementado
@@ -52,7 +53,8 @@ Divisão na implementação da funcionalidade: Daniel (33,3%), Luis (33,3%) e Re
 (X) Implementado ( ) Parcialmente implementado ( ) Não implementado
 Divisão na implementação da funcionalidade: Daniel (33,3%), Luis (33,3%) e Rennes (33,3%)
 
-	Divisão Referente a Atividade AA-3
+Divisão Referente a Atividade AA-3:
+
 	REST API -- CRUD de sites de reserva
 
 	Cria um novo site de reserva [Create - CRUD]
