@@ -1,5 +1,6 @@
-	-> Checklist das funcionalidades implementadas e divisão dos requisitos por membro da equipe:
+		Checklist das funcionalidades implementadas e divisão dos requisitos por membro da equipe:
 
+	
 	Divisão Referente a Atividade AA-2:
 - R1:
 
