@@ -93,17 +93,17 @@ REST API -- CRUD de hotéis
 
 	Retorna a lista de hotéis [Read - CRUD]
 		GET http://localhost:8080/hoteis
-		( ) Implementado (X) Parcialmente implementado ( ) Não implementado
+		(X) Implementado ( ) Parcialmente implementado ( ) Não implementado
 		Divisão na implementação da funcionalidade: Daniel ( ), Luis ( ) e Rennes ( )
 	
 	Retorna o hotel de id = {id} [Read - CRUD]
 		GET http://localhost:8080/hoteis/{id}
-		( ) Implementado (X) Parcialmente implementado ( ) Não implementado
+		(X) Implementado ( ) Parcialmente implementado ( ) Não implementado
 		Divisão na implementação da funcionalidade: Daniel ( ), Luis ( ) e Rennes ( )
 		
 	Retorna a lista de todos os hotéis da cidade de nome = {nome}
 		GET http://localhost:8080/hoteis/cidades/{nome}
-		( ) Implementado (X) Parcialmente implementado ( ) Não implementado
+		(X) Implementado ( ) Parcialmente implementado ( ) Não implementado
 		Divisão na implementação da funcionalidade: Daniel ( ), Luis ( ) e Rennes ( )
 
 	Atualiza o hotel de id = {id} [Update - CRUD]
