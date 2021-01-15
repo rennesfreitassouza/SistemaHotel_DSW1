@@ -84,8 +84,6 @@ REST API -- CRUD de sites de reserva
 		Divisão na implementação da funcionalidade:  Daniel (33,3%), Luis (33,3%) e Rennes (33,3%)
 
 REST API -- CRUD de hotéis
-Comandos GET, POST, PUT e DELETE funcionando no código antigo cujo link é: https://github.com/rennesfreitassouza/SistemaHotel_DSW1/tree/b24dd23827af737fa2bd0befa8bd58dc7a7dc6f8 
-Após a integração com o restante de projeto, apenas os métodos GET do CRUD de hotéis funcionam.
 
 	Cria uma novo hotel [Create - CRUD]
 		POST http://localhost:8080/hoteis
