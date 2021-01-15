@@ -60,27 +60,27 @@ REST API -- CRUD de sites de reserva
 	Cria um novo site de reserva [Create - CRUD]
 		POST http://localhost:8080/sites
 		Body: raw/JSON (application/json)
-		( ) Implementado ( ) Parcialmente implementado ( ) Não implementado
+		(X) Implementado ( ) Parcialmente implementado ( ) Não implementado
 		Divisão na implementação da funcionalidade:  Daniel (33,3%), Luis (33,3%) e Rennes (33,3%)
 
 	Retorna a lista de sites de reserva [Read - CRUD]
 		GET http://localhost:8080/sites
-		( ) Implementado ( ) Parcialmente implementado ( ) Não implementado
+		(X) Implementado ( ) Parcialmente implementado ( ) Não implementado
 		Divisão na implementação da funcionalidade:  Daniel (33,3%), Luis (33,3%) e Rennes (33,3%)
 					
 	Retorna o site de reserva de id = {id} [Read - CRUD]
 		GET http://localhost:8080/sites/{id} (id's de sites de reservas populados: 6, 7, e 8)
-		( ) Implementado ( ) Parcialmente implementado ( ) Não implementado
+		(X) Implementado ( ) Parcialmente implementado ( ) Não implementado
 		Divisão na implementação da funcionalidade:  Daniel (33,3%), Luis (33,3%) e Rennes (33,3%)
 		
 	Atualiza o site de reserva de id = {id} [Update - CRUD]
 		PUT http://localhost:8080/sites/{id}Body: raw/JSON (application/json) (id's de sites de reservas populados: 6, 7, e 8)
-		( ) Implementado ( ) Parcialmente implementado ( ) Não implementado
+		(X) Implementado ( ) Parcialmente implementado ( ) Não implementado
 		Divisão na implementação da funcionalidade:  Daniel (33,3%), Luis (33,3%) e Rennes (33,3%)
 		
 	Remove o site de reserva de id = {id} [Delete - CRUD]	
 		DELETE http://localhost:8080/sites/{id} (id's de sites de reservas populados: 6, 7, e 8)
-		( ) Implementado ( ) Parcialmente implementado ( ) Não implementado
+		(X) Implementado ( ) Parcialmente implementado ( ) Não implementado
 		Divisão na implementação da funcionalidade:  Daniel (33,3%), Luis (33,3%) e Rennes (33,3%)
 
 REST API -- CRUD de hotéis
