@@ -1,4 +1,4 @@
-- Roteiro de execução:
+    Roteiro de execução Atividade AA-2 e Atividade AA-3:
 
 - SGBD utilizado: MySQL version 8
 
@@ -21,3 +21,7 @@
 - Versão do OpenJDK utilizada durante o desenvolvimento: OpenJDK 8;
 
 - Versão do Apache Maven utilizada para compilar o projeto: 3.6;
+      
+      
+    
+    
