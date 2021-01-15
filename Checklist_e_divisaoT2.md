@@ -52,6 +52,7 @@ Divisão na implementação da funcionalidade: Daniel (33,3%), Luis (33,3%) e Re
 
 Divisão Referente a Atividade AA-3
 REST API -- CRUD de sites de reserva
+
 	Cria um novo site de reserva [Create - CRUD]
 		POST http://localhost:8080/sites
 		Body: raw/JSON (application/json)
@@ -79,6 +80,7 @@ REST API -- CRUD de sites de reserva
 		Divisão na implementação da funcionalidade: Daniel ( ), Luis ( ) e Rennes ( )
 
 REST API -- CRUD de hotéis
+
 	Cria uma novo hotel [Create - CRUD]
 		POST http://localhost:8080/hoteis
 		Body: raw/JSON (application/json)
@@ -112,21 +114,25 @@ REST API -- CRUD de hotéis
 		Divisão na implementação da funcionalidade: Daniel ( ), Luis ( ) e Rennes ( )
 
 Retorna a lista de promoções [Read - CRUD]
+
 	GET http://localhost:8080/promocoes
 	( ) Implementado ( ) Parcialmente implementado ( ) Não implementado
 		Divisão na implementação da funcionalidade: Daniel ( ), Luis ( ) e Rennes ( )
 
 REST API -- Retorna a promoção de id = {id} [Read - CRUD]
+
 	GET http://localhost:8080/promocoes/{id}
 	( ) Implementado ( ) Parcialmente implementado ( ) Não implementado
 		Divisão na implementação da funcionalidade: Daniel ( ), Luis ( ) e Rennes ( )
 
 REST API -- Retorna a lista de promoções do site de reserva de id = {id} [Read - CRUD]
+	
 	GET http://localhost:8080/promocoes/sites/{id}
 	( ) Implementado ( ) Parcialmente implementado ( ) Não implementado
 		Divisão na implementação da funcionalidade: Daniel ( ), Luis ( ) e Rennes ( )
 
 REST API -- Retorna a lista de promoções do hotel de id = {id} [Read - CRUD]
+	
 	GET http://localhost:8080/promocoes/hotel/{id}
 	( ) Implementado ( ) Parcialmente implementado ( ) Não implementado
 		Divisão na implementação da funcionalidade: Daniel ( ), Luis ( ) e Rennes ( )
